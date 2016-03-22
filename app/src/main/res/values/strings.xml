@@ -6,4 +6,5 @@
     <string name="requestLoginMail">Correo Electrónico</string>
     <string name="textoBotonIngresar">Ingresar</string>
     <string name="textoBotonRegistrarse">Registrarse</string>
+    <string name="title_activity_registrar_cuenta">Registrar Cuenta</string>
 </resources>

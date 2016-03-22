@@ -5,6 +5,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="AppThemeNoActionBar" parent="AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowTitleSize">0px</item>
+    </style>
+
+
     <!-- Especificación de diseño visual para botones de la vista de Login -->
     <style name="estiloBotonRojoLogin" parent="Widget.AppCompat.Button">
         <item name="android:layout_gravity">center</item>
@@ -14,5 +20,15 @@
         <item name="android:textSize">20sp</item>
         <item name="android:background">@drawable/botonrojo_esquinasredondas</item>
         <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="ActionBarAzulClaroHolo" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">#0cabff</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="TemaActionBarAzulClaroHolo" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/ActionBarAzulClaroHolo</item>
+        <item name="android:layout_width">match_parent</item>
     </style>
 </resources>
