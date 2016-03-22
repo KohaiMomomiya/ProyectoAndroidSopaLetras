@@ -5,4 +5,14 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Especificación de diseño visual para botones de la vista de Login -->
+    <style name="estiloBotonRojoLogin" parent="Widget.AppCompat.Button">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">@drawable/botonrojo_esquinasredondas</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
 </resources>

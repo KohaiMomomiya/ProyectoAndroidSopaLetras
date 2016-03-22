@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Dibujo para crear un rectángulo con esquinas redondas con color de fondo y borde rojo -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="5dip"
+                    />
+            <stroke android:width="1dip"
+                    android:color="#d03231"
+                    />
+            <solid android:color="#d03231"/>
+
+        </shape>
+    </item>
+</selector>

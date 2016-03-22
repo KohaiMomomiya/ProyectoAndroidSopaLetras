@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="botonIngresar" type="id"/>
+    <item name="botonRegistrar" type="id"/>
+    <item name="campoLoginEMail" type="id"/>
+    <item name="campoLoginPwd" type="id"/>
+</resources>
