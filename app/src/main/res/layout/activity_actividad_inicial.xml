@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/campoLoginEMail"
-                android:hint="@string/requestLoginMail"
+                android:hint="@string/requestCorreoElectronico"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="8dp"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:id="@+id/campoLoginPwd"
-                android:hint="@string/requestLoginPwd"
+                android:hint="@string/requestPwd"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="8dp"
@@ -64,6 +64,7 @@
                 android:layout_height="50dp"
                 android:text="@string/textoBotonRegistrarse"
                 android:id="@id/botonRegistrar"
+                android:onClick="eventoRegistrarNuevoUsuario"
                 style="@style/estiloBotonRojoLogin"
                 />
 

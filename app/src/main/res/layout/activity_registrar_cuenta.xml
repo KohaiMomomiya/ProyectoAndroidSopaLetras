@@ -8,4 +8,86 @@
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context="com.tec.sopaletrassinonimosantonimos.app.RegistrarCuenta">
 
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:weightSum="1">
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@id/campo_registro_nombre"
+                android:hint="@string/requestNombre"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                />
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@id/campo_registro_nombre"
+                android:hint="@string/requestApellidos"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                />
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@id/campo_registro_nombre"
+                android:hint="@string/requestCorreoElectronico"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                />
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@id/campo_registro_nombre"
+                android:inputType="textPassword"
+                android:hint="@string/requestPwd"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif"
+                />
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@id/campo_registro_nombre"
+                android:inputType="textPassword"
+                android:hint="@string/requestPwdAgain"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif"
+                />
+
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.41"/>
+
+        <Button
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Registrar"
+                android:id="@id/botonRegistrarNuevoUsuario"
+                android:layout_gravity="center_horizontal"
+                style="@style/estiloBotonAzulClaro"
+                />
+    </LinearLayout>
 </RelativeLayout>

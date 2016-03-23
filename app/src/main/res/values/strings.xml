@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">SopaLetrasSinonimosAntonimos</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="requestLoginPwd">Contraseña</string>
-    <string name="requestLoginMail">Correo Electrónico</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="requestPwd">Contraseña</string>
+    <string name="requestCorreoElectronico">Correo Electrónico</string>
     <string name="textoBotonIngresar">Ingresar</string>
     <string name="textoBotonRegistrarse">Registrarse</string>
     <string name="title_activity_registrar_cuenta">Registrar Cuenta</string>
+    <string name="requestNombre">Nombre</string>
+    <string name="requestApellidos">Apellidos</string>
+    <string name="requestPwdAgain">Confirmar Contraseña</string>
 </resources>

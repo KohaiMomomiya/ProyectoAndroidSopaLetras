@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ActionBarAzulClaroMaterial" parent="@android:style/Widget.Material.Light.ActionBar">
-        <item name="android:background">#0cabff</item>
-        <item name="android:textColor">#ffffff</item>
-    </style>
-
-    <style name="TemaActionBarAzulClaroMaterial" parent="AppTheme">
-        <item name="android:actionBarStyle">@style/ActionBarAzulClaroMaterial</item>
-        <item name="android:layout_width">match_parent</item>
+    <style name="TemaActionBarAzulClaro" parent="@style/Theme.AppCompat.Light">
+        <item name="colorPrimary">#0cabff</item>
+        <item name="android:textColorPrimary">#000000</item>
     </style>
 </resources>

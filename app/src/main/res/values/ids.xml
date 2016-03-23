@@ -4,4 +4,6 @@
     <item name="botonRegistrar" type="id"/>
     <item name="campoLoginEMail" type="id"/>
     <item name="campoLoginPwd" type="id"/>
+    <item name="campo_registro_nombre" type="id"/>
+    <item name="botonRegistrarNuevoUsuario" type="id"/>
 </resources>

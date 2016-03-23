@@ -1,17 +1,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppThemeNoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowTitleSize">0px</item>
     </style>
 
 
-    <!-- Especificación de diseño visual para botones de la vista de Login -->
+    <!-- Botones Login/Registrar -->
     <style name="estiloBotonRojoLogin" parent="Widget.AppCompat.Button">
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_marginTop">8dp</item>
@@ -22,13 +22,26 @@
         <item name="android:textColor">#ffffff</item>
     </style>
 
-    <style name="ActionBarAzulClaroHolo" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">#0cabff</item>
+    <!-- Botones Azul Claro -->
+    <style name="estiloBotonAzulClaro" parent="Widget.AppCompat.Button">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">@drawable/botonazulclaro_esquinasredondas</item>
         <item name="android:textColor">#ffffff</item>
     </style>
 
-    <style name="TemaActionBarAzulClaroHolo" parent="AppTheme">
-        <item name="android:actionBarStyle">@style/ActionBarAzulClaroHolo</item>
-        <item name="android:layout_width">match_parent</item>
+    <!-- Estilo de ActionBar para Android API inferior a 21 -->
+    <style name="ActionBarAzulClaro"
+           parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">#0cabff</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+
+    <style name="TemaActionBarAzulClaro" parent="@style/Theme.AppCompat.Light">
+        <item name="android:actionBarStyle">@style/ActionBarAzulClaro</item>
+        <item name="actionBarStyle">@style/ActionBarAzulClaro</item>
     </style>
 </resources>
