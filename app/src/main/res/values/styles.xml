@@ -11,8 +11,8 @@
     </style>
 
 
-    <!-- Botones Login/Registrar -->
-    <style name="estiloBotonRojoLogin" parent="Widget.AppCompat.Button">
+    <!-- Botones Rojos -->
+    <style name="estiloBotonRojo" parent="Widget.AppCompat.Button">
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
@@ -33,13 +33,12 @@
         <item name="android:textColor">#ffffff</item>
     </style>
 
-    <!-- Estilo de ActionBar para Android API inferior a 21 -->
+    <!-- TemaActionBarAzulClaro para Android API inferior a 21 -->
     <style name="ActionBarAzulClaro"
            parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
         <item name="android:background">#0cabff</item>
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
-
     <style name="TemaActionBarAzulClaro" parent="@style/Theme.AppCompat.Light">
         <item name="android:actionBarStyle">@style/ActionBarAzulClaro</item>
         <item name="actionBarStyle">@style/ActionBarAzulClaro</item>

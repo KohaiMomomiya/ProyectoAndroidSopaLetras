@@ -1,75 +1,61 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".ActividadInicial">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context=".ActividadInicial">
 
-    <LinearLayout
-            android:orientation="vertical"
+    <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:weightSum="1"
-            android:layout_alignParentBottom="true">
+            android:layout_height="255dp"
+            android:layout_weight="0.42"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/titulo">
 
-        <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="255dp"
-                android:layout_weight="0.42"
-                android:layout_marginBottom="16dp"
-                >
+    </FrameLayout>
 
-            <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/imageView"
-                    android:layout_gravity="center"
-                    android:background="@drawable/titulo"/>
-        </FrameLayout>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/campoLoginEMail"
+            android:hint="@string/requestCorreoElectronico"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:inputType="textEmailAddress"/>
 
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/campoLoginEMail"
-                android:hint="@string/requestCorreoElectronico"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="8dp"
-                android:inputType="textEmailAddress"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:id="@+id/campoLoginPwd"
+            android:hint="@string/etiquetaPwd"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif"
+            />
 
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:id="@+id/campoLoginPwd"
-                android:hint="@string/requestPwd"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="sans-serif"
-                />
+    <Button
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:text="@string/textoBotonIngresar"
+            android:id="@id/botonIngresar"
+            android:onClick="ingresarEnAplicacion"
+            style="@style/estiloBotonRojo"
+            />
 
-        <Button
-                android:layout_width="220dp"
-                android:layout_height="50dp"
-                android:text="@string/textoBotonIngresar"
-                android:id="@id/botonIngresar"
-                style="@style/estiloBotonRojoLogin"
-                />
+    <Button
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:text="@string/textoBotonRegistrarse"
+            android:id="@id/botonRegistrar"
+            android:onClick="registrarNuevoUsuario"
+            style="@style/estiloBotonRojo"
+            />
 
-        <Button
-                android:layout_width="220dp"
-                android:layout_height="50dp"
-                android:text="@string/textoBotonRegistrarse"
-                android:id="@id/botonRegistrar"
-                android:onClick="eventoRegistrarNuevoUsuario"
-                style="@style/estiloBotonRojoLogin"
-                />
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
 
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="40dp"/>
-    </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

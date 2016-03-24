@@ -1,13 +1,44 @@
 <resources>
-    <string name="app_name">SopaLetrasSinonimosAntonimos</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name" translatable="false">SopaLetrasSinonimosAntonimos</string>
+
+    <!-- Etiquetas botones ActionBar -->
     <string name="action_settings">Ajustes</string>
-    <string name="requestPwd">Contraseña</string>
+
+    <!-- Etiquetas para campos de texto -->
+    <string name="etiquetaNombre">Nombre</string>
+    <string name="etiquetaApellidos">Apellidos</string>
     <string name="requestCorreoElectronico">Correo Electrónico</string>
+    <string name="etiquetaPwd">Contraseña</string>
+    <string name="etiquetaVerificarPwd">Confirmar Contraseña</string>
+
+    <!-- Títulos de Actividades -->
+    <string name="title_activity_registrar_cuenta">Crear Cuenta</string>
+    <string name="title_activity_menu_principal">Menú Principal</string>
+
+    <!-- Etiquetas de botones -->
+    <string name="textoBotonCerrarSesion">Cerrar Sesión</string>
     <string name="textoBotonIngresar">Ingresar</string>
+    <string name="textoBotonJugar">Jugar Ahora</string>
     <string name="textoBotonRegistrarse">Registrarse</string>
-    <string name="title_activity_registrar_cuenta">Registrar Cuenta</string>
-    <string name="requestNombre">Nombre</string>
-    <string name="requestApellidos">Apellidos</string>
-    <string name="requestPwdAgain">Confirmar Contraseña</string>
+    <string name="textoBotonCrearCuenta">Enviar</string>
+    <string name="textoBotonResultados">Resultados</string>
+    <string name="textoAntonimos">Antónimos</string>
+    <string name="textoSinonimos">Sinónimos</string>
+    <string name="textoDificultadFacil">Fácil</string>
+    <string name="textoDificultadMedia">Media</string>
+    <string name="textoDificultadDificil">Difícil</string>
+
+    <!-- Mensaje de notificación (Toast) -->
+    <string name="alerta_NombreVacio">Por favor ingrese su nombre</string>
+    <string name="alerta_ApellidosVacio">Por favor ingrese sus apellidos</string>
+    <string name="alerta_EmailVacio">Por favor ingrese su correo electrónico</string>
+    <string name="alerta_PwdVacio">Por favor ingrese su contraseña</string>
+    <string name="alerta_Pwd2Vacio">Por favor vuelva a ingresar su contraseña</string>
+    <string name="alerta_PwdsDiferentes">Las contraseñas ingresadas no coinciden</string>
+    <string name="mensaje_cuentaCreada">Se ha creado la cuenta</string>
+    <string name="title_activity_tema_juego">Tema</string>
+
+    <string name="hello_world">Hello world!</string>
+
+
 </resources>

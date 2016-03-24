@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              tools:context="com.tec.sopaletrassinonimosantonimos.app.TemaJuego">
+
+    <Button
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:text="@string/textoSinonimos"
+            android:id="@id/botonSinonimos"
+            android:layout_gravity="center_horizontal"
+            style="@style/estiloBotonAzulClaro"
+            />
+
+    <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="165dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/sinonimos"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+    </FrameLayout>
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.10"/>
+
+    <Button
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="@string/textoAntonimos"
+            android:id="@id/botonAntonimos"
+            android:layout_gravity="center_horizontal"
+            style="@style/estiloBotonAzulClaro"/>
+
+    <FrameLayout
+            android:layout_width="292dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/antonimos"
+            android:layout_weight="0.61">
+    </FrameLayout>
+
+</LinearLayout>

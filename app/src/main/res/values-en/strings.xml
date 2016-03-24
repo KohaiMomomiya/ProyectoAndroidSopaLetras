@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Etiquetas botones ActionBar -->
+    <string name="action_settings">Settings</string>
+
+    <!-- Etiquetas para campos de texto -->
+    <string name="etiquetaNombre">First Name</string>
+    <string name="etiquetaApellidos">Last Name</string>
+    <string name="requestCorreoElectronico">E-mail Address</string>
+    <string name="etiquetaPwd">Password</string>
+    <string name="etiquetaVerificarPwd">Verify Password</string>
+
+    <!-- Títulos de Actividades -->
+    <string name="title_activity_registrar_cuenta">Create Account</string>
+    <string name="title_activity_menu_principal">Main Menu</string>
+
+    <!-- Etiquetas de botones -->
+    <string name="textoBotonCerrarSesion">Log Out</string>
+    <string name="textoBotonIngresar">Log In</string>
+    <string name="textoBotonJugar">Play Now</string>
+    <string name="textoBotonRegistrarse">Sign Up</string>
+    <string name="textoBotonResultados">Scores</string>
+    <string name="textoBotonCrearCuenta">Submit</string>
+    <string name="textoAntonimos">Antonyms</string>
+    <string name="textoSinonimos">Synonyms</string>
+    <string name="textoDificultadFacil">Easy</string>
+    <string name="textoDificultadMedia">Medium</string>
+    <string name="textoDificultadDificil">Hard</string>
+
+    <!-- Mensaje de notificación (Toast) -->
+    <string name="alerta_NombreVacio">Please enter your first name</string>
+    <string name="alerta_ApellidosVacio">Please enter your last name</string>
+    <string name="alerta_EmailVacio">Please enter your e-mail address</string>
+    <string name="alerta_PwdVacio">Please enter your password</string>
+    <string name="alerta_Pwd2Vacio">Please enter your password again</string>
+    <string name="alerta_PwdsDiferentes">The submitted passwords do not match</string>
+    <string name="mensaje_cuentaCreada">The account has been created</string>
+    <string name="title_activity_tema_juego">Theme</string>
+
+</resources>

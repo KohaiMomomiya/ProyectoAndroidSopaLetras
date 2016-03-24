@@ -6,4 +6,10 @@
     <item name="campoLoginPwd" type="id"/>
     <item name="campo_registro_nombre" type="id"/>
     <item name="botonRegistrarNuevoUsuario" type="id"/>
+    <item name="campo_registro_pwd" type="id"/>
+    <item name="campo_verificacion_pwd" type="id"/>
+    <item name="campo_registro_eMail" type="id"/>
+    <item name="campo_registro_apellidos" type="id"/>
+    <item name="botonSinonimos" type="id"/>
+    <item name="botonAntonimos" type="id"/>
 </resources>
