@@ -37,5 +37,7 @@
     <string name="alerta_PwdsDiferentes">The submitted passwords do not match</string>
     <string name="mensaje_cuentaCreada">The account has been created</string>
     <string name="title_activity_tema_juego">Theme</string>
+    <string name="textoSeleccioneDificultad">Select the game\'s difficulty</string>
+    <string name="title_activity_dificultad_juego">Difficulty</string>
 
 </resources>

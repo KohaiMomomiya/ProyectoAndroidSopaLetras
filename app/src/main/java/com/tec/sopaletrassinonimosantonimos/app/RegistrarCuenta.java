@@ -1,5 +1,6 @@
 package com.tec.sopaletrassinonimosantonimos.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -42,6 +43,13 @@ public class RegistrarCuenta extends AppCompatActivity {
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
     return super.onOptionsItemSelected(item);
+  }
+
+  @Override
+  public void onBackPressed() {
+    Intent intent = new Intent(this, ActividadInicial.class);
+    startActivity(intent);
+    this.finish();
   }
 
   public void solicitarRegistro(View view) {

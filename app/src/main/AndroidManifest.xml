@@ -43,6 +43,15 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
         </activity>
+        <activity
+                android:name=".DificultadJuego"
+                android:label="@string/title_activity_dificultad_juego"
+                android:parentActivityName=".MenuPrincipal"
+                android:theme="@style/TemaActionBarAzulClaro">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
+        </activity>
     </application>
 
 </manifest>

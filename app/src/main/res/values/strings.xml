@@ -38,7 +38,8 @@
     <string name="mensaje_cuentaCreada">Se ha creado la cuenta</string>
     <string name="title_activity_tema_juego">Tema</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_dificultad_juego">Dificultad</string>
+    <string name="textoSeleccioneDificultad">Seleccione la dificultad del juego</string>
 
 
 </resources>

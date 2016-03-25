@@ -12,4 +12,7 @@
     <item name="campo_registro_apellidos" type="id"/>
     <item name="botonSinonimos" type="id"/>
     <item name="botonAntonimos" type="id"/>
+    <item name="botonDificultadFacil" type="id"/>
+    <item name="botonDificultadDificil" type="id"/>
+    <item name="botonDificultadMedia" type="id"/>
 </resources>

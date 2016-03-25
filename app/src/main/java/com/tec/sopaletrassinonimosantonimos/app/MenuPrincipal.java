@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class MenuPrincipal extends AppCompatActivity {
-  
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -45,9 +45,24 @@ public class MenuPrincipal extends AppCompatActivity {
     return super.onOptionsItemSelected(item);
   }
 
+  @Override
+  public void onBackPressed() {
+    cerrarSesion();
+  }
 
   public void jugarAhora(View view) {
-    Intent intent = new Intent(this, TemaJuego.class);
+    Intent intent = new Intent(this, DificultadJuego.class);
     startActivity(intent);
+  }
+
+  // Cierra la sesión actual
+  public void cerrarSesion() {
+    Intent intent = new Intent(this, ActividadInicial.class);
+    startActivity(intent);
+    this.finish();
+  }
+
+  public void cerrarSesionConBoton(View view) {
+    cerrarSesion();
   }
 }
