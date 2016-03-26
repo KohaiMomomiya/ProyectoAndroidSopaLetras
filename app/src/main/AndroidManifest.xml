@@ -2,6 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tec.sopaletrassinonimosantonimos.app" >
 
+    <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--
+ To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
+     option is required to comply with the Google+ Sign-In developer policies
+    -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/> <!-- To retrieve the account name (email) as part of sign-in: -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -35,8 +46,8 @@
                     android:value="com.tec.sopaletrassinonimosantonimos.app.ActividadInicial"/>
         </activity>
         <activity
-                android:name=".TemaJuego"
-                android:label="@string/title_activity_tema_juego"
+                android:name=".SeleccionDificultad"
+                android:label="@string/title_activity_dificultad_juego"
                 android:parentActivityName=".MenuPrincipal"
                 android:theme="@style/TemaActionBarAzulClaro">
             <meta-data
@@ -44,13 +55,18 @@
                     android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
         </activity>
         <activity
-                android:name=".DificultadJuego"
-                android:label="@string/title_activity_dificultad_juego"
-                android:parentActivityName=".MenuPrincipal"
+                android:name=".SeleccionTema"
+                android:label="@string/title_activity_tema_juego"
+                android:parentActivityName=".SeleccionDificultad"
                 android:theme="@style/TemaActionBarAzulClaro">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
+                    android:value="com.tec.sopaletrassinonimosantonimos.app.SeleccionDificultad"/>
+        </activity>
+        <activity
+                android:name=".ResultadoJuego"
+                android:label="@string/title_activity_resultado_juego"
+                android:theme="@style/TemaActionBarAzulClaro">
         </activity>
     </application>
 

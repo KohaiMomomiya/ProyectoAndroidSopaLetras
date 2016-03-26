@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              tools:context=".ResultadoJuego"
+              android:weightSum="1">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/mensaje_resultado_juego"
+            android:textAlignment="center"/>
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.15"/>
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.10"
+            android:background="#0cabff">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/puntuacion"
+                android:id="@+id/textoPuntuacion"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="50dp"
+                android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.25"/>
+
+    <Button
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="@string/textoBotonMenuPrincipal"
+            android:id="@+id/botonVolverAMenuPrincipal"
+            android:layout_gravity="center_horizontal"
+            style="@style/estiloBotonAzulClaro"/>
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.10"/>
+
+    <Button
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="@string/botonJugarDeNuevo"
+            android:id="@id/botonJugarDeNuevo"
+            android:layout_gravity="center_horizontal"
+            style="@style/estiloBotonAzulClaro"/>
+</LinearLayout>

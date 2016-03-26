@@ -36,10 +36,20 @@
     <string name="alerta_Pwd2Vacio">Por favor vuelva a ingresar su contraseña</string>
     <string name="alerta_PwdsDiferentes">Las contraseñas ingresadas no coinciden</string>
     <string name="mensaje_cuentaCreada">Se ha creado la cuenta</string>
-    <string name="title_activity_tema_juego">Tema</string>
+    <string name="title_activity_tema_juego">Tema del juego</string>
 
     <string name="title_activity_dificultad_juego">Dificultad</string>
     <string name="textoSeleccioneDificultad">Seleccione la dificultad del juego</string>
+    <string name="textoSeleccionTema">Seleccione el tema del juego</string>
+    <string name="mensaje_cuentaNoCreada">La cuenta no pudo ser creada</string>
+    <string name="alerta_EmailFormatoInvalido">El correo electrónico ingresado no tiene un formato válido</string>
+    <string name="title_activity_resultado_juego">Resultado del Juego</string>
+
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="mensaje_resultado_juego">¡Bien hecho!\nTu puntación fue:</string>
+    <string name="puntuacion" translatable="false">000000</string>
+    <string name="textoBotonMenuPrincipal">Volver a Menu Principal</string>
+    <string name="botonJugarDeNuevo">Jugar de nuevo</string>
 
 
 </resources>

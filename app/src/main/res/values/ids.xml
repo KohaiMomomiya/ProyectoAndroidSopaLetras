@@ -15,4 +15,7 @@
     <item name="botonDificultadFacil" type="id"/>
     <item name="botonDificultadDificil" type="id"/>
     <item name="botonDificultadMedia" type="id"/>
+    <item name="textoPuntuacion" type="id"/>
+    <item name="botonVolverAMenuPrincipal" type="id"/>
+    <item name="botonJugarDeNuevo" type="id"/>
 </resources>

@@ -13,7 +13,7 @@ public class MenuPrincipal extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_menuprincipal);
+    setContentView(R.layout.activity_menu_principal);
 
     ActionBar actionBar = this.getActionBar();
     if (actionBar != null) {
@@ -51,7 +51,7 @@ public class MenuPrincipal extends AppCompatActivity {
   }
 
   public void jugarAhora(View view) {
-    Intent intent = new Intent(this, DificultadJuego.class);
+    Intent intent = new Intent(this, SeleccionDificultad.class);
     startActivity(intent);
   }
 

@@ -39,5 +39,12 @@
     <string name="title_activity_tema_juego">Theme</string>
     <string name="textoSeleccioneDificultad">Select the game\'s difficulty</string>
     <string name="title_activity_dificultad_juego">Difficulty</string>
+    <string name="textoSeleccionTema">Select the game\'s theme</string>
+    <string name="mensaje_cuentaNoCreada">The account could not be created</string>
+    <string name="alerta_EmailFormatoInvalido">The submitted e-mail address has an invalid format</string>
+    <string name="mensaje_resultado_juego">Well done!\nYour score is:</string>
+    <string name="title_activity_resultado_juego">Game Result</string>
+    <string name="botonJugarDeNuevo">Play again</string>
+    <string name="textoBotonMenuPrincipal">Go back to Main Menu</string>
 
 </resources>

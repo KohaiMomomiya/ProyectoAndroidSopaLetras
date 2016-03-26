@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class DificultadJuego extends AppCompatActivity {
-  
+public class SeleccionDificultad extends AppCompatActivity {
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -14,20 +15,19 @@ public class DificultadJuego extends AppCompatActivity {
   }
 
   public void seleccionarDificultad(View view) {
-    Intent intent = new Intent(this, TemaJuego.class);
+    Intent intent = new Intent(this, SeleccionTema.class);
 
-    int idBoton = view.getId();
-    switch (idBoton) {
+    switch (view.getId()) {
       case R.id.botonDificultadFacil:
-        intent.putExtra("dificultad", 1);
+        intent.putExtra("dificultad", (byte) 1);
         startActivity(intent);
         break;
       case R.id.botonDificultadMedia:
-        intent.putExtra("dificultad", 2);
+        intent.putExtra("dificultad", (byte) 2);
         startActivity(intent);
         break;
       case R.id.botonDificultadDificil:
-        intent.putExtra("dificultad", 3);
+        intent.putExtra("dificultad", (byte) 3);
         startActivity(intent);
         break;
       default:

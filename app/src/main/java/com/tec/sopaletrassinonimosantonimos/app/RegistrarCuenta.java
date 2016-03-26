@@ -3,8 +3,6 @@ package com.tec.sopaletrassinonimosantonimos.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,22 +26,6 @@ public class RegistrarCuenta extends AppCompatActivity {
     campoRegistroPwd = (EditText) findViewById(R.id.campo_registro_pwd);
     campoVerificacionPwd = (EditText) findViewById(R.id.campo_verificacion_pwd);
   }
-  
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_registrar_cuenta, menu);
-    return true;
-  }
-  
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-    return super.onOptionsItemSelected(item);
-  }
 
   @Override
   public void onBackPressed() {
@@ -59,32 +41,45 @@ public class RegistrarCuenta extends AppCompatActivity {
     String strPwd = campoRegistroPwd.getText().toString().trim();
     String strVerificarPwd = campoVerificacionPwd.getText().toString().trim();
 
-    if (strNombre.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_NombreVacio, Toast.LENGTH_LONG).show();
-      return;
-    }
-    if (strApellidos.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_ApellidosVacio, Toast.LENGTH_LONG).show();
-      return;
-    }
-    if (strEmail.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_EmailVacio, Toast.LENGTH_LONG).show();
-      return;
-    }
-    if (strPwd.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_PwdVacio, Toast.LENGTH_LONG).show();
-      return;
-    }
-    if (strVerificarPwd.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_Pwd2Vacio, Toast.LENGTH_LONG).show();
-      return;
-    }
-    if (!strPwd.contentEquals(strVerificarPwd)) {
-      Toast.makeText(this, R.string.alerta_PwdsDiferentes, Toast.LENGTH_LONG).show();
-      return;
-    } else {
+    if (verificarDatosIngresados(strNombre, strApellidos, strEmail, strPwd, strVerificarPwd)) {
       //TODO Operación de registrar nueva cuenta y obtener la cuenta creada desde Internet.
       Toast.makeText(this, R.string.mensaje_cuentaCreada, Toast.LENGTH_LONG).show();
+    } else {
+      Toast.makeText(this, R.string.mensaje_cuentaNoCreada, Toast.LENGTH_LONG).show();
+    }
+  }
+
+  private boolean verificarDatosIngresados(String nombre, String apellidos, String eMail,
+                                           String pwd, String pwd2) {
+    if (nombre.isEmpty()) {
+      Toast.makeText(this, R.string.alerta_NombreVacio, Toast.LENGTH_LONG).show();
+      return false;
+    }
+    if (apellidos.isEmpty()) {
+      Toast.makeText(this, R.string.alerta_ApellidosVacio, Toast.LENGTH_LONG).show();
+      return false;
+    }
+    if (eMail.isEmpty()) {
+      Toast.makeText(this, R.string.alerta_EmailVacio, Toast.LENGTH_LONG).show();
+      return false;
+    }
+    if (!eMail.contains("@")) {
+      Toast.makeText(this, R.string.alerta_EmailFormatoInvalido, Toast.LENGTH_LONG).show();
+      return false;
+    }
+    if (pwd.isEmpty()) {
+      Toast.makeText(this, R.string.alerta_PwdVacio, Toast.LENGTH_LONG).show();
+      return false;
+    }
+    if (pwd2.isEmpty()) {
+      Toast.makeText(this, R.string.alerta_Pwd2Vacio, Toast.LENGTH_LONG).show();
+      return false;
+    }
+    if (!pwd.contentEquals(pwd2)) {
+      Toast.makeText(this, R.string.alerta_PwdsDiferentes, Toast.LENGTH_LONG).show();
+      return false;
+    } else {
+      return true;
     }
   }
 }
