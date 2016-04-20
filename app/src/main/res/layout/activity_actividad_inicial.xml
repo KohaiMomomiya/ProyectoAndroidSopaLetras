@@ -18,28 +18,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/campoLoginEMail"
-            android:hint="@string/requestCorreoElectronico"
+            android:hint="@string/etiqueta_correoElectronico"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:textColor="#000000"/>
 
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:id="@+id/campoLoginPwd"
-            android:hint="@string/etiquetaPwd"
+            android:hint="@string/etiqueta_password"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif"
+            android:textColor="#000000"
             />
 
     <Button
             android:layout_width="220dp"
             android:layout_height="50dp"
-            android:text="@string/textoBotonIngresar"
+            android:text="@string/boton_ingresar"
             android:id="@id/botonIngresar"
             android:onClick="ingresarEnAplicacion"
             style="@style/estiloBotonRojo"
@@ -48,7 +50,7 @@
     <Button
             android:layout_width="220dp"
             android:layout_height="50dp"
-            android:text="@string/textoBotonRegistrarse"
+            android:text="@string/boton_registrarse"
             android:id="@id/botonRegistrar"
             android:onClick="registrarNuevoUsuario"
             style="@style/estiloBotonRojo"

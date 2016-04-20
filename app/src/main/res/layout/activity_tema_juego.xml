@@ -13,7 +13,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/textoSeleccionTema"
+            android:text="@string/texto_seleccioneTema"
             android:id="@+id/textView"
             android:layout_gravity="center"
             android:textAlignment="center"
@@ -30,7 +30,7 @@
     <Button
             android:layout_width="162dp"
             android:layout_height="wrap_content"
-            android:text="@string/textoSinonimos"
+            android:text="@string/sinonimos"
             android:id="@id/botonSinonimos"
             android:layout_gravity="center_horizontal"
             android:onClick="temaSeleccionado"
@@ -51,7 +51,7 @@
     <Button
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:text="@string/textoAntonimos"
+            android:text="@string/antonimos"
             android:id="@id/botonAntonimos"
             android:layout_gravity="center_horizontal"
             android:onClick="temaSeleccionado"

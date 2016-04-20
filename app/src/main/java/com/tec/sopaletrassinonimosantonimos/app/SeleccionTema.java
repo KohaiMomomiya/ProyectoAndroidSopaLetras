@@ -7,73 +7,56 @@ import android.view.View;
 import android.widget.Toast;
 
 public class SeleccionTema extends AppCompatActivity {
-  byte dificultadJuego;   // 1: Fácil, 2: Media, 3: Difícil
-  byte temaJuego;         // 1: Sinónimos, 2: Antónimos
+  private char dificultad;  // a : Facil, b : Media, c : Dificil
+  private char tipoJuego;  // a : Antónimos, s : Sinónimos
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_tema_juego);
 
-    dificultadJuego = 0;
-    temaJuego = 0;
+    dificultad = '-';
 
     if (savedInstanceState == null) {
       // Obtiene el grado de dificultad de la actividad anterior
       Bundle extras = getIntent().getExtras();
       if ((extras != null) && (extras.containsKey("dificultad"))) {
-        dificultadJuego = extras.getByte("dificultad");
+        dificultad = extras.getChar("dificultad");
       } else {
-        Toast.makeText(this, "No se pudo detectar el grado de dificultad",
-            Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, SeleccionDificultad.class);
-        startActivity(intent);
-        this.finish();
+        notificarErrorDificultad();
       }
     }
   }
 
+
   public void temaSeleccionado(View view) {
     switch (view.getId()) {
       case R.id.botonSinonimos:
-        temaJuego = 1;
-        toastSeleccion();
+        tipoJuego = 's';
+        iniciarJuego();
         break;
       case R.id.botonAntonimos:
-        temaJuego = 2;
-        toastSeleccion();
+        tipoJuego = 'a';
+        iniciarJuego();
         break;
       default:
-        break;
+        return;
     }
   }
 
-  // Método de prueba
-  public void toastSeleccion() {
-    switch (dificultadJuego) {
-      case 1:
-        Toast.makeText(this, "Dificultad seleccionada: Fácil", Toast.LENGTH_LONG).show();
-        break;
-      case 2:
-        Toast.makeText(this, "Dificultad seleccionada: Media", Toast.LENGTH_LONG).show();
-        break;
-      case 3:
-        Toast.makeText(this, "Dificultad seleccionada: Difícil", Toast.LENGTH_LONG).show();
-        break;
-      default:
-        break;
-    }
-    switch (temaJuego) {
-      case 1:
-        Toast.makeText(this, "Tema seleccionado: Sinónimos", Toast.LENGTH_LONG).show();
-        break;
-      case 2:
-        Toast.makeText(this, "Tema seleccionado: Antónimos", Toast.LENGTH_LONG).show();
-        break;
-      default:
-        break;
-    }
+  private void iniciarJuego() {
+    Intent intent = new Intent(this, ActividadJuego.class);
+
+    intent.putExtra("dificultad", dificultad);
+    intent.putExtra("tipoJuego", tipoJuego);
+
+    startActivity(intent);
   }
 
-  // TODO Método para iniciar el juego con el tema y dificultad seleccionadas.
+  private void notificarErrorDificultad() {
+    Toast.makeText(this, R.string.error_dificultadNoDetectada, Toast.LENGTH_LONG).show();
+    Intent intent = new Intent(this, SeleccionDificultad.class);
+    startActivity(intent);
+    this.finish();
+  }
 }

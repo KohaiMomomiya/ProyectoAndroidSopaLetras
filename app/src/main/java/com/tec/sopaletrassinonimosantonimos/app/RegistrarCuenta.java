@@ -43,9 +43,9 @@ public class RegistrarCuenta extends AppCompatActivity {
 
     if (verificarDatosIngresados(strNombre, strApellidos, strEmail, strPwd, strVerificarPwd)) {
       //TODO Operación de registrar nueva cuenta y obtener la cuenta creada desde Internet.
-      Toast.makeText(this, R.string.mensaje_cuentaCreada, Toast.LENGTH_LONG).show();
+      Toast.makeText(this, R.string.alerta_cuentaCreada, Toast.LENGTH_LONG).show();
     } else {
-      Toast.makeText(this, R.string.mensaje_cuentaNoCreada, Toast.LENGTH_LONG).show();
+      Toast.makeText(this, R.string.alerta_cuentaNoCreada, Toast.LENGTH_LONG).show();
     }
   }
 

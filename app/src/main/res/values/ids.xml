@@ -18,4 +18,7 @@
     <item name="textoPuntuacion" type="id"/>
     <item name="botonVolverAMenuPrincipal" type="id"/>
     <item name="botonJugarDeNuevo" type="id"/>
+    <item name="etiqueta_puntuacionJuego" type="id"/>
+    <item name="puntuacionJuego" type="id"/>
+    <item name="textoResultadoPuntuacion" type="id"/>
 </resources>

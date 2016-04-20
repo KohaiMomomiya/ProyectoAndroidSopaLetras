@@ -25,7 +25,7 @@
     <Button
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/textoBotonJugar"
+            android:text="@string/boton_jugarAhora"
             android:id="@+id/botonJugar"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.05"
@@ -40,7 +40,7 @@
     <Button
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/textoBotonResultados"
+            android:text="@string/boton_resultados"
             android:id="@+id/button2"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.05"
@@ -54,7 +54,7 @@
     <Button
             android:layout_width="149dp"
             android:layout_height="wrap_content"
-            android:text="@string/textoBotonCerrarSesion"
+            android:text="@string/boton_cerrarSesion"
             android:id="@+id/button3"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.05"

@@ -1,32 +1,41 @@
 <resources>
-    <string name="app_name" translatable="false">SopaLetrasSinonimosAntonimos</string>
+    <string name="app_name" translatable="false">Sopa Letras Sinónimos y Antónimos</string>
+
+    <string name="hello_world" translatable="false">Hello world!</string>
 
     <!-- Etiquetas botones ActionBar -->
     <string name="action_settings">Ajustes</string>
 
     <!-- Etiquetas para campos de texto -->
-    <string name="etiquetaNombre">Nombre</string>
-    <string name="etiquetaApellidos">Apellidos</string>
-    <string name="requestCorreoElectronico">Correo Electrónico</string>
-    <string name="etiquetaPwd">Contraseña</string>
-    <string name="etiquetaVerificarPwd">Confirmar Contraseña</string>
+    <string name="etiqueta_nombre">Nombre</string>
+    <string name="etiqueta_apellidos">Apellidos</string>
+    <string name="etiqueta_correoElectronico">Correo Electrónico</string>
+    <string name="etiqueta_password">Contraseña</string>
+    <string name="etiqueta_verificarPassword">Confirmar Contraseña</string>
+    <string name="etiqueta_puntuacionJuego">Puntuación:</string>
 
     <!-- Títulos de Actividades -->
-    <string name="title_activity_registrar_cuenta">Crear Cuenta</string>
-    <string name="title_activity_menu_principal">Menú Principal</string>
+    <string name="actividad_dificultadJuego">Dificultad</string>
+    <string name="actividad_crearCuenta">Crear Nueva Cuenta</string>
+    <string name="actividad_menuPrincipal">Menú Principal</string>
+    <string name="actividad_resultadoJuego">Resultado del Juego</string>
+    <string name="actividad_temaJuego">Tema del juego</string>
+
 
     <!-- Etiquetas de botones -->
-    <string name="textoBotonCerrarSesion">Cerrar Sesión</string>
-    <string name="textoBotonIngresar">Ingresar</string>
-    <string name="textoBotonJugar">Jugar Ahora</string>
-    <string name="textoBotonRegistrarse">Registrarse</string>
-    <string name="textoBotonCrearCuenta">Enviar</string>
-    <string name="textoBotonResultados">Resultados</string>
-    <string name="textoAntonimos">Antónimos</string>
-    <string name="textoSinonimos">Sinónimos</string>
-    <string name="textoDificultadFacil">Fácil</string>
-    <string name="textoDificultadMedia">Media</string>
-    <string name="textoDificultadDificil">Difícil</string>
+    <string name="boton_cerrarSesion">Cerrar Sesión</string>
+    <string name="boton_ingresar">Ingresar</string>
+    <string name="boton_jugarAhora">Jugar Ahora</string>
+    <string name="boton_registrarse">Registrarse</string>
+    <string name="boton_crearCuenta">Enviar</string>
+    <string name="boton_resultados">Resultados</string>
+    <string name="boton_volverAmenuPrincipal">Volver a Menu Principal</string>
+    <string name="boton_jugarDeNuevo">Jugar de nuevo</string>
+    <string name="antonimos">Antónimos</string>
+    <string name="sinonimos">Sinónimos</string>
+    <string name="dificultad_facil">Fácil</string>
+    <string name="dificultad_media">Media</string>
+    <string name="dificultad_dificil">Difícil</string>
 
     <!-- Mensaje de notificación (Toast) -->
     <string name="alerta_NombreVacio">Por favor ingrese su nombre</string>
@@ -35,21 +44,26 @@
     <string name="alerta_PwdVacio">Por favor ingrese su contraseña</string>
     <string name="alerta_Pwd2Vacio">Por favor vuelva a ingresar su contraseña</string>
     <string name="alerta_PwdsDiferentes">Las contraseñas ingresadas no coinciden</string>
-    <string name="mensaje_cuentaCreada">Se ha creado la cuenta</string>
-    <string name="title_activity_tema_juego">Tema del juego</string>
+    <string name="alerta_cuentaCreada">Se ha creado la cuenta</string>
+    <string name="alerta_cuentaNoCreada">La cuenta no pudo ser creada</string>
+    <string name="alerta_EmailFormatoInvalido">
+        El correo electrónico ingresado no tiene un formato válido
+    </string>
+    <string name="alerta_finTiempo">Se ha terminado el tiempo</string>
 
-    <string name="title_activity_dificultad_juego">Dificultad</string>
-    <string name="textoSeleccioneDificultad">Seleccione la dificultad del juego</string>
-    <string name="textoSeleccionTema">Seleccione el tema del juego</string>
-    <string name="mensaje_cuentaNoCreada">La cuenta no pudo ser creada</string>
-    <string name="alerta_EmailFormatoInvalido">El correo electrónico ingresado no tiene un formato válido</string>
-    <string name="title_activity_resultado_juego">Resultado del Juego</string>
+    <string name="texto_seleccioneDificultad">Seleccione la dificultad del juego</string>
+    <string name="texto_seleccioneTema">Seleccione el tema del juego</string>
 
-    <string name="hello_world" translatable="false">Hello world!</string>
-    <string name="mensaje_resultado_juego">¡Bien hecho!\nTu puntación fue:</string>
-    <string name="puntuacion" translatable="false">000000</string>
-    <string name="textoBotonMenuPrincipal">Volver a Menu Principal</string>
-    <string name="botonJugarDeNuevo">Jugar de nuevo</string>
+    <string name="error_iniciarJuego">No se puede iniciar el juego</string>
+    <string name="error_volverAJugar">No se puede volver a jugar. Regresando al menú principal...</string>
+    <string name="error_registroPuntuacion">No se pudo registrar la puntuación</string>
+    <string name="error_puntuacionResultado">No se pudo obtener la puntuación del juego</string>
+
+    <string name="mensaje_finJuego">¡Bien hecho!\nTu puntación fue:</string>
+
+    <string name="puntuacion" translatable="false">0</string>
+    <string name="temporizador_cero" translatable="false">00:00</string>
+    <string name="error_dificultadNoDetectada">La dificultad no pudo ser reconocida</string>
 
 
 </resources>

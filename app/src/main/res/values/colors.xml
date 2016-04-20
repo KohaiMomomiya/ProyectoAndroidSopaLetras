@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rojoUI">#D03231</color>
+    <color name="azulClaroUI">#0CADFF</color>
+    <color name="azulOscuroUI">#096493</color>
+    <color name="primary_dark_material_dark">#000000</color>
+</resources>

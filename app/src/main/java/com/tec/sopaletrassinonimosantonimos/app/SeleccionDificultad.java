@@ -19,15 +19,15 @@ public class SeleccionDificultad extends AppCompatActivity {
 
     switch (view.getId()) {
       case R.id.botonDificultadFacil:
-        intent.putExtra("dificultad", (byte) 1);
+        intent.putExtra("dificultad", 'a');
         startActivity(intent);
         break;
       case R.id.botonDificultadMedia:
-        intent.putExtra("dificultad", (byte) 2);
+        intent.putExtra("dificultad", 'b');
         startActivity(intent);
         break;
       case R.id.botonDificultadDificil:
-        intent.putExtra("dificultad", (byte) 3);
+        intent.putExtra("dificultad", 'c');
         startActivity(intent);
         break;
       default:

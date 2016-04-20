@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/mensaje_resultado_juego"
+            android:text="@string/mensaje_finJuego"
             android:textAlignment="center"/>
 
     <Space
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/puntuacion"
-                android:id="@+id/textoPuntuacion"
+                android:id="@id/textoResultadoPuntuacion"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:textSize="50dp"
@@ -51,9 +51,10 @@
     <Button
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:text="@string/textoBotonMenuPrincipal"
-            android:id="@+id/botonVolverAMenuPrincipal"
+            android:text="@string/boton_volverAmenuPrincipal"
+            android:id="@id/botonVolverAMenuPrincipal"
             android:layout_gravity="center_horizontal"
+            android:onClick="volverAMenuPrincipal"
             style="@style/estiloBotonAzulClaro"/>
 
     <Space
@@ -65,8 +66,9 @@
     <Button
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:text="@string/botonJugarDeNuevo"
+            android:text="@string/boton_jugarDeNuevo"
             android:id="@id/botonJugarDeNuevo"
             android:layout_gravity="center_horizontal"
+            android:onClick="volverAJugar"
             style="@style/estiloBotonAzulClaro"/>
 </LinearLayout>

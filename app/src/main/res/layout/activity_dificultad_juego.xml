@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/textoSeleccioneDificultad"
+            android:text="@string/texto_seleccioneDificultad"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>
 
@@ -27,7 +27,7 @@
     <Button
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="@string/textoDificultadFacil"
+            android:text="@string/dificultad_facil"
             android:id="@id/botonDificultadFacil"
             android:layout_gravity="center_horizontal"
             android:onClick="seleccionarDificultad"
@@ -42,7 +42,7 @@
     <Button
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="@string/textoDificultadMedia"
+            android:text="@string/dificultad_media"
             android:id="@id/botonDificultadMedia"
             android:layout_gravity="center_horizontal"
             android:onClick="seleccionarDificultad"
@@ -57,7 +57,7 @@
     <Button
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="@string/textoDificultadDificil"
+            android:text="@string/dificultad_dificil"
             android:id="@id/botonDificultadDificil"
             android:layout_gravity="center_horizontal"
             android:onClick="seleccionarDificultad"
