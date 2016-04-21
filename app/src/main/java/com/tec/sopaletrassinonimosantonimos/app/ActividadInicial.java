@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 public class ActividadInicial extends AppCompatActivity {
 
-  private EditText campoTexto_eMail;
-  private EditText campoTexto_pwd;
+  EditText campoTexto_eMail;
+  EditText campoTexto_pwd;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +39,6 @@ public class ActividadInicial extends AppCompatActivity {
 
     if (strEmail.isEmpty()) {
       Toast.makeText(this, R.string.alerta_EmailVacio, Toast.LENGTH_LONG).show();
-      return;
-    }
-    if (!strEmail.contains("@")) {
-      Toast.makeText(this, R.string.alerta_EmailFormatoInvalido, Toast.LENGTH_LONG).show();
       return;
     }
     if (strPwd.isEmpty()) {
