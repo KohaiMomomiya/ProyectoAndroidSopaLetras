@@ -10,10 +10,19 @@ import android.view.View;
 
 public class MenuPrincipal extends AppCompatActivity {
 
-  @Override
+    private String[] lista_palabras = {"hola", "todo", "bien"};
+
+    @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_menu_principal);
+
+      Sopa_de_Letras sopa = new Sopa_de_Letras(8,lista_palabras);
+      sopa.sopa_en_blanco(sopa);
+      sopa.agregar_palabras(sopa);
+      sopa.imprimir(sopa);
+      sopa.completar_sopa(sopa);
+      sopa.imprimir(sopa);
 
     ActionBar actionBar = this.getActionBar();
     if (actionBar != null) {
