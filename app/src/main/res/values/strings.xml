@@ -64,6 +64,8 @@
     <string name="puntuacion" translatable="false">0</string>
     <string name="temporizador_cero" translatable="false">00:00</string>
     <string name="error_dificultadNoDetectada">La dificultad no pudo ser reconocida</string>
+    <string name="etiqueta_tiempoRestanteJuego">Tiempo:</string>
+    <string name="boton_cancelarJuego">Cancelar</string>
 
 
 </resources>

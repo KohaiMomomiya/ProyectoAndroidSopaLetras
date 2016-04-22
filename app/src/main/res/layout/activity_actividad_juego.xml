@@ -8,7 +8,8 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context="com.tec.sopaletrassinonimosantonimos.app.ActividadJuego">
+        tools:context="com.tec.sopaletrassinonimosantonimos.app.ActividadJuego"
+        android:clickable="false">
 
     <TextView
             android:layout_width="wrap_content"
@@ -16,9 +17,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/etiqueta_puntuacionJuego"
             android:id="@id/etiqueta_puntuacionJuego"
-            android:layout_alignBottom="@id/puntuacionJuego"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/botonSalirJuego"
             android:layout_centerHorizontal="true"/>
 
     <TextView
@@ -28,9 +27,19 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/puntuacion"
             android:id="@id/puntuacionJuego"
-            android:layout_alignParentTop="true"
+            android:layout_alignTop="@id/etiqueta_puntuacionJuego"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/etiqueta_tiempoRestanteJuego"
+            android:id="@+id/etiqueta_tiempoRestanteSopaLetras"
+            android:layout_alignBottom="@+id/botonSalirJuego"
+            android:layout_alignLeft="@id/etiqueta_puntuacionJuego"
+            android:layout_alignStart="@id/etiqueta_puntuacionJuego"/>
 
     <TextView
             android:layout_width="wrap_content"
@@ -38,24 +47,34 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/temporizador_cero"
             android:id="@+id/temporizadorJuego"
-            android:layout_below="@id/puntuacionJuego"
-            android:layout_centerHorizontal="true"/>
+            android:layout_alignBottom="@+id/etiqueta_tiempoRestanteSopaLetras"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+
+    <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/boton_cancelarJuego"
+            android:id="@+id/botonSalirJuego"
+            style="@style/estiloBotonRojo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="volverAMenuPrincipal"/>
 
     <TableLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/matrizSopa"
             android:longClickable="false"
-            android:layout_marginTop="26dp"
             android:layout_below="@+id/temporizadorJuego"
-            android:layout_toStartOf="@id/puntuacionJuego"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true">
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp">
 
         <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/Fila1">
+                android:id="@+id/fila01SopaLetras">
 
             <Button
                     style="@style/BotonCeldaSopaLetrasNormal"
@@ -191,6 +210,1557 @@
                     android:layout_height="wrap_content"
                     android:text="O"
                     android:id="@+id/button17"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila02SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button18"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button19"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button20"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button21"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button22"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button23"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button24"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button25"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button26"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button27"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button28"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button29"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button30"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button31"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button32"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila03SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button33"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button34"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button35"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button36"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button37"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button38"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button39"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button40"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button41"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button42"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button43"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button44"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button45"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button46"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button47"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila04SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button48"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button49"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button50"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button51"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button52"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button53"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button54"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button55"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button56"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button57"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button58"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button59"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button60"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button61"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button62"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila05SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button63"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button64"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button65"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button66"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button67"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button68"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button69"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button70"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button71"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button72"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button73"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button74"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button75"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button76"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button77"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila06SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button78"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button79"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button80"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button81"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button82"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button83"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button84"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button85"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button86"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button87"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button88"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button89"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button90"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button91"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button92"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila07SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button93"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button94"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button95"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button96"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button97"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button98"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button99"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button100"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button101"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button102"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button103"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button104"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button105"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button106"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button107"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila08SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button108"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button109"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button110"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button111"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button112"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button113"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button114"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button115"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button116"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button117"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button118"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button119"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button120"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button121"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button122"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila09SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button123"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button124"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button125"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button126"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button127"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button128"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button129"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button130"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button131"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button132"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button133"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button134"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button135"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button136"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button137"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila10SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button138"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button139"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button140"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button141"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button142"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button143"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button144"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button145"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button146"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button147"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button148"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button149"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button150"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button151"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button152"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila11SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button153"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button154"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button155"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button156"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button157"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button158"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button159"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button160"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button161"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button162"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button163"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button164"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button165"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button166"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button167"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fila12SopaLetras">
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:id="@+id/button168"
+                    android:layout_column="0"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:id="@+id/button169"
+                    android:layout_column="1"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:id="@+id/button170"
+                    android:layout_column="2"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:id="@+id/button171"
+                    android:layout_column="3"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:id="@+id/button172"
+                    android:layout_column="4"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:id="@+id/button173"
+                    android:layout_column="5"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G"
+                    android:id="@+id/button174"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H"
+                    android:id="@+id/button175"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:id="@+id/button176"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+                    android:id="@+id/button177"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K"
+                    android:id="@+id/button178"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:id="@+id/button179"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:id="@+id/button180"
+                    android:layout_column="7"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N"
+                    android:id="@+id/button181"
+                    android:layout_column="6"
+                    android:tag="celdaSopaLetras"/>
+
+            <Button
+                    style="@style/BotonCeldaSopaLetrasNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:id="@+id/button182"
                     android:layout_column="7"
                     android:tag="celdaSopaLetras"/>
         </TableRow>

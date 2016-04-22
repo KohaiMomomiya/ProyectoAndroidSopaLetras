@@ -44,8 +44,8 @@
     </style>
 
     <style name="BotonCeldaSopaLetrasNormal" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:minHeight">20dp</item>
-        <item name="android:minWidth">20dp</item>
+        <item name="android:minHeight">22dp</item>
+        <item name="android:minWidth">22dp</item>
         <item name="android:background">#acad11</item>
     </style>
 
