@@ -21,4 +21,5 @@
     <item name="etiqueta_puntuacionJuego" type="id"/>
     <item name="puntuacionJuego" type="id"/>
     <item name="textoResultadoPuntuacion" type="id"/>
+
 </resources>

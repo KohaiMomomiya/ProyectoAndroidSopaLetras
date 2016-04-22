@@ -24,7 +24,8 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
             android:inputType="textEmailAddress"
-            android:textColor="#000000"/>
+            style="@style/EstiloEditText"
+            />
 
     <EditText
             android:layout_width="match_parent"
@@ -36,7 +37,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif"
-            android:textColor="#000000"
+            style="@style/EstiloEditText"
             />
 
     <Button

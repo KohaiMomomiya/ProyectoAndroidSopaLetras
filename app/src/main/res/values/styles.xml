@@ -23,24 +23,35 @@
 
     <style name="ActionBarAzulClaro" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
         <item name="android:background">@color/azulClaroUI</item>
-        <item name="background">@color/azulClaroUI</item>
         <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimaryInverse">@android:color/white</item>
     </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/ActionBarAzulClaro</item>
-        <item name="android:textColorPrimary">@android:color/black</item>
         <item name="colorPrimary">@color/azulClaroUI</item>
         <item name="colorPrimaryDark">@color/azulOscuroUI</item>
         <item name="colorAccent">@color/azulClaroUI</item>
     </style>
 
-    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowTitleSize">0px</item>
-        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
         <item name="colorPrimary">@color/azulClaroUI</item>
         <item name="colorPrimaryDark">@color/azulOscuroUI</item>
         <item name="colorAccent">@color/azulClaroUI</item>
+    </style>
+
+    <style name="BotonCeldaSopaLetrasNormal" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:minHeight">20dp</item>
+        <item name="android:minWidth">20dp</item>
+        <item name="android:background">#acad11</item>
+    </style>
+
+    <style name="EstiloEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">#ADADAD</item>
+        <item name="android:textColor">@android:color/widget_edittext_dark</item>
+        <item name="android:textColorHint">#ADADAD</item>
     </style>
 </resources>
