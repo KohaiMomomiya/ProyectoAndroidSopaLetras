@@ -43,15 +43,15 @@
         <item name="colorAccent">@color/azulClaroUI</item>
     </style>
 
-    <style name="BotonCeldaSopaLetrasNormal" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:minHeight">22dp</item>
-        <item name="android:minWidth">22dp</item>
-        <item name="android:background">#acad11</item>
-    </style>
-
     <style name="EstiloEditText" parent="Widget.AppCompat.EditText">
         <item name="colorControlNormal">#ADADAD</item>
         <item name="android:textColor">@android:color/widget_edittext_dark</item>
         <item name="android:textColorHint">#ADADAD</item>
+    </style>
+
+    <style name="EstiloCeldasSopaLetras" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:minHeight">28dp</item>
+        <item name="android:minWidth">28dp</item>
+        <item name="android:background">@android:color/white</item>
     </style>
 </resources>

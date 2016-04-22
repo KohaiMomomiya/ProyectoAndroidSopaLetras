@@ -29,10 +29,10 @@ public class Sopa_de_Letras {
 
     //crea una sopa con espacios en blanco
 
-    public void sopa_en_blanco(Sopa_de_Letras sopa){
+    public void sopa_en_blanco(Sopa_de_Letras sopa) {
 
-        for(int i = 0; i < sopa_letras.length; i++){
-            for(int j = 0; j < sopa_letras.length; j++){
+        for (int i = 0; i < sopa_letras.length; i++) {
+            for (int j = 0; j < sopa_letras.length; j++) {
                 sopa.sopa_letras[i][j] = ' ';
             }
         }
@@ -51,7 +51,7 @@ public class Sopa_de_Letras {
     }
 
     //agrega las palabras en la sopa
-    public void agregar_palabra(String palabra, char sopa_letras[][], int tamaño_sopa){
+    public void agregar_palabra(String palabra, char sopa_letras[][], int tamaño_sopa) {
 
         //pasa la palabra a mayúscula
         palabra = palabra.toUpperCase();
@@ -68,7 +68,7 @@ public class Sopa_de_Letras {
         //verifica que la palabra se ha agregado
         int bandera = tamaño_sopa;
 
-        while(bandera!=0){
+        while (bandera != 0) {
 
             //orientación de la palabra
             orientacion = random.nextInt(2);
@@ -76,34 +76,31 @@ public class Sopa_de_Letras {
             //dirección de la palabra
             direccion = random.nextInt(3);
 
-            if(orientacion == alreves){
+            if (orientacion == alreves) {
 
                 //Pasa la palabra al revés
-                StringBuilder builder=new StringBuilder(palabra);
+                StringBuilder builder = new StringBuilder(palabra);
                 palabra = builder.reverse().toString();
                 System.out.println("La palabra al revés es:" + palabra);
             }
-            if(direccion == horizontal){
+            if (direccion == horizontal) {
 
                 fila = random.nextInt(tamaño_sopa);
                 columna = random.nextInt(tamaño_sopa - palabra.length());
-            }
-
-            else if(direccion == vertical){
+            } else if (direccion == vertical) {
 
                 fila = random.nextInt(tamaño_sopa - palabra.length());
                 columna = random.nextInt(tamaño_sopa);
-            }
-            else if(direccion == diagonal_izquierda_derecha) {
+            } else if (direccion == diagonal_izquierda_derecha) {
 
                 fila = random.nextInt(tamaño_sopa - palabra.length());
                 columna = random.nextInt(tamaño_sopa - palabra.length());
             }
 
-            for(int i = 0; i < palabra.length(); i++){
+            for (int i = 0; i < palabra.length(); i++) {
 
                 //verifica que no haya nada en esa posicion
-                if(sopa_letras[fila][columna] == ' '){
+                if (sopa_letras[fila][columna] == ' ') {
 
                     //pone en esa posición la letra
                     sopa_letras[fila][columna] = palabra.charAt(i);
@@ -111,17 +108,17 @@ public class Sopa_de_Letras {
                     contador_letras++;
 
                     //se posiciona en la siguiente columna
-                    if(direccion == horizontal)
+                    if (direccion == horizontal)
 
                         columna++;
 
                     //se posiciona en la siguiente fila
-                    if(direccion == vertical)
+                    if (direccion == vertical)
 
                         fila++;
 
                     //se mueve hacia la siguiente fila y hacia la siguiente columna
-                    if(direccion == diagonal_izquierda_derecha) {
+                    if (direccion == diagonal_izquierda_derecha) {
 
                         columna++;
                         fila++;
@@ -138,7 +135,7 @@ public class Sopa_de_Letras {
             }
 
             //indica si ya la palabra se agregó toda, si sí, entonces se detiene para seguir con la otra palabra
-            if(contador_letras == palabra.length()){
+            if (contador_letras == palabra.length()) {
 
                 bandera--;
                 break;
@@ -149,15 +146,15 @@ public class Sopa_de_Letras {
 
     //completa el resto de la sopa
 
-    public char[][] completar_sopa(Sopa_de_Letras sopa){
+    public char[][] completar_sopa(Sopa_de_Letras sopa) {
 
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         Random random = new Random();
 
-        for(int i = 0; i < sopa.tamaño_sopa; i++){
-            for(int j = 0; j < sopa.tamaño_sopa; j++){
+        for (int i = 0; i < sopa.tamaño_sopa; i++) {
+            for (int j = 0; j < sopa.tamaño_sopa; j++) {
 
-                if(sopa.sopa_letras[i][j] == ' ') {
+                if (sopa.sopa_letras[i][j] == ' ') {
 
                     sopa.sopa_letras[i][j] = characters.charAt(random.nextInt(characters.length()));
 
@@ -168,11 +165,11 @@ public class Sopa_de_Letras {
         return sopa_letras;
     }
 
-    public void imprimir(Sopa_de_Letras sopa){
+    public void imprimir(Sopa_de_Letras sopa) {
 
         //System.out.println("sopa_letras\n");
-        for(int i = 0; i < sopa.tamaño_sopa; i++){
-            for(int j = 0; j < sopa.tamaño_sopa; j++){
+        for (int i = 0; i < sopa.tamaño_sopa; i++) {
+            for (int j = 0; j < sopa.tamaño_sopa; j++) {
                 System.out.print(sopa.sopa_letras[i][j] + " ");
             }
             System.out.print("\n");
