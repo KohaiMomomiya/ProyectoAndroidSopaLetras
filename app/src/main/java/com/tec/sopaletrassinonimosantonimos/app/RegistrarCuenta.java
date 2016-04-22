@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.concurrent.ExecutionException;
+
 public class RegistrarCuenta extends AppCompatActivity {
 
   EditText campoRegistroNombre;
@@ -42,10 +44,24 @@ public class RegistrarCuenta extends AppCompatActivity {
     String strVerificarPwd = campoVerificacionPwd.getText().toString().trim();
 
     if (verificarDatosIngresados(strNombre, strApellidos, strEmail, strPwd, strVerificarPwd)) {
-      //TODO Operación de registrar nueva cuenta y obtener la cuenta creada desde Internet.
-      Toast.makeText(this, R.string.alerta_cuentaCreada, Toast.LENGTH_LONG).show();
-    } else {
-      Toast.makeText(this, R.string.alerta_cuentaNoCreada, Toast.LENGTH_LONG).show();
+      try{
+        getDatos datos = new getDatos();
+        datos.setJson_url("http://proyectosopaletras.esy.es/registrarUsuario.php?" +
+              "nombre='"+strNombre+"%20"+strApellidos+"'" +
+              "&correo='"+strEmail+"'" +
+              "&contrasena='"+strPwd+"'");
+        String resultado = datos.execute().get();
+        if(resultado.equals("New record created successfully")){
+          Toast.makeText(this, R.string.alerta_cuentaCreada, Toast.LENGTH_LONG).show();
+          finish();
+        }else{
+          Toast.makeText(this,"La cuenta no pudo ser creada.", Toast.LENGTH_LONG).show();
+        }
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      } catch (ExecutionException e) {
+        e.printStackTrace();
+      }
     }
   }
 

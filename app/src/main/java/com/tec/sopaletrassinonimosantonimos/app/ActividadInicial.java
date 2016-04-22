@@ -72,8 +72,10 @@ public class ActividadInicial extends AppCompatActivity {
         }
       } catch (InterruptedException e) {
         e.printStackTrace();
+        return;
       } catch (ExecutionException e) {
         e.printStackTrace();
+        return;
       }
     }
   }
@@ -84,7 +86,7 @@ public class ActividadInicial extends AppCompatActivity {
     startActivity(intent);
   }
 
-
+  /*
   class getDatos extends AsyncTask<Void, Void, String>{
 
     String json_url;
@@ -129,5 +131,5 @@ public class ActividadInicial extends AppCompatActivity {
     protected void onPostExecute(String result){
       super.onPostExecute(result);
     }
-  }
+  }*/
 }
