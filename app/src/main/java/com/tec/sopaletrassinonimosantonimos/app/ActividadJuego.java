@@ -11,12 +11,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.concurrent.ExecutionException;
-
 public class ActividadJuego extends Activity {
     private char dificultad;  // a : Facil, b : Media, c : Dificil
     private char tipoJuego;  // a : Antónimos, s : Sinónimos
@@ -29,8 +23,6 @@ public class ActividadJuego extends Activity {
     private int[] celda1Seleccionada;
     private int[] celda2Seleccionada;
     private int numeroPalabras = 8;
-    private String[] palabras = new String[numeroPalabras];
-    private String[] correspondiente = new String[numeroPalabras];
     SopaLetras sopa;
 
 
