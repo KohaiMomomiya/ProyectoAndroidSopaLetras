@@ -59,6 +59,11 @@ public class MenuPrincipal extends AppCompatActivity {
     startActivity(intent);
   }
 
+  public void puntajes(View view) {
+    Intent intent = new Intent(this, Resultados.class);
+    startActivity(intent);
+  }
+
   // Cierra la sesión actual
   public void cerrarSesion() {
     Intent intent = new Intent(this, ActividadInicial.class);

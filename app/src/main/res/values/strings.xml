@@ -67,6 +67,7 @@
     <string name="etiqueta_tiempoRestanteJuego">Tiempo:</string>
     <string name="boton_cancelarJuego">Volver</string>
     <string name="letraDefault">\?</string>
+    <string name="title_activity_resultados">Resultados</string>
 
 
 </resources>

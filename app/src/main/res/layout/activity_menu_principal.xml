@@ -44,7 +44,8 @@
             android:id="@+id/button2"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.05"
-            style="@style/estiloBotonAzulClaro"/>
+            style="@style/estiloBotonAzulClaro"
+        android:onClick="puntajes" />
 
     <Space
             android:layout_width="match_parent"

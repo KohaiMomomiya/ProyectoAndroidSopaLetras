@@ -11,16 +11,30 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
+
 public class ActividadJuego extends Activity {
-    SopaLetras sopa;
     private char dificultad;  // a : Facil, b : Media, c : Dificil
     private char tipoJuego;  // a : Antónimos, s : Sinónimos
+
     private TextView textoPuntuacion;
     private TextView textoTemporizador;
+
     private int puntuacion;
     private int tiempoInicial_ms;
     private int[] celda1Seleccionada;
     private int[] celda2Seleccionada;
+    private int numeroPalabras = 8;
+    private String[] palabras = new String[numeroPalabras];
+    private String[] correspondiente = new String[numeroPalabras];
+    SopaLetras sopa;
+
+
+
     private TableLayout matrizSopa;
     private CountDownTimer temporizador;
 
@@ -57,8 +71,9 @@ public class ActividadJuego extends Activity {
 
         verificarDatos();
 
-        sopa = new SopaLetras(8, 12, dificultad, tipoJuego);
+        sopa = new SopaLetras(8,12,dificultad,tipoJuego);
 
+        llenarMatrizGrafica();
         setTiempoInicial_ms();
         iniciarTemporizador();
     }
@@ -132,6 +147,19 @@ public class ActividadJuego extends Activity {
         finish();
     }
 
+    public void llenarMatrizGrafica(){
+        char[][] matrizLetras = sopa.getMatrizLetras();
+        for (int fila = 0; fila < matrizSopa.getChildCount(); fila++) {
+            TableRow filaActual = (TableRow) matrizSopa.getChildAt(fila);
+
+            for (int columna = 0; columna < filaActual.getChildCount(); columna++) {
+                Button botonEncontrado = (Button) filaActual.getChildAt(columna);
+                String valor = String.valueOf(matrizLetras[fila][columna]);
+                botonEncontrado.setText(valor);
+            }
+        }
+    }
+
     public void detectarLetraPresionada(View view) {
         Button botonSeleccionado = (Button) view;
 
@@ -154,6 +182,7 @@ public class ActividadJuego extends Activity {
                 }
             }
         }
+
     }
 
     private Button encontrarBotonEnSopaLetras(int fila, int columna) {
@@ -166,6 +195,7 @@ public class ActividadJuego extends Activity {
         celda1Seleccionada = null;
         celda2Seleccionada = null;
     }
+
 
     private void verificarDatos() {
         if ((dificultad == '-') || (tipoJuego == '-')) {
@@ -181,5 +211,76 @@ public class ActividadJuego extends Activity {
     public void volverAmenuPrincipal(View view) {
         temporizador.cancel();
         finish();
+    }
+
+    private void marcarPalabraEncontrada(){
+        int filaCelda1 = celda1Seleccionada[0];
+        int columnaCelda1 = celda1Seleccionada[1];
+        int filaCelda2= celda2Seleccionada[0];
+        int columnaCelda2= celda2Seleccionada[1];
+        if(filaCelda1==filaCelda2){
+            if(columnaCelda1>columnaCelda2){
+                TableRow filaActual = (TableRow) matrizSopa.getChildAt(filaCelda1);
+                for(int i=columnaCelda2; i<=columnaCelda1; i++){
+                    Button botonEncontrado = (Button) filaActual.getChildAt(i);
+                    botonEncontrado.setBackgroundColor(0xff00ff00);
+                }
+            }else if(columnaCelda1<columnaCelda2){
+                TableRow filaActual = (TableRow) matrizSopa.getChildAt(filaCelda1);
+                for(int i=columnaCelda1; i<=columnaCelda2; i++){
+                    Button botonEncontrado = (Button) filaActual.getChildAt(i);
+                    botonEncontrado.setBackgroundColor(0xff00ff00);
+                }
+            }
+        }else if(columnaCelda1==columnaCelda2){
+            if(filaCelda1>filaCelda2){
+                for(int i=filaCelda2; i<=filaCelda1; i++){
+                    TableRow filaActual = (TableRow) matrizSopa.getChildAt(i);
+                    Button botonEncontrado = (Button) filaActual.getChildAt(columnaCelda1);
+                    botonEncontrado.setBackgroundColor(0xff00ff00);
+                }
+            }else if(filaCelda1<filaCelda2){
+                for(int i=filaCelda1; i<=filaCelda2; i++){
+                    TableRow filaActual = (TableRow) matrizSopa.getChildAt(i);
+                    Button botonEncontrado = (Button) filaActual.getChildAt(columnaCelda1);
+                    botonEncontrado.setBackgroundColor(0xff00ff00);
+                }
+            }
+        }else{
+            if(filaCelda1>filaCelda2 && columnaCelda1>columnaCelda2){
+                 int cont = columnaCelda2;
+                for(int i=filaCelda2; i<=filaCelda1; i++){
+                    TableRow filaActual = (TableRow) matrizSopa.getChildAt(i);
+                    Button botonEncontrado = (Button) filaActual.getChildAt(cont);
+                    botonEncontrado.setBackgroundColor(0xff00ff00);
+                    cont++;
+                }
+            }else if(filaCelda1<filaCelda2 && columnaCelda1<columnaCelda2){
+                int cont = columnaCelda1;
+                for(int i=filaCelda1; i<=filaCelda2; i++){
+                    TableRow filaActual = (TableRow) matrizSopa.getChildAt(i);
+                    Button botonEncontrado = (Button) filaActual.getChildAt(cont);
+                    botonEncontrado.setBackgroundColor(0xff00ff00);
+                    cont++;
+                }
+            }else if(filaCelda1<filaCelda2 && columnaCelda1>columnaCelda2){
+                int cont = columnaCelda2;
+                for(int i=filaCelda1; i<=filaCelda2; i++){
+                    TableRow filaActual = (TableRow) matrizSopa.getChildAt(i);
+                    Button botonEncontrado = (Button) filaActual.getChildAt(cont);
+                    botonEncontrado.setBackgroundColor(0xff00ff00);
+                    cont++;
+                }
+            }else if(filaCelda1>filaCelda2 && columnaCelda1<columnaCelda2){
+                int cont = columnaCelda1;
+                for(int i=filaCelda2; i<=filaCelda1; i++){
+                    TableRow filaActual = (TableRow) matrizSopa.getChildAt(i);
+                    Button botonEncontrado = (Button) filaActual.getChildAt(cont);
+                    botonEncontrado.setBackgroundColor(0xff00ff00);
+                    cont++;
+                }
+            }
+
+        }
     }
 }
