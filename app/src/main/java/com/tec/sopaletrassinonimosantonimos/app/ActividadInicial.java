@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -64,7 +68,11 @@ public class ActividadInicial extends AppCompatActivity {
                 strEmail+"&contrasena="+strPwd);
         String valores = datos.execute().get();
         if(!valores.equals("")){
+          JSONObject objeto = new JSONObject(valores);
+          JSONArray lista = objeto.getJSONArray("Usuario");
+          String val = lista.get(0).toString();
           Intent intent = new Intent(this, MenuPrincipal.class);
+          intent.putExtra("Id",val);
           startActivity(intent);
         }else{
           Toast.makeText(this, "Usuario o Contraseña Incorrectos", Toast.LENGTH_LONG).show();
@@ -76,6 +84,8 @@ public class ActividadInicial extends AppCompatActivity {
       } catch (ExecutionException e) {
         e.printStackTrace();
         return;
+      } catch (JSONException e) {
+        e.printStackTrace();
       }
     }
   }

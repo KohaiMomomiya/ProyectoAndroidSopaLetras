@@ -91,6 +91,14 @@ public class SopaLetras {
     return true;
   }
 
+  public String[] getListaCorrespondientes() {
+    return listaCorrespondientes;
+  }
+
+  public void setListaCorrespondientes(String[] listaCorrespondientes) {
+    this.listaCorrespondientes = listaCorrespondientes;
+  }
+
   /**
    * Obtiene el valor índice de la palabra encontrada entre los siguientes puntos.
    *

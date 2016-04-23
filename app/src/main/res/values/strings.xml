@@ -68,6 +68,7 @@
     <string name="boton_cancelarJuego">Volver</string>
     <string name="letraDefault">\?</string>
     <string name="title_activity_resultados">Resultados</string>
+    <string name="title_activity_agradecimiento">Agradecimiento</string>
 
 
 </resources>

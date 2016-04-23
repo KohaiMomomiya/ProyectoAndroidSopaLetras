@@ -11,6 +11,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+
 public class ActividadJuego extends Activity {
     SopaLetras sopa;
     private char dificultad;  // a : Facil, b : Media, c : Dificil
@@ -24,6 +26,7 @@ public class ActividadJuego extends Activity {
     private int numeroPalabras = 8;
     private TableLayout matrizSopa;
     private CountDownTimer temporizador;
+    String Id;
 
 
     @Override
@@ -43,6 +46,9 @@ public class ActividadJuego extends Activity {
         celda1Seleccionada = null;
         celda2Seleccionada = null;
 
+        Intent intent = getIntent();
+        Id = intent.getStringExtra("Id");
+
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if ((extras != null) && (extras.containsKey("tiempo"))) {
@@ -61,10 +67,26 @@ public class ActividadJuego extends Activity {
         sopa = new SopaLetras(8,12,dificultad,tipoJuego);
 
         llenarMatrizGrafica();
+        rellenarTablePalabras();
         setTiempoInicial_ms();
         iniciarTemporizador();
     }
 
+
+    public void rellenarTablePalabras(){
+        String[] lista = sopa.getListaPalabras();
+        int cont = 0;
+        for(int i=0; i<lista.length/2;i++){
+            TableLayout tabla = (TableLayout) findViewById(R.id.tablaPalabras);
+            TableRow fila = (TableRow) tabla.getChildAt(i);
+            TextView tv1 = (TextView) fila.getChildAt(0);
+            tv1.setText(lista[cont]);
+            cont++;
+            TextView tv2 = (TextView) fila.getChildAt(2);
+            tv2.setText(lista[cont]);
+            cont++;
+        }
+    }
 
     public void iniciarTemporizador() {
         try {
@@ -143,6 +165,7 @@ public class ActividadJuego extends Activity {
         intent.putExtra("puntuacion", puntuacion);
         intent.putExtra("dificultad", dificultad);
         intent.putExtra("tipoJuego", tipoJuego);
+        intent.putExtra("Id",Id);
         startActivity(intent);
         finish();
     }

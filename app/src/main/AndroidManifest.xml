@@ -17,7 +17,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_sopa"
         android:label="@string/app_name"
         android:theme="@style/AppThemeNoActionBar">
         <activity
@@ -90,7 +90,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal" />
         </activity>
-
+        <activity
+            android:name=".Agradecimiento"
+            android:label="@string/title_activity_agradecimiento"
+            android:parentActivityName=".MenuPrincipal"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal" />
+        </activity>
     </application>
 
 </manifest>

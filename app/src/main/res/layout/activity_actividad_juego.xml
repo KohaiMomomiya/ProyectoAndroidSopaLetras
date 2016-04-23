@@ -27,6 +27,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/etiqueta_puntuacionJuego"
         android:gravity="right"
+        android:textColor="@android:color/widget_edittext_dark"
         android:text="@string/puntuacion"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -47,6 +48,7 @@
         android:layout_alignBottom="@+id/etiqueta_tiempoRestanteSopaLetras"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:textColor="@android:color/widget_edittext_dark"
         android:text="@string/temporizador_cero"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -1582,6 +1584,115 @@
                     android:tag="celdaSopaLetras"
                     android:text="@string/letraDefault"
                     android:onClick="detectarLetraPresionada"/>
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/tablaPalabras"
+        android:layout_below="@+id/matrizSopa"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/palabra1"
+                android:text="palabra1"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <Space
+                android:layout_width="200px"
+                android:layout_height="20px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="palabra2"
+                android:id="@+id/palabra2"
+                android:textSize="20dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/palabra3"
+                android:text="palabra3"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <Space
+                android:layout_width="200px"
+                android:layout_height="20px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="palabra4"
+                android:id="@+id/palabra4"
+                android:textSize="20dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/palabra5"
+                android:text="palabra5"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <Space
+                android:layout_width="200px"
+                android:layout_height="20px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="palabra6"
+                android:id="@+id/palabra6"
+                android:textSize="20dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/palabra7"
+                android:text="palabra7"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <Space
+                android:layout_width="200px"
+                android:layout_height="20px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="palabra8"
+                android:id="@+id/palabra8"
+                android:textSize="20dp" />
         </TableRow>
 
     </TableLayout>
