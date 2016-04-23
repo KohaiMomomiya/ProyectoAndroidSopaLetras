@@ -65,7 +65,6 @@ public class ActividadJuego extends Activity {
 
         sopa = new SopaLetras(8,12,dificultad,tipoJuego);
 
-        llenarMatrizGrafica();
         setTiempoInicial_ms();
         iniciarTemporizador();
     }
