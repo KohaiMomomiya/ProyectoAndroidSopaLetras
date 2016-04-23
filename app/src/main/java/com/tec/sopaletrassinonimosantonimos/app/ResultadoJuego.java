@@ -44,19 +44,27 @@ public class ResultadoJuego extends AppCompatActivity {
   }
 
   public void volverAJugar(View view) {
+    Intent intent = new Intent(this, ActividadJuego.class);
+    intent.putExtra("dificultad", dificultad);
+    intent.putExtra("tipoJuego", tipoJuego);
 
+    finish();
+    startActivity(intent);
+  }
+
+  public void onBackPressed() {
+    Intent intent = new Intent(this, ResultadoJuego.class);
+    finish();
+    startActivity(intent);
   }
 
   public void volverAMenuPrincipal(View view) {
-    Intent intent = new Intent(this, MenuPrincipal.class);
-    startActivity(intent);
-    this.finish();
+    finish();
+    onBackPressed();
   }
 
   private void errorVolverAJugar() {
     Toast.makeText(this, R.string.error_volverAJugar, Toast.LENGTH_LONG).show();
-    Intent intent = new Intent(this, MenuPrincipal.class);
-    startActivity(intent);
-    this.finish();
+    onBackPressed();
   }
 }

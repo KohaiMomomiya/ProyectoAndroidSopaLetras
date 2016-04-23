@@ -62,8 +62,8 @@ public class MenuPrincipal extends AppCompatActivity {
   // Cierra la sesión actual
   public void cerrarSesion() {
     Intent intent = new Intent(this, ActividadInicial.class);
+    finish();
     startActivity(intent);
-    this.finish();
   }
 
   public void cerrarSesionConBoton(View view) {
