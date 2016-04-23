@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -25,6 +24,7 @@ public class ActividadJuego extends Activity {
     private int[] celda2Seleccionada;
 
     private TableLayout matrizSopa;
+    private CountDownTimer temporizador;
 
 
     @Override
@@ -56,6 +56,7 @@ public class ActividadJuego extends Activity {
                 dificultad = extras.getChar("dificultad");
             }
         }
+
         verificarDatos();
         setTiempoInicial_ms();
         iniciarTemporizador();
@@ -64,7 +65,7 @@ public class ActividadJuego extends Activity {
 
     public void iniciarTemporizador() {
         try {
-            new CountDownTimer(tiempoInicial_ms, 100) {
+            temporizador = new CountDownTimer(tiempoInicial_ms, 100) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     Long minutos = millisUntilFinished / 60000;
@@ -83,7 +84,8 @@ public class ActividadJuego extends Activity {
                     Toast.makeText(getApplicationContext(), R.string.alerta_finTiempo, Toast.LENGTH_LONG).show();
                     finalizarJuego();
                 }
-            }.start();
+            };
+            temporizador.start();
         } catch (Exception e) {
             errorInicio();
         }
@@ -129,7 +131,7 @@ public class ActividadJuego extends Activity {
         finish();
     }
 
-    public void recibirBotonEnSopaLetras(View view) {
+    public void detectarLetraPresionada(View view) {
         Button botonSeleccionado = (Button) view;
 
         for (int fila = 0; fila < matrizSopa.getChildCount(); fila++) {
@@ -139,10 +141,6 @@ public class ActividadJuego extends Activity {
                 Button botonEncontrado = (Button) filaActual.getChildAt(columna);
 
                 if (botonEncontrado.getId() == botonSeleccionado.getId()) {
-                    // Hacer operaciones
-                    Log.d("D1", "Boton encontrado en "
-                            + Integer.toString(fila) + " " + Integer.toString(columna));
-
                     if (celda1Seleccionada == null) {
                         celda1Seleccionada = new int[]{fila, columna};
                         return;
@@ -178,5 +176,10 @@ public class ActividadJuego extends Activity {
     private void errorInicio() {
         Toast.makeText(this, R.string.error_iniciarJuego, Toast.LENGTH_LONG).show();
         onBackPressed();
+    }
+
+    public void volverAmenuPrincipal(View view) {
+        temporizador.cancel();
+        finish();
     }
 }
