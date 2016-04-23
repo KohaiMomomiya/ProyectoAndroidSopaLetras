@@ -82,7 +82,18 @@ public class SopaLetras {
     return palabrasEncontradas[indicePalabra] == true;
   }
 
+  public boolean verificarSopaCompletada() {
+    for (boolean registro : palabrasEncontradas) {
+      if (registro == false) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   /**
+   * Obtiene el valor índice de la palabra encontrada entre los siguientes puntos.
+   *
    * @param x1 Coordenada de fila del punto 1
    * @param y1 Coordenada de columna del punto 1
    * @param x2 Coordenada de fila del punto 2
@@ -93,12 +104,12 @@ public class SopaLetras {
     for (int contador = 0; contador < cantPalabras; contador++) {
       int[] coordenadasEncontradas = coordenadasPalabras[contador];
 
-      if ((coordenadasEncontradas[0] == x1) && (coordenadasEncontradas[2] == x2)
-          && (coordenadasEncontradas[1] == y1) && (coordenadasEncontradas[3] == y2)) {
+      if ((coordenadasEncontradas[0] == x1) && (coordenadasEncontradas[1] == y1)
+          && (coordenadasEncontradas[2] == x2) && (coordenadasEncontradas[3] == y2)) {
         return contador;
       }
-      if ((coordenadasEncontradas[0] == x2) && (coordenadasEncontradas[2] == x1)
-          && (coordenadasEncontradas[1] == y2) && (coordenadasEncontradas[3] == y1)) {
+      if ((coordenadasEncontradas[0] == x2) && (coordenadasEncontradas[1] == y2)
+          && (coordenadasEncontradas[2] == x1) && (coordenadasEncontradas[3] == y1)) {
         return contador;
       }
     }
@@ -111,6 +122,73 @@ public class SopaLetras {
 
   public String getPalabraCorrespondiente(int indice) {
     return listaCorrespondientes[indice];
+  }
+
+
+  public void marcarPalabraComoEncontrada(int indice) {
+    palabrasEncontradas[indice] = true;
+  }
+
+  /**
+   * Verifica si dos puntos están en la misma fila (línea horizontal)
+   *
+   * @param x1 Fila del punto 1
+   * @param x2 Fila del punto 2
+   * @return Indicador de verdad
+   */
+  public boolean verificarPuntosEnMismaFila(int x1, int x2) {
+    return x1 == x2;
+  }
+
+  /**
+   * Verifica si dos puntos están en la misma columna (línea vertical)
+   *
+   * @param y1 Columna del punto 1
+   * @param y2 Columna del punto 2
+   * @return Indicador de verdad
+   */
+  public boolean verificarPuntosEnMismaColumna(int y1, int y2) {
+    return y1 == y2;
+  }
+
+  /**
+   * Verifica si dos puntos están en la misma línea diagonal
+   *
+   * @param x1 Fila del punto 1
+   * @param y1 Columna del punto 1
+   * @param x2 Fila del punto 2
+   * @param y2 Columna del punto 2
+   * @return Indicador de verdad
+   */
+  public boolean verificarPuntosEnDiagonal(int x1, int y1, int x2, int y2) {
+    int movimiento_x;
+    int movimiento_y;
+
+    if (x1 < x2) {
+      movimiento_x = 1;
+      if (y1 < y2) {
+        movimiento_y = 1;
+      } else {
+        movimiento_y = -1;
+      }
+    } else {
+      movimiento_x = -1;
+      if (y2 < y1) {
+        movimiento_y = -1;
+      } else {
+        movimiento_y = 1;
+      }
+    }
+
+    while ((x1 >= 0) && (x1 < longitudDiagonal) && (y1 >= 0) && (y1 < longitudDiagonal)) {
+      if ((x1 == x2) && (y1 == y2)) {
+        return true;
+      } else {
+        x1 += movimiento_x;
+        y1 += movimiento_y;
+      }
+    }
+    return false;
   }
 
   //crea una sopa con espacios en blanco
