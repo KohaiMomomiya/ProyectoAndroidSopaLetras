@@ -11,6 +11,12 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
+
 public class ActividadJuego extends Activity {
     private char dificultad;  // a : Facil, b : Media, c : Dificil
     private char tipoJuego;  // a : Antónimos, s : Sinónimos
@@ -22,6 +28,12 @@ public class ActividadJuego extends Activity {
     private int tiempoInicial_ms;
     private int[] celda1Seleccionada;
     private int[] celda2Seleccionada;
+    private int numeroPalabras = 8;
+    private String[] palabras = new String[numeroPalabras];
+    private String[] correspondiente = new String[numeroPalabras];
+    Sopa_de_Letras sopa;
+
+
 
     private TableLayout matrizSopa;
     private CountDownTimer temporizador;
@@ -58,6 +70,8 @@ public class ActividadJuego extends Activity {
         }
 
         verificarDatos();
+        crearMatrizLogica();
+
         setTiempoInicial_ms();
         iniciarTemporizador();
     }
@@ -89,6 +103,64 @@ public class ActividadJuego extends Activity {
         } catch (Exception e) {
             errorInicio();
         }
+    }
+
+    public void crearMatrizLogica(){
+        String juego;
+        String nivel;
+        if(tipoJuego=='a'){
+            juego = "ANTONIMO";
+        }else{
+            juego = "SINONIMO";
+        }
+
+        switch (dificultad){
+            case 'a':
+                nivel="1";
+                break;
+            case 'b':
+                nivel="2";
+                break;
+            case 'c':
+                nivel="3";
+                break;
+            default:
+                nivel="1";
+                break;
+        }
+
+        String numPalabras = Integer.toString(numeroPalabras);
+        try {
+            getDatos datos = new getDatos();
+            datos.setJson_url("http://proyectosopaletras.esy.es/selectPalabras.php?" +
+                "juego="+juego+
+                "&dificultad="+nivel+
+                "&limite="+numPalabras);
+
+            String valores = datos.execute().get();
+            JSONObject objetoPrincipal = new JSONObject(valores);
+            JSONArray lista = objetoPrincipal.getJSONArray("Palabras");
+            for(int i=0; i < lista.length(); i++){
+                JSONObject objetoIndividual = lista.getJSONObject(i);
+                palabras[i] = objetoIndividual.getString("Palabra");
+                correspondiente[i] = objetoIndividual.getString(juego);
+            }
+
+            sopa = new Sopa_de_Letras(12,palabras);
+            sopa.sopa_en_blanco(sopa);
+            sopa.agregar_palabras(sopa);
+            sopa.imprimir(sopa);
+            sopa.completar_sopa(sopa);
+            sopa.imprimir(sopa);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override

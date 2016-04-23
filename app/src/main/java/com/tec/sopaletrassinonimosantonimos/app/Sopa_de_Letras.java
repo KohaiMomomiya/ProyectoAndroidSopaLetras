@@ -27,6 +27,10 @@ public class Sopa_de_Letras {
 
     }
 
+    public char[][] getSopa_letras() {
+        return sopa_letras;
+    }
+
     //crea una sopa con espacios en blanco
 
     public void sopa_en_blanco(Sopa_de_Letras sopa) {

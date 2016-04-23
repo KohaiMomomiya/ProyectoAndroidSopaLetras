@@ -68,7 +68,8 @@ public class RegistrarCuenta extends AppCompatActivity {
   private boolean verificarDatosIngresados(String nombre, String apellidos, String eMail,
                                            String pwd, String pwd2) {
     if (nombre.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_NombreVacio, Toast.LENGTH_LONG).show();
+      Toast toast = Toast.makeText(this, R.string.alerta_NombreVacio, Toast.LENGTH_LONG);
+      toast.show();
       return false;
     }
     if (apellidos.isEmpty()) {
