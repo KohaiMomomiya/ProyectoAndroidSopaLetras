@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -11,10 +12,11 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class ActividadJuego extends Activity {
     SopaLetras sopa;
+  String Id;
     private char dificultad;  // a : Facil, b : Media, c : Dificil
     private char tipoJuego;  // a : Antónimos, s : Sinónimos
     private TextView textoPuntuacion;
@@ -26,8 +28,6 @@ public class ActividadJuego extends Activity {
     private int numeroPalabras = 8;
     private TableLayout matrizSopa;
     private CountDownTimer temporizador;
-    String Id;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,10 +195,13 @@ public class ActividadJuego extends Activity {
                 if (botonEncontrado.getId() == botonSeleccionado.getId()) {
                     if (celda1Seleccionada == null) {
                         celda1Seleccionada = new int[]{fila, columna};
+                      Log.d("Primera celda: ", Arrays.toString(celda1Seleccionada));
                         return;
                     }
                     if (celda2Seleccionada == null) {
                         celda2Seleccionada = new int[]{fila, columna};
+                      Log.d("Segunda celda: ", Arrays.toString(celda2Seleccionada));
+
                         int palabraEncontrada =
                             sopa.encontrarIndicePalabraPorCoordenadas(celda1Seleccionada[0],
                                 celda1Seleccionada[1], celda2Seleccionada[0],

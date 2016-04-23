@@ -275,11 +275,12 @@ public class SopaLetras {
           contador_letras++;
 
 
-          if (direccion == horizontal) {  // se posiciona en la siguiente columna
+          if ((direccion == horizontal) && (i + 1 < palabra.length())) {
+            // se posiciona en la siguiente columna
             columna++;
-          } else if (direccion == vertical) {  // se posiciona en la siguiente fila
+          } else if ((direccion == vertical) && (i + 1 < palabra.length())) {  // se posiciona en la siguiente fila
             fila++;
-          } else if (direccion == diagonal_izquierda_derecha) {
+          } else if ((direccion == diagonal_izquierda_derecha) && (i + 1 < palabra.length())) {
             //se mueve hacia la siguiente fila y hacia la siguiente columna
             columna++;
             fila++;
