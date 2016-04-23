@@ -19,11 +19,9 @@ public class SopaLetras {
   private int vertical;
   private int diagonal_izquierda_derecha;
   private int alreves;
-  private int direccion;
-  private int orientacion;
 
   private String[] listaPalabras;          // Palabra a buscar
-  private String[] correspondiente;   // Sinónimo/Antónimo de palabra
+  private String[] listaCorrespondientes;   // Sinónimo/Antónimo de palabra
   private boolean[] palabrasEncontradas;
 
   private char[][] matrizLetras;
@@ -37,8 +35,7 @@ public class SopaLetras {
     this.dificultad = dificultad;
     this.tipoJuego = tipoJuego;
 
-    this.matrizLetras = new char[longitudDiagonal][longitudDiagonal];
-    this.coordenadasPalabras = null;
+    this.matrizLetras = new char[longitudDiagonal][];
 
     horizontal = 0;
     vertical = 1;
@@ -47,7 +44,7 @@ public class SopaLetras {
 
     generarMatrizVacia();
     generarListaPalabras();
-    agregarPalabras();
+    agregarPalabrasAmatriz();
     completarSopa();
   }
 
@@ -60,7 +57,7 @@ public class SopaLetras {
   }
 
   public String[] getPalabrasCorrespondientes() {
-    return correspondiente;
+    return listaCorrespondientes;
   }
 
   public int[][] getCoordenadasPalabras() {
@@ -77,12 +74,50 @@ public class SopaLetras {
     return new int[]{-1, -1, -1, -1};  // Error
   }
 
+  public boolean[] getRegistroPalabrasEncontradas() {
+    return palabrasEncontradas;
+  }
+
+  public boolean palabraYaFueEncontrada(int indicePalabra) {
+    return palabrasEncontradas[indicePalabra] == true;
+  }
+
+  /**
+   * @param x1 Coordenada de fila del punto 1
+   * @param y1 Coordenada de columna del punto 1
+   * @param x2 Coordenada de fila del punto 2
+   * @param y2 Coordenada de columna del punto 2
+   * @return Indice de palabra encontrada
+   */
+  public int encontrarIndicePalabraPorCoordenadas(int x1, int y1, int x2, int y2) {
+    for (int contador = 0; contador < cantPalabras; contador++) {
+      int[] coordenadasEncontradas = coordenadasPalabras[contador];
+
+      if ((coordenadasEncontradas[0] == x1) && (coordenadasEncontradas[2] == x2)
+          && (coordenadasEncontradas[1] == y1) && (coordenadasEncontradas[3] == y2)) {
+        return contador;
+      }
+      if ((coordenadasEncontradas[0] == x2) && (coordenadasEncontradas[2] == x1)
+          && (coordenadasEncontradas[1] == y2) && (coordenadasEncontradas[3] == y1)) {
+        return contador;
+      }
+    }
+    return -1;    // No se pudo encontrar
+  }
+
+  public String getPalabra(int indice) {
+    return listaPalabras[indice];
+  }
+
+  public String getPalabraCorrespondiente(int indice) {
+    return listaCorrespondientes[indice];
+  }
 
   //crea una sopa con espacios en blanco
 
   private void generarMatrizVacia() {
-
     for (int i = 0; i < longitudDiagonal; i++) {
+      matrizLetras[i] = new char[longitudDiagonal];
       for (int j = 0; j < longitudDiagonal; j++) {
         matrizLetras[i][j] = ' ';
       }
@@ -91,14 +126,14 @@ public class SopaLetras {
 
   //agrega las palabras de la lista a la sopa de letras
 
-  private void agregarPalabras() {
-    for (String palabra : listaPalabras) {
-      agregarPalabra(palabra);
+  private void agregarPalabrasAmatriz() {
+    for (int indice = 0; indice < listaPalabras.length; indice++) {
+      agregarPalabraAmatriz(listaCorrespondientes[indice], indice);
     }
   }
 
   //agrega las palabras en la sopa
-  private void agregarPalabra(String palabra) {
+  private void agregarPalabraAmatriz(String palabra, int indice) {
 
     //pasa la palabra a mayúscula
     palabra = palabra.toUpperCase();
@@ -118,10 +153,10 @@ public class SopaLetras {
     while (bandera > 0) {
 
       //orientación de la palabra
-      orientacion = random.nextInt(2);
+      int orientacion = random.nextInt(2);
 
       //dirección de la palabra
-      direccion = random.nextInt(3);
+      int direccion = random.nextInt(3);
 
       if (orientacion == alreves) {
 
@@ -141,6 +176,8 @@ public class SopaLetras {
         fila = random.nextInt(longitudDiagonal - palabra.length());
         columna = random.nextInt(longitudDiagonal - palabra.length());
       }
+
+      int[] nuevasCoordenadas = new int[]{fila, columna, 0, 0};
 
       for (int i = 0; i < palabra.length(); i++) {
 
@@ -169,6 +206,10 @@ public class SopaLetras {
 
       // Si la palabra completa fue insertada, se detiene la iteración
       if (contador_letras == palabra.length()) {
+        nuevasCoordenadas[2] = fila;
+        nuevasCoordenadas[3] = columna;
+        coordenadasPalabras[indice] = nuevasCoordenadas;
+
         bandera--;
         break;
       }
@@ -195,8 +236,6 @@ public class SopaLetras {
     String juego;
     String nivel;
 
-    int numeroPalabras = 8;
-
     if (tipoJuego == 'a') {
       juego = "ANTONIMO";
     } else {
@@ -218,7 +257,7 @@ public class SopaLetras {
         break;
     }
 
-    String numPalabras = Integer.toString(numeroPalabras);
+    String numPalabras = Integer.toString(cantPalabras);
 
     try {
       getDatos datos = new getDatos();
@@ -233,19 +272,20 @@ public class SopaLetras {
       JSONArray lista = objetoPrincipal.getJSONArray("Palabras");
 
       // Si el array JSON tiene menos palabras que la cantidad esperada, se cambia dicha cantidad.
-      if (lista.length() < longitudDiagonal) {
-        longitudDiagonal = lista.length();
+      if (lista.length() < cantPalabras) {
+        cantPalabras = lista.length();
       }
 
       // Se crean las listas de palabras
-      listaPalabras = new String[numeroPalabras];
-      correspondiente = new String[numeroPalabras];
-      palabrasEncontradas = new boolean[numeroPalabras];
+      listaPalabras = new String[cantPalabras];
+      listaCorrespondientes = new String[cantPalabras];
+      coordenadasPalabras = new int[cantPalabras][];
+      palabrasEncontradas = new boolean[cantPalabras];
 
-      for (int i = 0; i < longitudDiagonal; i++) {
+      for (int i = 0; i < cantPalabras; i++) {
         JSONObject objetoIndividual = lista.getJSONObject(i);
         listaPalabras[i] = objetoIndividual.getString("Palabra");
-        correspondiente[i] = objetoIndividual.getString(juego);
+        listaCorrespondientes[i] = objetoIndividual.getString(juego);
         palabrasEncontradas[i] = false;
       }
 
