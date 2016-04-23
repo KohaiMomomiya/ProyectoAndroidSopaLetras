@@ -12,21 +12,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ActividadJuego extends Activity {
+    SopaLetras sopa;
     private char dificultad;  // a : Facil, b : Media, c : Dificil
     private char tipoJuego;  // a : Antónimos, s : Sinónimos
-
     private TextView textoPuntuacion;
     private TextView textoTemporizador;
-
     private int puntuacion;
     private int tiempoInicial_ms;
     private int[] celda1Seleccionada;
     private int[] celda2Seleccionada;
     private int numeroPalabras = 8;
-    SopaLetras sopa;
-
-
-
     private TableLayout matrizSopa;
     private CountDownTimer temporizador;
 
@@ -65,6 +60,7 @@ public class ActividadJuego extends Activity {
 
         sopa = new SopaLetras(8,12,dificultad,tipoJuego);
 
+        llenarMatrizGrafica();
         setTiempoInicial_ms();
         iniciarTemporizador();
     }
@@ -122,11 +118,24 @@ public class ActividadJuego extends Activity {
         }
     }
 
-    private void agregarPuntos(int incremento) {
-        if (incremento > 0) {
-            puntuacion += incremento;
-            textoPuntuacion.setText(Integer.toString(puntuacion));
+    private void agregarPuntos() {
+        switch (dificultad) {
+            case 'a':
+                puntuacion += 100;
+                textoPuntuacion.setText(Integer.toString(puntuacion));
+                break;
+            case 'b':
+                puntuacion += 300;
+                textoPuntuacion.setText(Integer.toString(puntuacion));
+                break;
+            case 'c':
+                puntuacion += 500;
+                textoPuntuacion.setText(Integer.toString(puntuacion));
+                break;
+            default:
+                break;
         }
+
     }
 
     private void finalizarJuego() {
@@ -145,7 +154,7 @@ public class ActividadJuego extends Activity {
 
             for (int columna = 0; columna < filaActual.getChildCount(); columna++) {
                 Button botonEncontrado = (Button) filaActual.getChildAt(columna);
-                String valor = String.valueOf(matrizLetras[fila][columna]);
+                String valor = Character.toString(matrizLetras[fila][columna]);
                 botonEncontrado.setText(valor);
             }
         }
@@ -167,13 +176,23 @@ public class ActividadJuego extends Activity {
                     }
                     if (celda2Seleccionada == null) {
                         celda2Seleccionada = new int[]{fila, columna};
-                        // Hacer operaciones de busqueda y comparación.
+                        int palabraEncontrada =
+                            sopa.encontrarIndicePalabraPorCoordenadas(celda1Seleccionada[0],
+                                celda1Seleccionada[1], celda2Seleccionada[0],
+                                celda2Seleccionada[1]);
+                        if (palabraEncontrada > -1) {
+                            if (!sopa.palabraYaFueEncontrada(palabraEncontrada)) {
+                                sopa.marcarPalabraComoEncontrada(palabraEncontrada);
+                                marcarPalabraEncontrada();
+                                agregarPuntos();
+                            }
+                        }
+                        borrarCeldasSeleccionadas();
                         return;
                     }
                 }
             }
         }
-
     }
 
     private Button encontrarBotonEnSopaLetras(int fila, int columna) {
