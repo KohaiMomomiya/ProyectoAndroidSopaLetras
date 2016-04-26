@@ -11,47 +11,47 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 class getDatos extends AsyncTask<Void, Void, String> {
-    String JSON_String;
-    String json_url;
+  String JSON_String;
+  String json_url;
 
-    public String getJson_url() {
-        return json_url;
+  public String getJson_url() {
+    return json_url;
+  }
+
+  public void setJson_url(String json_url) {
+    this.json_url = json_url;
+  }
+
+  @Override
+  protected String doInBackground(Void... params) {
+    try {
+      URL url = null;
+      url = new URL(json_url);
+      HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+      InputStream inputStream = httpURLConnection.getInputStream();
+      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+      StringBuilder stringBuilder = new StringBuilder();
+      while ((JSON_String = bufferedReader.readLine()) != null) {
+        stringBuilder.append(JSON_String + "\n");
+      }
+      bufferedReader.close();
+      inputStream.close();
+      httpURLConnection.disconnect();
+      return stringBuilder.toString().trim();
+
+
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
 
-    public void setJson_url(String json_url) {
-        this.json_url = json_url;
-    }
 
-    @Override
-    protected String doInBackground(Void... params) {
-        try {
-            URL url = null;
-            url = new URL(json_url);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder stringBuilder = new StringBuilder();
-            while((JSON_String=bufferedReader.readLine())!=null){
-                stringBuilder.append(JSON_String+"\n");
-            }
-            bufferedReader.close();
-            inputStream.close();
-            httpURLConnection.disconnect();
-            return stringBuilder.toString().trim();
+    return null;
+  }
 
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        return null;
-    }
-
-    @Override
-    protected void onPostExecute(String result){
-        super.onPostExecute(result);
-    }
+  @Override
+  protected void onPostExecute(String result) {
+    super.onPostExecute(result);
+  }
 }

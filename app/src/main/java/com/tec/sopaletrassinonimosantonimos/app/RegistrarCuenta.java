@@ -44,18 +44,18 @@ public class RegistrarCuenta extends AppCompatActivity {
     String strVerificarPwd = campoVerificacionPwd.getText().toString().trim();
 
     if (verificarDatosIngresados(strNombre, strApellidos, strEmail, strPwd, strVerificarPwd)) {
-      try{
+      try {
         getDatos datos = new getDatos();
         datos.setJson_url("http://proyectosopaletras.esy.es/registrarUsuario.php?" +
-              "nombre='"+strNombre+"%20"+strApellidos+"'" +
-              "&correo='"+strEmail+"'" +
-              "&contrasena='"+strPwd+"'");
+            "nombre='" + strNombre + "%20" + strApellidos + "'" +
+            "&correo='" + strEmail + "'" +
+            "&contrasena='" + strPwd + "'");
         String resultado = datos.execute().get();
-        if(resultado.equals("New record created successfully")){
+        if (resultado.equals("New record created successfully")) {
           Toast.makeText(this, R.string.alerta_cuentaCreada, Toast.LENGTH_LONG).show();
           finish();
-        }else{
-          Toast.makeText(this,"La cuenta no pudo ser creada.", Toast.LENGTH_LONG).show();
+        } else {
+          Toast.makeText(this, "La cuenta no pudo ser creada.", Toast.LENGTH_LONG).show();
         }
       } catch (InterruptedException e) {
         e.printStackTrace();

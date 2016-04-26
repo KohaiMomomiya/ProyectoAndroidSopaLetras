@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Toast;
 
 public class SeleccionTema extends AppCompatActivity {
-  private char dificultad;  // a : Facil, b : Media, c : Dificil
   String Id;
+  private char dificultad;  // a : Facil, b : Media, c : Dificil
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class SeleccionTema extends AppCompatActivity {
     Intent intent = new Intent(this, ActividadJuego.class);
     intent.putExtra("dificultad", dificultad);
     intent.putExtra("tipoJuego", tipoJuego);
-    intent.putExtra("Id",Id);
+    intent.putExtra("Id", Id);
 
     finish();
     startActivity(intent);
@@ -58,7 +58,7 @@ public class SeleccionTema extends AppCompatActivity {
   private void notificarErrorDificultad() {
     Toast.makeText(this, R.string.error_dificultadNoDetectada, Toast.LENGTH_LONG).show();
     Intent intent = new Intent(this, MenuPrincipal.class);
-    intent.putExtra("Id",Id);
+    intent.putExtra("Id", Id);
     finish();
     startActivity(intent);
   }

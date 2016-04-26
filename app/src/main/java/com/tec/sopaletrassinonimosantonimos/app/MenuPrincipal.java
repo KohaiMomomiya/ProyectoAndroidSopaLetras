@@ -12,14 +12,13 @@ public class MenuPrincipal extends AppCompatActivity {
 
   String Id;
 
-    @Override
+  @Override
   protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_menu_principal);
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_menu_principal);
 
-      Intent intent = getIntent();
-      Id = intent.getStringExtra("Id");
-
+    Intent intent = getIntent();
+    Id = intent.getStringExtra("Id");
 
 
     ActionBar actionBar = this.getActionBar();
@@ -59,7 +58,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
   public void jugarAhora(View view) {
     Intent intent = new Intent(this, SeleccionDificultad.class);
-    intent.putExtra("Id",Id);
+    intent.putExtra("Id", Id);
     startActivity(intent);
   }
 
@@ -72,7 +71,6 @@ public class MenuPrincipal extends AppCompatActivity {
     Intent intent = new Intent(this, Agradecimiento.class);
     startActivity(intent);
   }
-
 
 
   // Cierra la sesión actual

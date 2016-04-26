@@ -144,7 +144,7 @@ public class SopaLetras {
    * @param x2 Fila del punto 2
    * @return Indicador de verdad
    */
-  public boolean verificarPuntosEnMismaFila(int x1, int x2) {
+  private boolean verificarPuntosEnMismaFila(int x1, int x2) {
     return x1 == x2;
   }
 
@@ -155,7 +155,7 @@ public class SopaLetras {
    * @param y2 Columna del punto 2
    * @return Indicador de verdad
    */
-  public boolean verificarPuntosEnMismaColumna(int y1, int y2) {
+  private boolean verificarPuntosEnMismaColumna(int y1, int y2) {
     return y1 == y2;
   }
 
@@ -168,7 +168,7 @@ public class SopaLetras {
    * @param y2 Columna del punto 2
    * @return Indicador de verdad
    */
-  public boolean verificarPuntosEnDiagonal(int x1, int y1, int x2, int y2) {
+  private boolean verificarPuntosEnDiagonal(int x1, int y1, int x2, int y2) {
     int movimiento_x;
     int movimiento_y;
 

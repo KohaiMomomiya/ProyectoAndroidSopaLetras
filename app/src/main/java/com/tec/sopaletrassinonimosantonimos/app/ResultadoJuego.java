@@ -59,7 +59,6 @@ public class ResultadoJuego extends AppCompatActivity {
   }
 
   public void volverAMenuPrincipal(View view) {
-    finish();
     onBackPressed();
   }
 
