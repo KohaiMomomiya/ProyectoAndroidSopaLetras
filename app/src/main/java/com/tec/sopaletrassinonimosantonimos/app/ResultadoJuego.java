@@ -10,7 +10,7 @@ import android.widget.Toast;
 public class ResultadoJuego extends AppCompatActivity {
   private TextView textoResultadoPuntuacion;
 
-  private char dificultad;  // a : Facil, b : Media, c : Dificil
+  private int dificultad;  // 1 : Facil, 2 : Media, 3 : Dificil
   private char tipoJuego;  // a : Antónimos, s : Sinónimos
 
 
@@ -27,11 +27,12 @@ public class ResultadoJuego extends AppCompatActivity {
     if (savedInstanceState == null) {
       Bundle extras = getIntent().getExtras();
       if ((extras != null) && (extras.containsKey("puntuacion"))) {
-        textoResultadoPuntuacion.setText(Integer.toString(extras.getInt("puntuacion")));
+        String strPuntuacion = Integer.toString(extras.getInt("puntuacion"));
+        textoResultadoPuntuacion.setText(strPuntuacion);
         registrarPuntuacion();
       }
       if ((extras != null) && (extras.containsKey("dificultad"))) {
-        dificultad = extras.getChar("dificultad");
+        dificultad = extras.getInt("dificultad");
       }
       if ((extras != null) && (extras.containsKey("tipoJuego"))) {
         tipoJuego = extras.getChar("tipoDificultad");
@@ -47,15 +48,14 @@ public class ResultadoJuego extends AppCompatActivity {
     Intent intent = new Intent(this, ActividadJuego.class);
     intent.putExtra("dificultad", dificultad);
     intent.putExtra("tipoJuego", tipoJuego);
-
-    finish();
     startActivity(intent);
+    finish();
   }
 
   public void onBackPressed() {
-    Intent intent = new Intent(this, ResultadoJuego.class);
-    finish();
+    Intent intent = new Intent(this, MenuPrincipal.class);
     startActivity(intent);
+    finish();
   }
 
   public void volverAMenuPrincipal(View view) {

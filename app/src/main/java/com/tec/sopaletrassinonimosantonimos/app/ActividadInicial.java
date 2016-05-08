@@ -16,9 +16,9 @@ import java.util.concurrent.ExecutionException;
 
 public class ActividadInicial extends AppCompatActivity {
 
-  EditText campoTexto_eMail;
-  EditText campoTexto_pwd;
   String JSON_String;
+  private EditText campoTexto_eMail;
+  private EditText campoTexto_pwd;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,6 @@ public class ActividadInicial extends AppCompatActivity {
       Toast.makeText(this, R.string.alerta_PwdVacio, Toast.LENGTH_LONG).show();
       return;
     } else {
-
       try {
         getDatos datos = new getDatos();
         datos.setJson_url("http://proyectosopaletras.esy.es/comprobarUsuario.php?correo=" +
@@ -66,7 +65,7 @@ public class ActividadInicial extends AppCompatActivity {
           intent.putExtra("Id", val);
           startActivity(intent);
         } else {
-          Toast.makeText(this, "Usuario o Contraseña Incorrectos", Toast.LENGTH_LONG).show();
+          Toast.makeText(this, R.string.error_usuarioPwd, Toast.LENGTH_LONG).show();
           return;
         }
       } catch (InterruptedException e) {

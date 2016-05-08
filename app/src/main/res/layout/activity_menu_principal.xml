@@ -10,12 +10,12 @@
               tools:context=".MenuPrincipal">
 
     <Button
-        android:layout_width="61dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/pregunta"
-        android:layout_gravity="right"
-        android:background="@mipmap/ic_pregunta"
-        android:onClick="pregunta" />
+            android:layout_width="61dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/pregunta"
+            android:layout_gravity="right"
+            android:background="@drawable/ic_pregunta"
+            android:onClick="pregunta"/>
 
     <FrameLayout
             android:layout_width="174dp"

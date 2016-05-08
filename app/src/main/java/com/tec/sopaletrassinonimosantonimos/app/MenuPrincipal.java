@@ -10,7 +10,7 @@ import android.view.View;
 
 public class MenuPrincipal extends AppCompatActivity {
 
-  String Id;
+  private String Id;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

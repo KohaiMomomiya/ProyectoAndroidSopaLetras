@@ -11,14 +11,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 class getDatos extends AsyncTask<Void, Void, String> {
-  String JSON_String;
-  String json_url;
+  private String JSON_String;
+  private String json_url;
 
   public String getJson_url() {
     return json_url;
   }
 
-  public void setJson_url(String json_url) {
+  void setJson_url(String json_url) {
     this.json_url = json_url;
   }
 
