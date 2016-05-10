@@ -36,7 +36,7 @@ public class ActividadJuego extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_actividad_juego);
 
-    char dificultad = 0;
+    int dificultad = 0;
     char tipoJuego = 0;
 
     textoPuntuacion = (TextView) findViewById(R.id.puntuacionJuego);
@@ -52,26 +52,23 @@ public class ActividadJuego extends Activity {
 
     if (savedInstanceState == null) {
       Bundle extras = getIntent().getExtras();
-      if ((extras != null) && (extras.containsKey("tiempo"))) {
-        tiempoInicial_ms = extras.getInt("tiempo") + 1; // Segundo adicional de retraso
-      }
       if ((extras != null) && (extras.containsKey("tipoJuego"))) {
         tipoJuego = extras.getChar("tipoJuego");
       }
       if ((extras != null) && (extras.containsKey("dificultad"))) {
-        dificultad = extras.getChar("dificultad");
+        dificultad = extras.getInt("dificultad");
       }
     }
 
     verificarDatos(dificultad, tipoJuego);
-    sopa = new SopaLetras(8, 12, dificultad, tipoJuego);
+    sopa = new SopaLetras(8, 10, dificultad, tipoJuego);
 
     llenarMatrizGrafica();
     llenarMatrizActivity();
     llenarListaObjetivos(sopa.getPalabrasObjetivo());
 
 
-    setTiempoInicial_ms();
+    setTiempoInicial_ms(dificultad);
     iniciarTemporizador();
   }
 
@@ -275,12 +272,10 @@ public class ActividadJuego extends Activity {
   /**
    * Verifica que los datos ingresados son válidos para generar una sopa de letras. Si se detecta un
    * datos inválido, se termina la Activity.
-   *
-   * @param dificultad Dificultad del juego. Debe ser 1, 2 o 3 para validar la prueba.
+   *  @param dificultad Dificultad del juego. Debe ser 1, 2 o 3 para validar la prueba.
    * @param tipoJuego  Tipo de juego. Debe ser A (Antónimos) o S (Sinónimos) para validar la
-   *                   prueba.
    */
-  private void verificarDatos(char dificultad, char tipoJuego) {
+  private void verificarDatos(int dificultad, char tipoJuego) {
     if ((dificultad < 1) || (dificultad > 3)) {
       errorInicio();
     }
@@ -434,8 +429,8 @@ public class ActividadJuego extends Activity {
   /**
    * Asigna el tiempo para la sesión de juego. Mayor dificultad implica menos tiempo.
    */
-  private void setTiempoInicial_ms() {
-    switch (sopa.getDificultad()) {
+  private void setTiempoInicial_ms(int nivelDificultad) {
+    switch (nivelDificultad) {
       // Se agrega un segundo para compensar retrasos de tiempo causados por el SO
       case 1:
         tiempoInicial_ms = 181 * 1000;  // Dificultad fácil empieza con 3 minutos.
@@ -447,6 +442,7 @@ public class ActividadJuego extends Activity {
         tiempoInicial_ms = 91 * 1000;  // Dificultad difícil empieza con 1 minuto y 30 segundos.
         break;
       default:
+        tiempoInicial_ms = 121 * 1000;
         break;
     }
   }
@@ -522,7 +518,7 @@ public class ActividadJuego extends Activity {
    */
   private void cambiarColorBoton(Button boton, int identificadorFondo) {
     try {
-      // Para versiones antes de Android 5.0 (Lollipop)
+      // Versiones anteriores a Lollipop (5.0, API 23).
       if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
         boton.setBackgroundDrawable(getResources().getDrawable(identificadorFondo));
       } else {

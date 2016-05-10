@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
@@ -39,7 +40,7 @@ class SopaLetras {
    * @param dificultad       Grado de dificultad de la matríz.
    * @param tipoJuego        Tipo de juego de la matríz: Sinónimos/Antónimos.
    */
-  SopaLetras(int cantPalabras, int longitudDiagonal, char dificultad, char tipoJuego) {
+  SopaLetras(int cantPalabras, int longitudDiagonal, int dificultad, char tipoJuego) {
     this.longitudDiagonal = longitudDiagonal;
     this.cantPalabras = cantPalabras;
     this.dificultad = dificultad;
@@ -69,11 +70,9 @@ class SopaLetras {
     return palabrasObjetivo;
   }
 
-
   public ArrayList<String> getPalabrasCorrespondientes() {
     return palabrasCorrespondientes;
   }
-
 
   /**
    * Obtiene el tamaño de la diagonal de la matríz. El tamaño de la diagonal equivale al tamaño
@@ -102,7 +101,6 @@ class SopaLetras {
   public char getTipoJuego() {
     return tipoJuego;
   }
-
 
   /**
    * Retorna la palabra objetivo asociada al valor de índice ingresado.
@@ -266,7 +264,7 @@ class SopaLetras {
    * @return ArrayList de int[] con lista de coordenadas para trazar una línea en la matríz. Null si
    * no es posible trazar una línea.
    */
-  public ArrayList<int[]> trazarLineaCoordenadas(int[] punto1, int[] punto2) {
+  ArrayList<int[]> trazarLineaCoordenadas(int[] punto1, int[] punto2) {
     // Desplazamientos en coordenadas X y coordenadas Y para el trazo a través de la matríz.
     int desplazamientoX;
     int desplazamientoY;
@@ -297,7 +295,7 @@ class SopaLetras {
             || (punto1[1] < 0) || (punto2[1] >= longitudDiagonal)) {
           break;
         } else {
-          listaPuntos.add(punto1);
+          listaPuntos.add(new int[]{punto1[0], punto1[1]});
 
           // Luego de agregar el punto en la lista, se realiza desplazamiento al siguiente punto.
           punto1[0] += desplazamientoX;
@@ -377,7 +375,7 @@ class SopaLetras {
 
         // No es posible insertar la palabra si existe una celda ocupada por una letra de otra
         // palabra y no es posible reutilizar la misma letra para ambas palabras.
-        if ((letraEncontrada != ' ') || (letraEncontrada != palabra.charAt(contador))) {
+        if ((letraEncontrada != ' ') && (letraEncontrada != palabra.charAt(contador))) {
           return false;
         }
       }
@@ -398,10 +396,10 @@ class SopaLetras {
    * Inicializa la matríz de la sopa de letras, colocando un espacio (' ') en todas las celdas.
    */
   private void generarMatrizVacia() {
-    for (int i = 0; i < longitudDiagonal; i++) {
-      matrizLetras[i] = new char[longitudDiagonal];
-      for (int j = 0; j < longitudDiagonal; j++) {
-        matrizLetras[i][j] = ' ';
+    for (int fila = 0; fila < longitudDiagonal; fila++) {
+      matrizLetras[fila] = new char[longitudDiagonal];
+      for (int columna = 0; columna < longitudDiagonal; columna++) {
+        matrizLetras[fila][columna] = ' ';
       }
     }
   }
@@ -411,63 +409,122 @@ class SopaLetras {
    */
   private void agregarPalabras() {
     for (String palabraCorrespondiente : palabrasCorrespondientes) {
-      boolean resultado = agregarPalabra(palabraCorrespondiente);
+      int intentosInsercion = 4;  // Intentos para insertar palabra en matríz.
 
-      if (!resultado) {
+      while (intentosInsercion > 0) {
+        boolean resultado = agregarPalabra(palabraCorrespondiente);
+        if (resultado) {
+          return;
+        } else {
+          --intentosInsercion;
+        }
         Log.e("error_word_insertion", palabraCorrespondiente);
       }
     }
   }
 
   /**
-   * Inserta una palabra en la matríz de la sopa de letras.
+   * Inserta una palabra en la matríz de la sopa de letras. Llama a un método auxiliar según el
+   * tamaño de la palabra a insertar.
    *
    * @param palabra Palabra que será insertada.
    * @return Boolean confirmando éxito de operación.
    */
   private boolean agregarPalabra(String palabra) {
-
     // Convierte las letras de la palabra a mayúsculas
     palabra = palabra.toUpperCase();
 
-    // Coordenadas del punto inicial de la palabra
-    int[] puntoInicial = new int[]{generadorRandom.nextInt(longitudDiagonal),
-        generadorRandom.nextInt(longitudDiagonal)};
-
-    // Ajuste de coordenada inicial si la palabra a insertar tiene el mismo tamaño que la diagonal
     if (palabra.length() == longitudDiagonal) {
-      int[] ajusteCeldas = new int[]{0, (longitudDiagonal - 1)};
-
-      puntoInicial[generadorRandom.nextInt(2)] = ajusteCeldas[generadorRandom.nextInt(2)];
+      return agregarPalabraTransversal(palabra);
+    } else {
+      return agregarPalabraCorta(palabra);
     }
+  }
 
-    // Línea de coordenadas donde se insertará la palabra
-    ArrayList<int[]> listaCoordenadas = null;
+  /**
+   * Agrega una palabra corta a la matríz. Una palabra corta tiene una longitud menor que la
+   * diagonal de la matríz.
+   *
+   * @param palabra Palabra a insertar.
+   * @return Boolean con resultado de operación.
+   */
+  private boolean agregarPalabraCorta(String palabra) {
+    if (palabra.length() == longitudDiagonal) {
+      return agregarPalabraTransversal(palabra);
+    }
+    if (palabra.length() > longitudDiagonal) {
+      return false;
+    }
+    if (palabra.length() < 2) {
+      return false;
+    } else {
+      // Coordenadas del punto inicial de la palabra
+      int[] puntoInicial = new int[]{
+          generadorRandom.nextInt(longitudDiagonal), generadorRandom.nextInt(longitudDiagonal)
+      };
 
-    while (listaCoordenadas == null) {
-      // Coordenadas del punto final de la palabra
-      int[] puntoFinal = new int[]{-1, -1};
+      // Línea de coordenadas donde se insertará la palabra
+      ArrayList<int[]> listaCoordenadas = null;
 
-      // Selecciones aleatoria para determinar si la palabra se coloca en una sola fila o columna
-      boolean mismaFila = (generadorRandom.nextInt(2)) > 0;
-      boolean mismaColumna = (generadorRandom.nextInt(2)) > 0;
+      while (listaCoordenadas == null) {
+        // Coordenadas del punto final de la palabra
+        int[] puntoFinal = new int[]{-1, -1};
 
-      if (mismaFila && mismaColumna) {
-        continue;
-      } else if (mismaFila) {
-        puntoFinal[0] = puntoInicial[0];
-        puntoFinal[1] = generarCoordenadaFaltantePuntoFinal(puntoInicial[1], palabra);
-      } else if (mismaColumna) {
-        puntoFinal[1] = puntoInicial[1];
-        puntoFinal[0] = generarCoordenadaFaltantePuntoFinal(puntoInicial[0], palabra);
-      } else {
-        puntoFinal[0] = generarCoordenadaFaltantePuntoFinal(puntoInicial[0], palabra);
-        puntoFinal[1] = generarCoordenadaFaltantePuntoFinal(puntoInicial[1], palabra);
+        // Selecciones aleatoria para determinar si la palabra se coloca en una sola fila o columna
+        boolean mismaFila = (generadorRandom.nextInt(2)) > 0;
+        boolean mismaColumna = (generadorRandom.nextInt(2)) > 0;
+
+        if (mismaFila && mismaColumna) {
+          continue;
+        } else if (mismaFila) {
+          puntoFinal[0] = puntoInicial[0];
+          puntoFinal[1] = generarCoordenadaFaltantePuntoFinal(puntoInicial[1], palabra);
+        } else if (mismaColumna) {
+          puntoFinal[1] = puntoInicial[1];
+          puntoFinal[0] = generarCoordenadaFaltantePuntoFinal(puntoInicial[0], palabra);
+        } else {
+          puntoFinal[0] = generarCoordenadaFaltantePuntoFinal(puntoInicial[0], palabra);
+          puntoFinal[1] = generarCoordenadaFaltantePuntoFinal(puntoInicial[1], palabra);
+        }
+        listaCoordenadas = trazarLineaCoordenadas(puntoInicial, puntoFinal);
       }
-      listaCoordenadas = trazarLineaCoordenadas(puntoInicial, puntoFinal);
-    }
 
-    return insertarPalabraEnMatriz(palabra, listaCoordenadas);
+      return insertarPalabraEnMatriz(palabra, listaCoordenadas);
+    }
+  }
+
+  /**
+   * Agrega una palabra transversal a la matríz. Una palabra transversal tiene una longitud
+   * equivalente a la diagonal de la matríz.
+   *
+   * @param palabra Palabra a insertar.
+   * @return Boolean con resultado de operación.
+   */
+  private boolean agregarPalabraTransversal(String palabra) {
+    if (palabra.length() < longitudDiagonal) {
+      return agregarPalabraCorta(palabra);
+    }
+    if (palabra.length() > longitudDiagonal) {
+      return false;
+    } else {
+      int longitudCompacta = palabra.length() - 1;
+      ArrayList<int[]> listaCoordenadas = null;
+
+      int[][] combinaciones = new int[][]{{0, 0}, {0, longitudCompacta},
+          {longitudCompacta, 0}, {longitudCompacta, longitudCompacta}};
+
+      while (listaCoordenadas == null) {
+        int[] puntoInicial = combinaciones[generadorRandom.nextInt(4)];
+        int[] puntoFinal = combinaciones[generadorRandom.nextInt(4)];
+
+        while (Arrays.equals(puntoInicial, puntoFinal)) {
+          puntoFinal = combinaciones[generadorRandom.nextInt(4)];
+        }
+
+        listaCoordenadas = trazarLineaCoordenadas(puntoInicial, puntoFinal);
+      }
+      return insertarPalabraEnMatriz(palabra, listaCoordenadas);
+    }
   }
 
   /**
@@ -479,35 +536,31 @@ class SopaLetras {
    * @return Valor de la coordenada en el punto final.
    */
   private int generarCoordenadaFaltantePuntoFinal(int coordenadaInicial, String palabra) {
-    int coordenadaFinal;
+    int longitudCompacta = palabra.length() - 1;
 
-    do {
-      // Genera la coordenada final de forma aleatoria.
-      coordenadaFinal = generadorRandom.nextInt(matrizLetras.length);
+    int[] posiblesCoordenadas = new int[]{
+        coordenadaInicial - longitudCompacta, coordenadaInicial + longitudCompacta
+    };
 
-      // Verifica si la coordenada final permite insertar la palabra
-      if ((coordenadaInicial < coordenadaFinal)
-          && ((coordenadaInicial + (palabra.length() - 1)) != coordenadaFinal)) {
-        coordenadaFinal = -1;
-      } else if ((coordenadaFinal + (palabra.length() - 1)) != coordenadaInicial) {
-        coordenadaFinal = -1;
-      }
-    } while (coordenadaFinal < 0);
-
-    return coordenadaFinal;
+    // No se puede colocar antes que la coordenada del punto inicial
+    if (posiblesCoordenadas[0] < 0) {
+      return posiblesCoordenadas[1];
+    } else if (posiblesCoordenadas[1] >= longitudDiagonal) {
+      return posiblesCoordenadas[0];
+    } else {
+      return posiblesCoordenadas[generadorRandom.nextInt(2)];
+    }
   }
 
   /**
    * Inserta caracteres al azar en todas las celdas vacías de la matríz.
    */
   private void llenarCeldasVacias() {
-
-    String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
     for (int i = 0; i < longitudDiagonal; i++) {
       for (int j = 0; j < longitudDiagonal; j++) {
         if (matrizLetras[i][j] == ' ') {
-          matrizLetras[i][j] = characters.charAt(generadorRandom.nextInt(characters.length()));
+          char letra = (char) ('A' + generadorRandom.nextInt(26));
+          matrizLetras[i][j] = letra;
         }
       }
     }
