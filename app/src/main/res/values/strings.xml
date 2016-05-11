@@ -76,6 +76,7 @@
     <string name="error_fondoBoton">No se puede modificar el fondo del botón</string>
     <string name="error_letraYaSeleccionada">Esta letra ya había sido seleccionada</string>
     <string name="etiqueta_palabraObjetivo">PalabraObjetivo</string>
+    <string name="action_about">Agradecimientos</string>
 
 
 </resources>

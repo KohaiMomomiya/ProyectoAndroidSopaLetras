@@ -24,7 +24,7 @@ class SopaLetras {
   @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
   private ArrayList<String> palabrasObjetivo;           // Palabras a buscar
   private ArrayList<String> palabrasCorrespondientes;   // Sinónimos/Antónimos de las palabras buscadas.
-  private ArrayList<Boolean> listaIndicadoresPalabras;
+  private ArrayList<Boolean> indicadoresPalabras;
 
   @SuppressWarnings("CanBeFinal")
   private char[][] matrizLetras;
@@ -40,21 +40,50 @@ class SopaLetras {
    * @param dificultad       Grado de dificultad de la matríz.
    * @param tipoJuego        Tipo de juego de la matríz: Sinónimos/Antónimos.
    */
-  SopaLetras(int cantPalabras, int longitudDiagonal, int dificultad, char tipoJuego) {
+  SopaLetras(int cantPalabras, int longitudDiagonal, int dificultad, char tipoJuego)
+      throws RuntimeException {
     this.longitudDiagonal = longitudDiagonal;
     this.cantPalabras = cantPalabras;
     this.dificultad = dificultad;
     this.tipoJuego = tipoJuego;
-    this.puntuacion = 0;
-
     this.generadorRandom = new Random();
 
-    this.matrizLetras = new char[longitudDiagonal][];
+    // Crea el nuevo juego de sopa de letras.
+    if (!iniciarNuevoJuego()) {
+      throw new RuntimeException();
+    }
+  }
 
-    generarMatrizVacia();
-    generarListaPalabras();
-    agregarPalabras();
-    llenarCeldasVacias();
+  /**
+   * Intenta obtener las listas de palabras que usará el juego e inicializa la estructura de la sopa
+   * de letas.
+   *
+   * @return Boolean indicando resultado de operación.
+   */
+  private boolean iniciarNuevoJuego() {
+    // Obtener listas de palabras con llamada a back-end externo (servidor web).
+    String[][] datosObtenidos = generarListaPalabras();
+
+    if (datosObtenidos != null) {
+      try {
+        this.matrizLetras = new char[longitudDiagonal][];
+        this.palabrasObjetivo = new ArrayList<String>();
+        this.palabrasCorrespondientes = new ArrayList<String>();
+        this.indicadoresPalabras = new ArrayList<Boolean>();
+        this.puntuacion = 0;
+
+        generarMatrizVacia();
+        agregarPalabras(datosObtenidos[0], datosObtenidos[1]);
+        llenarCeldasVacias();
+        return true;
+      } catch (Exception e) {
+        Log.e("logicaSopa", "Hubo un error durante la creación de la sopa de letras");
+        return false;
+      }
+    } else {
+      Log.e("logicaSopa", "No se puede generar un nuevo juego de sopa de letras");
+      return false;
+    }
   }
 
   /**
@@ -164,7 +193,13 @@ class SopaLetras {
    * @return Índice de la palabra encontrada. Si no existe, retorna -1.
    */
   public int buscarPalabra(String palabra) {
-    return palabrasCorrespondientes.indexOf(palabra);
+    for (int indice = 0; indice < palabrasCorrespondientes.size(); indice++) {
+      String palabraEncontrada = palabrasCorrespondientes.get(indice).toUpperCase();
+      if (palabraEncontrada.contentEquals(palabra)) {
+        return indice;
+      }
+    }
+    return -1;
   }
 
   /**
@@ -176,7 +211,7 @@ class SopaLetras {
    */
   boolean marcarPalabraComoEncontrada(int indicePalabra) {
     try {
-      listaIndicadoresPalabras.set(indicePalabra, true);
+      indicadoresPalabras.set(indicePalabra, true);
       return true;
     } catch (IndexOutOfBoundsException e) {
       return false;
@@ -191,7 +226,7 @@ class SopaLetras {
   public ArrayList<String> getListaPalabrasEncontradas() {
     ArrayList<String> listaPalabrasEncontradas = new ArrayList<String>();
     Iterator<String> iteradorPalabras = palabrasObjetivo.iterator();
-    Iterator<Boolean> iteratorIndicadores = listaIndicadoresPalabras.iterator();
+    Iterator<Boolean> iteratorIndicadores = indicadoresPalabras.iterator();
 
     while ((iteradorPalabras.hasNext()) && (iteratorIndicadores.hasNext())) {
       String palabraEncontrada = iteradorPalabras.next();
@@ -212,7 +247,7 @@ class SopaLetras {
    */
   public boolean palabraYaFueEncontrada(int indicePalabra) {
     try {
-      return listaIndicadoresPalabras.get(indicePalabra);
+      return indicadoresPalabras.get(indicePalabra);
     } catch (IndexOutOfBoundsException e) {
       return false;
     }
@@ -229,13 +264,13 @@ class SopaLetras {
     int indice = palabrasCorrespondientes.indexOf(correspondiente);
 
     if (indice >= 0) {
-      return listaIndicadoresPalabras.get(indice);
+      return indicadoresPalabras.get(indice);
     }
     correspondiente = new StringBuilder(correspondiente).reverse().toString();
     indice = palabrasCorrespondientes.indexOf(correspondiente);
 
     if (indice >= 0) {
-      return listaIndicadoresPalabras.get(indice);
+      return indicadoresPalabras.get(indice);
     }
 
     return false;
@@ -247,7 +282,7 @@ class SopaLetras {
    * @return Boolean con valor "true" confirmando la verificación, "false" en caso contrario.
    */
   public boolean verificarSopaCompletada() {
-    for (boolean registro : listaIndicadoresPalabras) {
+    for (boolean registro : indicadoresPalabras) {
       if (!registro) {
         return false;
       }
@@ -301,19 +336,19 @@ class SopaLetras {
           punto1[0] += desplazamientoX;
           punto1[1] += desplazamientoY;
         }
-      } while ((punto1[0] != punto2[0]) && (punto1[1] != punto2[1]));
+      } while ((punto1[0] != punto2[0]) || (punto1[1] != punto2[1]));
 
       // Si pudo llegarse al punto final, entonces se retorna la lista de puntos como
       // un ArrayList<int[]>
       if ((punto1[0] == punto2[0]) && (punto1[1] == punto2[1])) {
         listaPuntos.add(punto2);
-        return listaPuntos;
       } else {
-        return null;
+        listaPuntos = null;
       }
     } catch (IndexOutOfBoundsException e) {
-      return null;
+      listaPuntos = null;
     }
+    return listaPuntos;
   }
 
   /**
@@ -383,7 +418,7 @@ class SopaLetras {
       return false;
     }
 
-    // Recorrido final - Inserta las letras de la palabra en la matríz y almacena
+    // Recorrido final - Inserta las letras de la palabra en la matríz.
     for (int contador = 0; contador < palabra.length(); contador++) {
       int[] coordenadasLetra = listaCoordenadas.get(contador);
       char letraEncontrada = palabra.charAt(contador);
@@ -405,20 +440,56 @@ class SopaLetras {
   }
 
   /**
-   * Inserta la lista de palabras correspondientes en la matríz.
+   * Inserta las palabras objetivo y correspondientes en la matríz de la sopa de letras. Se
+   * descartan las palabras que no pudieron ser insertadas.
+   *
+   * @param palabrasObjetivo         Arreglo con palabras objetivo a insertar.
+   * @param palabrasCorrespondientes Arreglo con palabras correspondientes a insertar.
    */
-  private void agregarPalabras() {
-    for (String palabraCorrespondiente : palabrasCorrespondientes) {
-      int intentosInsercion = 4;  // Intentos para insertar palabra en matríz.
+  private void agregarPalabras(String[] palabrasObjetivo, String[] palabrasCorrespondientes) {
+    // La cantidad de palabras de los arreglos debe ser igual.
+    if (palabrasObjetivo.length != palabrasCorrespondientes.length) {
+      Log.e("logicaSopa", "No se puede llenar la sopa de letras.");
+    } else {
+      for (int contador = 0; contador < palabrasObjetivo.length; contador++) {
+        String palabraObjetivoActual = palabrasObjetivo[contador];
+        String palabraCorrespondienteActual = palabrasCorrespondientes[contador];
 
-      while (intentosInsercion > 0) {
-        boolean resultado = agregarPalabra(palabraCorrespondiente);
-        if (resultado) {
-          return;
+        // Si la palabra es muy larga, se descarta.
+        if (palabraCorrespondienteActual.length() > longitudDiagonal) {
+          Log.e("logicaSopa - ", "Palabra es muy larga: " + palabraCorrespondienteActual);
         } else {
-          --intentosInsercion;
+          Log.d("logicaSopa - ", "Insertando: " + palabraCorrespondienteActual);
+
+          // Resultado de intentar insertar la palabra correspondiente en la matríz.
+          boolean resultadoInsercion = agregarPalabra(palabraCorrespondienteActual);
+
+          // Máxima cantidad de intentos para insertar una palabra.
+          // Necesario si el primer intento de inserción falla.
+          int intentosDisponibles = 100;
+
+          // Intentos para insertar palabra en matríz de sopa de letras.
+          while ((intentosDisponibles > 0) && !resultadoInsercion) {
+            resultadoInsercion = agregarPalabra(palabraCorrespondienteActual);
+            if (resultadoInsercion) {
+              intentosDisponibles = 0;
+            } else {
+              --intentosDisponibles;
+            }
+          }
+
+          // Las palabras correspondientes que pudieron ser insertadas forman parte de las listas
+          // en la lógica de la sopa de letras.
+          if (resultadoInsercion) {
+            this.palabrasObjetivo.add(palabraObjetivoActual);
+            this.palabrasCorrespondientes.add(palabraCorrespondienteActual);
+            this.indicadoresPalabras.add(false);
+
+            Log.d("logicaSopa - ", "Se ha insertado: " + palabraCorrespondienteActual);
+          } else {
+            Log.e("logicaSopa - ", "No se pudo insertar: " + palabraCorrespondienteActual);
+          }
         }
-        Log.e("error_word_insertion", palabraCorrespondiente);
       }
     }
   }
@@ -436,6 +507,9 @@ class SopaLetras {
 
     if (palabra.length() == longitudDiagonal) {
       return agregarPalabraTransversal(palabra);
+    } else if (palabra.length() > longitudDiagonal) {
+      Log.e("logicaSopa - ", "Palabra muy larga: " + palabra);
+      return false;
     } else {
       return agregarPalabraCorta(palabra);
     }
@@ -458,34 +532,38 @@ class SopaLetras {
     if (palabra.length() < 2) {
       return false;
     } else {
-      // Coordenadas del punto inicial de la palabra
-      int[] puntoInicial = new int[]{
-          generadorRandom.nextInt(longitudDiagonal), generadorRandom.nextInt(longitudDiagonal)
-      };
-
       // Línea de coordenadas donde se insertará la palabra
       ArrayList<int[]> listaCoordenadas = null;
 
       while (listaCoordenadas == null) {
+        // Coordenadas del punto inicial de la palabra
+        int[] puntoInicial = new int[]{
+            generadorRandom.nextInt(longitudDiagonal), generadorRandom.nextInt(longitudDiagonal)
+        };
+
         // Coordenadas del punto final de la palabra
         int[] puntoFinal = new int[]{-1, -1};
 
-        // Selecciones aleatoria para determinar si la palabra se coloca en una sola fila o columna
-        boolean mismaFila = (generadorRandom.nextInt(2)) > 0;
-        boolean mismaColumna = (generadorRandom.nextInt(2)) > 0;
+        // Selección de posición - Usa módulo 3:
+        // 1 - Misma fila, 2 - Misma columna, 0 - Diferentes filas y columnas
+        int posicionCeldas = generadorRandom.nextInt(3);
 
-        if (mismaFila && mismaColumna) {
-          continue;
-        } else if (mismaFila) {
+        if (posicionCeldas == 1) {
           puntoFinal[0] = puntoInicial[0];
-          puntoFinal[1] = generarCoordenadaFaltantePuntoFinal(puntoInicial[1], palabra);
-        } else if (mismaColumna) {
+          puntoFinal[1] = calcularCoordenadaPuntoFinal(puntoInicial[1], palabra);
+        } else if (posicionCeldas == 2) {
           puntoFinal[1] = puntoInicial[1];
-          puntoFinal[0] = generarCoordenadaFaltantePuntoFinal(puntoInicial[0], palabra);
+          puntoFinal[0] = calcularCoordenadaPuntoFinal(puntoInicial[0], palabra);
         } else {
-          puntoFinal[0] = generarCoordenadaFaltantePuntoFinal(puntoInicial[0], palabra);
-          puntoFinal[1] = generarCoordenadaFaltantePuntoFinal(puntoInicial[1], palabra);
+          puntoFinal[0] = calcularCoordenadaPuntoFinal(puntoInicial[0], palabra);
+          puntoFinal[1] = calcularCoordenadaPuntoFinal(puntoInicial[1], palabra);
         }
+
+        // No es posible insertar la palabra usando esta combinación de punto inicial y final.
+        if ((puntoFinal[0] < 0) || (puntoFinal[1] < 0)) {
+          continue;
+        }
+
         listaCoordenadas = trazarLineaCoordenadas(puntoInicial, puntoFinal);
       }
 
@@ -510,8 +588,10 @@ class SopaLetras {
       int longitudCompacta = palabra.length() - 1;
       ArrayList<int[]> listaCoordenadas = null;
 
-      int[][] combinaciones = new int[][]{{0, 0}, {0, longitudCompacta},
-          {longitudCompacta, 0}, {longitudCompacta, longitudCompacta}};
+      int[][] combinaciones = new int[][]{
+          {0, 0}, {0, longitudCompacta},                                  // Esquinas superiores.
+          {longitudCompacta, 0}, {longitudCompacta, longitudCompacta}     // Esquinas inferiores.
+      };
 
       while (listaCoordenadas == null) {
         int[] puntoInicial = combinaciones[generadorRandom.nextInt(4)];
@@ -535,20 +615,25 @@ class SopaLetras {
    * @param palabra           Palabra a ser insertada.
    * @return Valor de la coordenada en el punto final.
    */
-  private int generarCoordenadaFaltantePuntoFinal(int coordenadaInicial, String palabra) {
+  private int calcularCoordenadaPuntoFinal(int coordenadaInicial, String palabra) {
     int longitudCompacta = palabra.length() - 1;
 
     int[] posiblesCoordenadas = new int[]{
         coordenadaInicial - longitudCompacta, coordenadaInicial + longitudCompacta
     };
+    boolean[] verificaciones = new boolean[]{
+        (posiblesCoordenadas[0] < 0), (posiblesCoordenadas[1] < longitudDiagonal)
+    };
 
-    // No se puede colocar antes que la coordenada del punto inicial
-    if (posiblesCoordenadas[0] < 0) {
-      return posiblesCoordenadas[1];
-    } else if (posiblesCoordenadas[1] >= longitudDiagonal) {
-      return posiblesCoordenadas[0];
-    } else {
+    // Si ambas posibilidades son válidas, escoger aleatoriamente.
+    if (verificaciones[0] && verificaciones[1]) {
       return posiblesCoordenadas[generadorRandom.nextInt(2)];
+    } else if (verificaciones[0]) {
+      return posiblesCoordenadas[0];
+    } else if (verificaciones[1]) {
+      return posiblesCoordenadas[1];
+    } else {
+      return -1;    // No es posible encontrar una coordenada final válida para esta palabra.
     }
   }
 
@@ -566,11 +651,14 @@ class SopaLetras {
     }
   }
 
-
   /**
+   * Obtiene las listas de palabras objetivo y correspondientes que serán utilizadas para esta
+   * instancia del juego.
    *
+   * @return Arreglo 2D de String con las palabras a utilizar. Null si no fue posible obtener datos.
    */
-  private void generarListaPalabras() {
+  @Nullable
+  private String[][] generarListaPalabras() {
     String juego;
     String nivel;
 
@@ -606,17 +694,19 @@ class SopaLetras {
       }
 
       // Se crean las listas de palabras
-      palabrasObjetivo = new ArrayList<String>();
-      palabrasCorrespondientes = new ArrayList<String>();
-      listaIndicadoresPalabras = new ArrayList<Boolean>();
-
+      ArrayList<String> palabrasObjetivoObtenidas = new ArrayList<String>();
+      ArrayList<String> palabrasCorrespObtenidas = new ArrayList<String>();
 
       for (int i = 0; i < cantPalabras; i++) {
         JSONObject objetoIndividual = lista.getJSONObject(i);
-        palabrasObjetivo.add(objetoIndividual.getString("Palabra"));
-        palabrasCorrespondientes.add(objetoIndividual.getString(juego));
-        listaIndicadoresPalabras.add(false);
+        palabrasObjetivoObtenidas.add(objetoIndividual.getString("Palabra"));
+        palabrasCorrespObtenidas.add(objetoIndividual.getString(juego));
       }
+
+      return new String[][]{
+          palabrasObjetivoObtenidas.toArray(new String[palabrasObjetivoObtenidas.size()]),
+          palabrasCorrespObtenidas.toArray(new String[palabrasCorrespObtenidas.size()])
+      };
 
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -625,5 +715,6 @@ class SopaLetras {
     } catch (JSONException e) {
       e.printStackTrace();
     }
+    return null;
   }
 }

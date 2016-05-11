@@ -9,10 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.concurrent.ExecutionException;
 
 public class ActividadInicial extends AppCompatActivity {
 
@@ -68,14 +65,11 @@ public class ActividadInicial extends AppCompatActivity {
           Toast.makeText(this, R.string.error_usuarioPwd, Toast.LENGTH_LONG).show();
           return;
         }
-      } catch (InterruptedException e) {
+      } catch (Exception e) {
         e.printStackTrace();
-        return;
-      } catch (ExecutionException e) {
-        e.printStackTrace();
-        return;
-      } catch (JSONException e) {
-        e.printStackTrace();
+        Toast.makeText(this,
+            "Hubo un error al ingresar a la aplicación. Inténtelo nuevamente.",
+            Toast.LENGTH_LONG).show();
       }
     }
   }

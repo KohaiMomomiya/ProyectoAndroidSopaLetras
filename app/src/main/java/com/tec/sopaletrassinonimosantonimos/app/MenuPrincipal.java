@@ -67,7 +67,10 @@ public class MenuPrincipal extends AppCompatActivity {
     startActivity(intent);
   }
 
-  public void pregunta(View view) {
+  /**
+   * Inicia la Activity con pantalla de Agradecimientos.
+   */
+  public void verAgradecimientos(MenuItem menuItem) {
     Intent intent = new Intent(this, Agradecimiento.class);
     startActivity(intent);
   }

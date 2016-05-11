@@ -28,7 +28,6 @@ public class ActividadJuego extends Activity {
   private CountDownTimer temporizador;
 
   private ArrayList<int[]> letrasSeleccionadas;
-
   private TableLayout matrizSopa;
 
   @Override
@@ -61,15 +60,18 @@ public class ActividadJuego extends Activity {
     }
 
     verificarDatos(dificultad, tipoJuego);
-    sopa = new SopaLetras(8, 10, dificultad, tipoJuego);
 
-    llenarMatrizGrafica();
-    llenarMatrizActivity();
-    llenarListaObjetivos(sopa.getPalabrasObjetivo());
+    try {
+      sopa = new SopaLetras(8, 10, dificultad, tipoJuego);
+      llenarMatrizGrafica();
+      llenarMatrizActivity();
+      llenarListaObjetivos(sopa.getPalabrasObjetivo());
+      setTiempoInicial_ms(dificultad);
+      iniciarTemporizador();
 
-
-    setTiempoInicial_ms(dificultad);
-    iniciarTemporizador();
+    } catch (Exception e) {
+      errorInicio();
+    }
   }
 
 
@@ -320,6 +322,7 @@ public class ActividadJuego extends Activity {
         // No es posible trazar una línea de letras con la selección actual de letras.
         // Se inicia una nueva secuencia de letras.
         if (lineaLetras == null) {
+          Log.d("juegoSopa", "No se puede formar una palabra");
           letrasSeleccionadas.clear();
           Button botonLetraSeleccionada = encontrarBotonLetra(ultimaLetra[0], ultimaLetra[1]);
 
@@ -334,6 +337,7 @@ public class ActividadJuego extends Activity {
         // Se puede trazar una línea de letra. Se intentará buscar la palabra en la sopa de letras.
         // Si la palabra no existe en la sopa, se dejan las letras como seleccionadas.
         else {
+          Log.d("juegoSopa", "Se puede formar una palabra");
           letrasSeleccionadas = lineaLetras;
           marcarLetrasSeleccionadas(letrasSeleccionadas);
           String[] combinaciones = sopa.obtenerPalabrasEnTrazo(letrasSeleccionadas);
@@ -360,12 +364,12 @@ public class ActividadJuego extends Activity {
           int indicePalabra = sopa.buscarPalabra(combinacion);
 
           if (indicePalabra >= 0) {
+            Log.d("juegoSopa", "Se pudo encontrar una palabra");
             if (!sopa.palabraYaFueEncontrada(indicePalabra)) {
+              Log.d("juegoSopa", "Agregar puntos");
               sopa.marcarPalabraComoEncontrada(indicePalabra);
-
               sopa.incrementarPuntuacion();
               actualizarPuntuacion();
-
               marcarLetrasUtilizadas(letrasSeleccionadas);
             } else {
               Toast.makeText(this, R.string.error_palabraYaEncontrada, Toast.LENGTH_SHORT).show();
@@ -392,7 +396,8 @@ public class ActividadJuego extends Activity {
       TableRow filaSopa = (TableRow) matrizSopa.getChildAt(fila);
       for (int columna = 0; columna < sopa.getLongitudDiagonal(); columna++) {
         Button botonLetra = (Button) filaSopa.getChildAt(columna);
-        botonLetra.setText(letrasMatriz[fila][columna]);
+        String letra = String.valueOf(letrasMatriz[fila][columna]);
+        botonLetra.setText(letra);
       }
     }
   }
@@ -486,9 +491,8 @@ public class ActividadJuego extends Activity {
       // Recorrido a través de columnas de la fila actual
       for (int columna = 0; columna < filaActual.getChildCount(); columna++) {
         Button botonEncontrado = (Button) filaActual.getChildAt(columna);
-
-        char valor = matrizLetras[fila][columna];
-        botonEncontrado.setText(valor);
+        char letra = matrizLetras[fila][columna];
+        botonEncontrado.setText(String.valueOf(letra));
       }
     }
   }

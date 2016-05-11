@@ -4,7 +4,9 @@
       tools:context="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal">
     <item
             android:id="@+id/action_settings"
-            android:title="@string/action_settings"
+            android:title="@string/action_about"
+            android:icon="@android:drawable/ic_dialog_info"
             android:orderInCategory="100"
+            android:onClick="verAgradecimientos"
             app:showAsAction="never"/>
 </menu>
