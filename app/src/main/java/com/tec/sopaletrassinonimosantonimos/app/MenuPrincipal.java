@@ -10,7 +10,7 @@ import android.view.View;
 
 public class MenuPrincipal extends AppCompatActivity {
 
-  String Id;
+  private String Id;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,10 @@ public class MenuPrincipal extends AppCompatActivity {
     startActivity(intent);
   }
 
-  public void pregunta(View view) {
+  /**
+   * Inicia la Activity con pantalla de Agradecimientos.
+   */
+  public void verAgradecimientos(MenuItem menuItem) {
     Intent intent = new Intent(this, Agradecimiento.class);
     startActivity(intent);
   }

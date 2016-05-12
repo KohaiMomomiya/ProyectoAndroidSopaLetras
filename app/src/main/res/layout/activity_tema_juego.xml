@@ -16,10 +16,9 @@
             android:text="@string/texto_seleccioneTema"
             android:id="@+id/textView"
             android:layout_gravity="center"
-            android:textAlignment="center"
             android:gravity="center_vertical|center_horizontal"
             android:singleLine="true"
-            android:textSize="16dp"/>
+            android:textSize="16sp"/>
 
     <Space
             android:layout_width="match_parent"
@@ -30,7 +29,7 @@
     <Button
             android:layout_width="162dp"
             android:layout_height="wrap_content"
-            android:text="@string/sinonimos"
+            android:text="@string/boton_sinonimos"
             android:id="@id/botonSinonimos"
             android:layout_gravity="center_horizontal"
             android:onClick="temaSeleccionado"
@@ -51,7 +50,7 @@
     <Button
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:text="@string/antonimos"
+            android:text="@string/boton_antonimos"
             android:id="@id/botonAntonimos"
             android:layout_gravity="center_horizontal"
             android:onClick="temaSeleccionado"

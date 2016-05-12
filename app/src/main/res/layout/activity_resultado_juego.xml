@@ -14,8 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/mensaje_finJuego"
-            android:textAlignment="center"/>
+            android:text="@string/etiqueta_final_juego"
+            android:gravity="center"/>
 
     <Space
             android:layout_width="match_parent"
@@ -34,11 +34,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/puntuacion"
+                android:text="@string/puntuacion_default"
                 android:id="@id/textoResultadoPuntuacion"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:textColor="#ffffff"
-                android:textSize="50dp"
+                android:textSize="50sp"
                 android:layout_gravity="center"/>
     </FrameLayout>
 

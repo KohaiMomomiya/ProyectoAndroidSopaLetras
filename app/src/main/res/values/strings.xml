@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Sopa Letras Sinónimos y Antónimos</string>
+    <string name="app_name" translatable="false">SINANT</string>
 
     <string name="hello_world" translatable="false">Hello world!</string>
 
@@ -7,12 +7,13 @@
     <string name="action_settings">Ajustes</string>
 
     <!-- Etiquetas para campos de texto -->
-    <string name="etiqueta_nombre">Nombre</string>
     <string name="etiqueta_apellidos">Apellidos</string>
     <string name="etiqueta_correoElectronico">Correo Electrónico</string>
+    <string name="etiqueta_nombre">Nombre</string>
+    <string name="etiqueta_palabraObjetivo"> </string>
     <string name="etiqueta_password">Contraseña</string>
-    <string name="etiqueta_verificarPassword">Confirmar Contraseña</string>
     <string name="etiqueta_puntuacionJuego">Puntuación:</string>
+    <string name="etiqueta_verificarPassword">Confirmar Contraseña</string>
 
     <!-- Títulos de Actividades -->
     <string name="actividad_dificultadJuego">Dificultad</string>
@@ -20,6 +21,8 @@
     <string name="actividad_menuPrincipal">Menú Principal</string>
     <string name="actividad_resultadoJuego">Resultado del Juego</string>
     <string name="actividad_temaJuego">Tema del juego</string>
+    <string name="actividad_resultados">Resultados</string>
+    <string name="actividad_agradecimiento">Agradecimiento</string>
 
 
     <!-- Etiquetas de botones -->
@@ -31,11 +34,11 @@
     <string name="boton_resultados">Resultados</string>
     <string name="boton_volverAmenuPrincipal">Volver a Menu Principal</string>
     <string name="boton_jugarDeNuevo">Jugar de nuevo</string>
-    <string name="antonimos">Antónimos</string>
-    <string name="sinonimos">Sinónimos</string>
-    <string name="dificultad_facil">Fácil</string>
-    <string name="dificultad_media">Media</string>
-    <string name="dificultad_dificil">Difícil</string>
+    <string name="boton_antonimos">Antónimos</string>
+    <string name="boton_sinonimos">Sinónimos</string>
+    <string name="boton_dificultad_facil">Fácil</string>
+    <string name="boton_dificultad_media">Media</string>
+    <string name="boton_dificultad_dificil">Difícil</string>
 
     <!-- Mensaje de notificación (Toast) -->
     <string name="alerta_NombreVacio">Por favor ingrese su nombre</string>
@@ -55,20 +58,28 @@
     <string name="texto_seleccioneTema">Seleccione el tema del juego</string>
 
     <string name="error_iniciarJuego">No se puede iniciar el juego</string>
-    <string name="error_volverAJugar">No se puede volver a jugar. Regresando al menú principal...</string>
+    <string name="error_volverAJugar">No se puede volver a jugar. Regresando al menú principal…</string>
     <string name="error_registroPuntuacion">No se pudo registrar la puntuación</string>
     <string name="error_puntuacionResultado">No se pudo obtener la puntuación del juego</string>
-
-    <string name="mensaje_finJuego">¡Bien hecho!\nTu puntación fue:</string>
-
-    <string name="puntuacion" translatable="false">0</string>
-    <string name="temporizador_cero" translatable="false">00:00</string>
     <string name="error_dificultadNoDetectada">La dificultad no pudo ser reconocida</string>
-    <string name="etiqueta_tiempoRestanteJuego">Tiempo:</string>
-    <string name="boton_cancelarJuego">Volver</string>
-    <string name="letraDefault">\?</string>
-    <string name="title_activity_resultados">Resultados</string>
-    <string name="title_activity_agradecimiento">Agradecimiento</string>
+    <string name="error_usuarioPwd">El usuario o contraseña son incorrectos</string>
+    <string name="error_letra_no_seleccionada">Por favor seleccione una letra</string>
+    <string name="error_seleccioneLetraDeNuevo">Por favor selecciona la letra de nuevo</string>
+    <string name="error_palabra_ya_encontrada">La palabra ya fue encontrada</string>
+    <string name="error_fondo_boton_no_existe">No se puede modificar el fondo del botón</string>
+    <string name="error_letra_ya_seleccionada">Esta letra ya había sido seleccionada</string>
+
+    <string name="etiqueta_final_juego">¡Bien hecho!\nTu puntación fue:</string>
+
+    <string name="puntuacion_default" translatable="false">0</string>
+    <string name="temporizador_default" translatable="false">00:00</string>
+
+    <string name="etiqueta_tiempo_restante">Tiempo:</string>
+    <string name="boton_cancelar_juego">Volver</string>
+    <string name="celda_sopa_letras_default" translatable="false">\?</string>
+
+
+    <string name="action_about">Agradecimientos</string>
 
 
 </resources>

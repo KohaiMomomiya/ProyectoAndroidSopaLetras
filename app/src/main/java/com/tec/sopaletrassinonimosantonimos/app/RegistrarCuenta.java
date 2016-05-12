@@ -11,11 +11,11 @@ import java.util.concurrent.ExecutionException;
 
 public class RegistrarCuenta extends AppCompatActivity {
 
-  EditText campoRegistroNombre;
-  EditText campoRegistroApellidos;
-  EditText campoRegistroEmail;
-  EditText campoRegistroPwd;
-  EditText campoVerificacionPwd;
+  private EditText campoRegistroNombre;
+  private EditText campoRegistroApellidos;
+  private EditText campoRegistroEmail;
+  private EditText campoRegistroPwd;
+  private EditText campoVerificacionPwd;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {

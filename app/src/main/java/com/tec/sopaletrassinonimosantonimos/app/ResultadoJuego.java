@@ -8,10 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ResultadoJuego extends AppCompatActivity {
-  private TextView textoResultadoPuntuacion;
 
-  private char dificultad;  // a : Facil, b : Media, c : Dificil
-  private char tipoJuego;  // a : Antónimos, s : Sinónimos
+  private int dificultad;  // 1 : Fácil, 2 : Media, 3 : Difícil
+  private char tipoJuego;  // A : Antónimos, S : Sinónimos
 
 
   @Override
@@ -19,7 +18,7 @@ public class ResultadoJuego extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_resultado_juego);
 
-    textoResultadoPuntuacion = (TextView) findViewById(R.id.textoResultadoPuntuacion);
+    TextView textoResultadoPuntuacion = (TextView) findViewById(R.id.textoResultadoPuntuacion);
     tipoJuego = '-';
     dificultad = '-';
 
@@ -27,14 +26,17 @@ public class ResultadoJuego extends AppCompatActivity {
     if (savedInstanceState == null) {
       Bundle extras = getIntent().getExtras();
       if ((extras != null) && (extras.containsKey("puntuacion"))) {
-        textoResultadoPuntuacion.setText(Integer.toString(extras.getInt("puntuacion")));
+        String strPuntuacion = Integer.toString(extras.getInt("puntuacion"));
+        if (textoResultadoPuntuacion != null) {
+          textoResultadoPuntuacion.setText(strPuntuacion);
+        }
         registrarPuntuacion();
       }
       if ((extras != null) && (extras.containsKey("dificultad"))) {
-        dificultad = extras.getChar("dificultad");
+        dificultad = extras.getInt("dificultad");
       }
       if ((extras != null) && (extras.containsKey("tipoJuego"))) {
-        tipoJuego = extras.getChar("tipoDificultad");
+        tipoJuego = extras.getChar("tipoJuego");
       }
     }
   }
@@ -44,18 +46,21 @@ public class ResultadoJuego extends AppCompatActivity {
   }
 
   public void volverAJugar(View view) {
-    Intent intent = new Intent(this, ActividadJuego.class);
-    intent.putExtra("dificultad", dificultad);
-    intent.putExtra("tipoJuego", tipoJuego);
-
-    finish();
-    startActivity(intent);
+    try {
+      Intent intent = new Intent(this, ActividadJuego.class);
+      intent.putExtra("dificultad", dificultad);
+      intent.putExtra("tipoJuego", tipoJuego);
+      startActivity(intent);
+      finish();
+    } catch (Exception e) {
+      errorVolverAJugar();
+    }
   }
 
   public void onBackPressed() {
-    Intent intent = new Intent(this, ResultadoJuego.class);
-    finish();
+    Intent intent = new Intent(this, MenuPrincipal.class);
     startActivity(intent);
+    finish();
   }
 
   public void volverAMenuPrincipal(View view) {

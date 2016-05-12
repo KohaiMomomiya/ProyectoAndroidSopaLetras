@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Toast;
 
 public class SeleccionTema extends AppCompatActivity {
-  String Id;
-  private char dificultad;  // a : Facil, b : Media, c : Dificil
+  private String Id;
+  private int dificultad;  // 1 : Facil, 2 : Media, 3 : Dificil
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class SeleccionTema extends AppCompatActivity {
       // Obtiene el grado de dificultad de la actividad anterior
       Bundle extras = getIntent().getExtras();
       if ((extras != null) && (extras.containsKey("dificultad"))) {
-        dificultad = extras.getChar("dificultad");
+        dificultad = extras.getInt("dificultad");
       } else {
         notificarErrorDificultad();
       }
@@ -35,13 +35,13 @@ public class SeleccionTema extends AppCompatActivity {
   public void temaSeleccionado(View view) {
     switch (view.getId()) {
       case R.id.botonSinonimos:
-        iniciarJuego('s');
+        iniciarJuego('S');
         break;
       case R.id.botonAntonimos:
-        iniciarJuego('a');
+        iniciarJuego('A');
         break;
       default:
-        return;
+        break;
     }
   }
 
@@ -51,15 +51,16 @@ public class SeleccionTema extends AppCompatActivity {
     intent.putExtra("tipoJuego", tipoJuego);
     intent.putExtra("Id", Id);
 
-    finish();
     startActivity(intent);
+    finish();
   }
 
   private void notificarErrorDificultad() {
     Toast.makeText(this, R.string.error_dificultadNoDetectada, Toast.LENGTH_LONG).show();
     Intent intent = new Intent(this, MenuPrincipal.class);
     intent.putExtra("Id", Id);
-    finish();
+
     startActivity(intent);
+    finish();
   }
 }

@@ -1,103 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tec.sopaletrassinonimosantonimos.app">
+          package="com.tec.sopaletrassinonimosantonimos.app">
 
-    <!-- To access Google+ APIs: -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!--
- To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
-     option is required to comply with the Google+ Sign-In developer policies
-    -->
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <!-- To retrieve the account name (email) as part of sign-in: -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_sopa"
-        android:label="@string/app_name"
-        android:theme="@style/AppThemeNoActionBar">
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:theme="@style/AppThemeNoActionBar">
         <activity
-            android:name=".ActividadInicial"
-            android:label="@string/app_name">
+                android:name=".ActividadInicial"
+                android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegistrarCuenta"
-            android:label="@string/actividad_crearCuenta"
-            android:parentActivityName=".ActividadInicial"
-            android:theme="@style/AppTheme">
+                android:name=".RegistrarCuenta"
+                android:label="@string/actividad_crearCuenta"
+                android:parentActivityName=".ActividadInicial"
+                android:theme="@style/AppTheme">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tec.sopaletrassinonimosantonimos.app.ActividadInicial" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.tec.sopaletrassinonimosantonimos.app.ActividadInicial"/>
         </activity>
         <activity
-            android:name=".MenuPrincipal"
-            android:label="@string/actividad_menuPrincipal"
-            android:parentActivityName=".ActividadInicial"
-            android:theme="@style/AppTheme">
+                android:name=".MenuPrincipal"
+                android:label="@string/actividad_menuPrincipal"
+                android:parentActivityName=".ActividadInicial"
+                android:theme="@style/AppTheme">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tec.sopaletrassinonimosantonimos.app.ActividadInicial" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.tec.sopaletrassinonimosantonimos.app.ActividadInicial"/>
         </activity>
         <activity
-            android:name=".SeleccionDificultad"
-            android:label="@string/actividad_dificultadJuego"
-            android:parentActivityName=".MenuPrincipal"
-            android:theme="@style/AppTheme">
+                android:name=".SeleccionDificultad"
+                android:label="@string/actividad_dificultadJuego"
+                android:parentActivityName=".MenuPrincipal"
+                android:theme="@style/AppTheme">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
         </activity>
         <activity
-            android:name=".SeleccionTema"
-            android:label="@string/actividad_temaJuego"
-            android:parentActivityName=".SeleccionDificultad"
-            android:theme="@style/AppTheme">
+                android:name=".SeleccionTema"
+                android:label="@string/actividad_temaJuego"
+                android:parentActivityName=".SeleccionDificultad"
+                android:theme="@style/AppTheme">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tec.sopaletrassinonimosantonimos.app.SeleccionDificultad" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.tec.sopaletrassinonimosantonimos.app.SeleccionDificultad"/>
         </activity>
         <activity
-            android:name=".ResultadoJuego"
-            android:label="@string/actividad_resultadoJuego"
-            android:parentActivityName=".MenuPrincipal"
-            android:theme="@style/AppTheme">
+                android:name=".ResultadoJuego"
+                android:label="@string/actividad_resultadoJuego"
+                android:parentActivityName=".MenuPrincipal"
+                android:theme="@style/AppTheme">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
         </activity>
         <activity
-            android:name=".ActividadJuego"
-            android:parentActivityName=".MenuPrincipal">
+                android:name=".ActividadJuego"
+                android:parentActivityName=".MenuPrincipal">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
         </activity>
         <activity
-            android:name=".Resultados"
-            android:label="@string/title_activity_resultados"
-            android:parentActivityName=".MenuPrincipal"
-            android:theme="@style/AppTheme">
+                android:name=".Resultados"
+                android:label="@string/actividad_resultados"
+                android:parentActivityName=".MenuPrincipal"
+                android:theme="@style/AppTheme">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
         </activity>
         <activity
-            android:name=".Agradecimiento"
-            android:label="@string/title_activity_agradecimiento"
-            android:parentActivityName=".MenuPrincipal"
-            android:theme="@style/AppTheme">
+                android:name=".Agradecimiento"
+                android:label="@string/actividad_agradecimiento"
+                android:parentActivityName=".MenuPrincipal"
+                android:theme="@style/AppTheme">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
         </activity>
     </application>
 
