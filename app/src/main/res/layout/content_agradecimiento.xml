@@ -23,6 +23,7 @@
             android:layout_centerHorizontal="true"/>
 
     <TextView
+<<<<<<< HEAD
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Instituto Tecnologico de Costa Rica"
@@ -32,6 +33,17 @@
             android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="44dp"/>
+=======
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instituto Tecnológico de Costa Rica"
+        android:id="@+id/textView4"
+        android:textColor="#0b0b0b"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp" />
+>>>>>>> 0d2f76fcdb645ee7944e1d8a266559d4184455b3
 
     <TextView
             android:layout_width="wrap_content"
@@ -89,6 +101,7 @@
             android:layout_alignStart="@+id/textView5"/>
 
     <TextView
+<<<<<<< HEAD
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Arlyn Lopez"
@@ -98,6 +111,17 @@
             android:layout_below="@+id/textView9"
             android:layout_alignLeft="@+id/textView11"
             android:layout_alignStart="@+id/textView11"/>
+=======
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arlyn López"
+        android:id="@+id/textView10"
+        android:textColor="#0b0b0b"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView9"
+        android:layout_alignLeft="@+id/textView11"
+        android:layout_alignStart="@+id/textView11" />
+>>>>>>> 0d2f76fcdb645ee7944e1d8a266559d4184455b3
 
     <TextView
             android:layout_width="wrap_content"
