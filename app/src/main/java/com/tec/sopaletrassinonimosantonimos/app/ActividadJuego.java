@@ -3,6 +3,7 @@ package com.tec.sopaletrassinonimosantonimos.app;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -103,10 +104,10 @@ public class ActividadJuego extends Activity {
     int[] coordenadasBoton = encontrarCoordenadasBotonLetra(botonSeleccionado);
 
     if (coordenadasBoton == null) {
-      Toast.makeText(this, R.string.error_noSeleccionLetra, Toast.LENGTH_LONG).show();
+      Toast.makeText(this, R.string.error_letra_no_seleccionada, Toast.LENGTH_LONG).show();
     } else {
       if (revisaLetraYaSeleccionada(coordenadasBoton)) {
-        Toast.makeText(this, R.string.error_letraYaSeleccionada, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.error_letra_ya_seleccionada, Toast.LENGTH_SHORT).show();
       } else {
         buscarPalabraEnSopa(coordenadasBoton);
       }
@@ -114,7 +115,11 @@ public class ActividadJuego extends Activity {
   }
 
 
-  // TODO Llenar palabras objetivo en Activity
+  /**
+   * Inserta las palabras objetivo de la lógica de sopa de letras en TableLayout de Activity.
+   *
+   * @param palabras Lista de palabras objetivo que serán insertadas.
+   */
   private void llenarListaObjetivos(ArrayList<String> palabras) {
     TableLayout tabla = (TableLayout) findViewById(R.id.tablaPalabrasObjetivo);
     int cantidadPalabras = 8;
@@ -123,17 +128,46 @@ public class ActividadJuego extends Activity {
       cantidadPalabras = palabras.size();
     }
 
-    int numFila = 0;
-
     for (int contadorPalabra = 0; contadorPalabra < cantidadPalabras; contadorPalabra++) {
-      if (((contadorPalabra / 2) > 0) && ((contadorPalabra % 2) == 0)) {
-        ++numFila;
-      }
+      int numFila = (contadorPalabra / 2);
+      int numColumna = (contadorPalabra % 2);
+
       TableRow fila = (TableRow) tabla.getChildAt(numFila);
-      int columna = contadorPalabra % 2;
-      TextView texto = (TextView) fila.getChildAt(columna);
-      texto.setText(palabras.get(contadorPalabra));
+      TextView columna = (TextView) fila.getChildAt(numColumna);
+
+      columna.setText(palabras.get(contadorPalabra));
     }
+  }
+
+  /**
+   * Encuentra el TextView asociado a una palabra objetivo por medio de su índice.
+   *
+   * @param indice Posición de palabra objetivo en TableView
+   * @return TextView de palabra objetivo. Null si no pudo ser encontrado.
+   */
+  @Nullable
+  private TextView encontrarPalabraObjetivo(int indice) {
+    try {
+      int numFila = indice / 2;
+      int numColumna = indice % 2;
+
+      TableLayout tablaPalabrasObjetivo = (TableLayout) findViewById(R.id.tablaPalabrasObjetivo);
+      TableRow filaTabla = (TableRow) tablaPalabrasObjetivo.getChildAt(numFila);
+      return (TextView) filaTabla.getChildAt(numColumna);
+
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+  /**
+   * Tacha el texto de un TextView. Util para marcar las palabras objetivo cuya correspondiente ya
+   * fue encontrada en la sopa de letras.
+   *
+   * @param textoPalabra TextView que será alterado.
+   */
+  private void marcarPalabraObjetivo(TextView textoPalabra) {
+    textoPalabra.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
   }
 
 
@@ -272,9 +306,21 @@ public class ActividadJuego extends Activity {
   }
 
   /**
+   * Revisa si la sopa de letras ya fue completada y termina el juego de ser así.
+   */
+  private void verificarSopaCompletada() {
+    if (sopa.verificarSopaCompletada()) {
+      Log.d("juegoSopa", "Ya se completó la sopa de letras");
+      temporizador.onFinish();
+    }
+  }
+
+
+  /**
    * Verifica que los datos ingresados son válidos para generar una sopa de letras. Si se detecta un
    * datos inválido, se termina la Activity.
-   *  @param dificultad Dificultad del juego. Debe ser 1, 2 o 3 para validar la prueba.
+   *
+   * @param dificultad Dificultad del juego. Debe ser 1, 2 o 3 para validar la prueba.
    * @param tipoJuego  Tipo de juego. Debe ser A (Antónimos) o S (Sinónimos) para validar la
    */
   private void verificarDatos(int dificultad, char tipoJuego) {
@@ -365,15 +411,20 @@ public class ActividadJuego extends Activity {
 
           if (indicePalabra >= 0) {
             Log.d("juegoSopa", "Se pudo encontrar una palabra");
-            if (!sopa.palabraYaFueEncontrada(indicePalabra)) {
-              Log.d("juegoSopa", "Agregar puntos");
+            if (sopa.palabraYaFueEncontrada(indicePalabra)) {
+              Toast.makeText(this, R.string.error_palabra_ya_encontrada, Toast.LENGTH_SHORT).show();
+              marcarLetrasDisponibles(letrasSeleccionadas);
+            } else {
+              TextView palabraObjetivoLayout = encontrarPalabraObjetivo(indicePalabra);
+              marcarPalabraObjetivo(palabraObjetivoLayout);
+
               sopa.marcarPalabraComoEncontrada(indicePalabra);
               sopa.incrementarPuntuacion();
+
               actualizarPuntuacion();
               marcarLetrasUtilizadas(letrasSeleccionadas);
-            } else {
-              Toast.makeText(this, R.string.error_palabraYaEncontrada, Toast.LENGTH_SHORT).show();
-              marcarLetrasDisponibles(letrasSeleccionadas);
+
+              verificarSopaCompletada();
             }
             letrasSeleccionadas.clear();
             return;
@@ -408,11 +459,15 @@ public class ActividadJuego extends Activity {
   private void iniciarTemporizador() {
     try {
       temporizador = new CountDownTimer(tiempoInicial_ms, 100) {
+        int segundosRestantes = tiempoInicial_ms / 1000;
+
         @Override
         public void onTick(long millisUntilFinished) {
-          Long tiempo = millisUntilFinished;
-          Long minutos = (tiempo / 1000) / 60;
-          Long segundos = (tiempo / 1000) % 60;
+          segundosRestantes = (int) (millisUntilFinished / 1000);
+
+          // Minutos y segundos para Layout
+          int minutos = segundosRestantes / 60;
+          int segundos = segundosRestantes % 60;
 
           String strTiempo = String.format("%02d:%02d", minutos, segundos);
           textoTemporizador.setText(strTiempo);
@@ -420,7 +475,12 @@ public class ActividadJuego extends Activity {
 
         @Override
         public void onFinish() {
-          textoTemporizador.setText(R.string.temporizador_cero);
+          if (segundosRestantes < 1) {
+            textoTemporizador.setText(R.string.temporizador_default);
+          } else {
+            // Bono a puntuación por tiempo sobrante
+            sopa.agregarPuntosExtra(segundosRestantes);
+          }
           Toast.makeText(getApplicationContext(), R.string.alerta_finTiempo, Toast.LENGTH_LONG).show();
           finalizarJuego();
         }
@@ -477,7 +537,6 @@ public class ActividadJuego extends Activity {
     startActivity(intent);
   }
 
-
   /**
    * Se llena la matríz visual (GUI) con los datos de la matríz lógica.
    */
@@ -529,7 +588,7 @@ public class ActividadJuego extends Activity {
         boton.setBackground(getDrawable(identificadorFondo));
       }
     } catch (Resources.NotFoundException e) {
-      Toast.makeText(this, R.string.error_fondoBoton, Toast.LENGTH_LONG).show();
+      Toast.makeText(this, R.string.error_fondo_boton_no_existe, Toast.LENGTH_LONG).show();
     }
   }
 }

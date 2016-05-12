@@ -185,6 +185,27 @@ class SopaLetras {
     }
   }
 
+  /**
+   * Agrega puntos extra a la puntuación según el tiempo restante del juego.
+   *
+   * @param segundosRestantes Segundos restantes del juego.
+   */
+  void agregarPuntosExtra(int segundosRestantes) {
+    if (segundosRestantes > 0) {
+      switch (dificultad) {
+        case 3:               // Dificultad difícil
+          puntuacion += 20 * (segundosRestantes);
+          break;
+        case 2:               // Dificultad media
+          puntuacion += 10 * (segundosRestantes);
+          break;
+        default:              // Dificultad fácil/valor por defecto
+          puntuacion += 5 * (segundosRestantes);
+          break;
+      }
+    }
+  }
+
 
   /**
    * Busca una palabra en la sopa de letras.
@@ -546,7 +567,8 @@ class SopaLetras {
 
         // Selección de posición - Usa módulo 3:
         // 1 - Misma fila, 2 - Misma columna, 0 - Diferentes filas y columnas
-        int posicionCeldas = generadorRandom.nextInt(3);
+        int posicionCeldas = generadorRandom.nextInt(150) % 3;
+        Log.d("logicaSopa", "Inserción aleatoria: " + Integer.toString(posicionCeldas));
 
         if (posicionCeldas == 1) {
           puntoFinal[0] = puntoInicial[0];

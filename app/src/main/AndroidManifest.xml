@@ -72,7 +72,7 @@
         </activity>
         <activity
                 android:name=".Resultados"
-                android:label="@string/title_activity_resultados"
+                android:label="@string/actividad_resultados"
                 android:parentActivityName=".MenuPrincipal"
                 android:theme="@style/AppTheme">
             <meta-data
@@ -81,7 +81,7 @@
         </activity>
         <activity
                 android:name=".Agradecimiento"
-                android:label="@string/title_activity_agradecimiento"
+                android:label="@string/actividad_agradecimiento"
                 android:parentActivityName=".MenuPrincipal"
                 android:theme="@style/AppTheme">
             <meta-data
