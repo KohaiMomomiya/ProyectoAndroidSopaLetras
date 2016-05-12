@@ -12,148 +12,176 @@
                 tools:context="com.tec.sopaletrassinonimosantonimos.app.Agradecimiento"
                 tools:showIn="@layout/activity_agradecimiento">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Agradecimientos"
-            android:id="@+id/textView2"
-            android:textColor="#36aff1"
-            android:textSize="30dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
 
-    <TextView
-<<<<<<< HEAD
+    <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Instituto Tecnologico de Costa Rica"
-            android:id="@+id/textView4"
-            android:textColor="#0b0b0b"
-            android:textSize="20dp"
-            android:layout_below="@+id/textView2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="44dp"/>
-=======
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Instituto Tecnológico de Costa Rica"
-        android:id="@+id/textView4"
-        android:textColor="#0b0b0b"
-        android:textSize="20dp"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp" />
->>>>>>> 0d2f76fcdb645ee7944e1d8a266559d4184455b3
+            android:layout_height="wrap_content">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Parque La Libertad"
-            android:id="@+id/textView5"
-            android:textColor="#0b0b0b"
-            android:textSize="20dp"
-            android:layout_marginTop="48dp"
-            android:layout_below="@+id/textView4"
-            android:layout_centerHorizontal="true"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Profesora:"
-            android:id="@+id/textView6"
-            android:textColor="#0b0b0b"
-            android:textSize="20dp"
-            android:layout_marginTop="42dp"
-            android:layout_below="@+id/textView5"
-            android:layout_centerHorizontal="true"/>
+            <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Acerca de SINANTO"
+                    android:textColor="#36aff1"
+                    android:textSize="30dp"/>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Adriana Álvarez F"
-            android:id="@+id/textView7"
-            android:textColor="#0b0b0b"
-            android:textSize="20dp"
-            android:layout_below="@+id/textView6"
-            android:layout_centerHorizontal="true"/>
+            <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Tecnológico de Costa Rica"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Desarrolladores:"
-            android:id="@+id/textView8"
-            android:textColor="#0b0b0b"
-            android:textSize="20dp"
-            android:layout_marginTop="35dp"
-            android:layout_below="@+id/textView7"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView4"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Escuela de Ingeniería en Computación"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Esteban Fonseca"
-            android:id="@+id/textView9"
-            android:textColor="#0b0b0b"
-            android:textSize="20dp"
-            android:layout_below="@+id/textView8"
-            android:layout_alignLeft="@+id/textView5"
-            android:layout_alignStart="@+id/textView5"/>
+            <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView5"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Desarrollo de Aplicaciones Móviles"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
 
-    <TextView
-<<<<<<< HEAD
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Arlyn Lopez"
-            android:id="@+id/textView10"
-            android:textColor="#0b0b0b"
-            android:textSize="20dp"
-            android:layout_below="@+id/textView9"
-            android:layout_alignLeft="@+id/textView11"
-            android:layout_alignStart="@+id/textView11"/>
-=======
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Arlyn López"
-        android:id="@+id/textView10"
-        android:textColor="#0b0b0b"
-        android:textSize="20dp"
-        android:layout_below="@+id/textView9"
-        android:layout_alignLeft="@+id/textView11"
-        android:layout_alignStart="@+id/textView11" />
->>>>>>> 0d2f76fcdb645ee7944e1d8a266559d4184455b3
+            <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView6"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Desarrolladores:"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Daniel Pacheco"
-            android:id="@+id/textView11"
-            android:textColor="#0b0b0b"
-            android:textSize="20dp"
-            android:layout_below="@+id/textView10"
-            android:layout_alignLeft="@+id/textView9"
-            android:layout_alignStart="@+id/textView9"/>
+            <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView8"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Esteban Fonseca"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView"
-            android:background="@drawable/ic_tec"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/textView8"
-            android:layout_alignEnd="@+id/textView8"
-            android:layout_below="@+id/textView11"
-            android:layout_alignLeft="@+id/textView2"
-            android:layout_alignStart="@+id/textView2"/>
+            <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView9"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Arlyn Lopez"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
-            android:background="@drawable/ic_parque"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_toRightOf="@+id/imageView"
-            android:layout_alignTop="@+id/imageView"
-            android:layout_alignRight="@+id/textView9"
-            android:layout_alignEnd="@+id/textView9"/>
+            <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView10"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Daniel Pacheco"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
+
+            <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/textView8"
+                    android:layout_alignStart="@+id/textView8"
+                    android:layout_below="@+id/textView11"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Agradecimiento:"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
+
+            <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView12"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Parque La Libertad"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
+
+            <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView14"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Adriana Álvarez F"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
+
+            <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView7"
+                    android:layout_marginLeft="80dp"
+                    android:text="Profesora de Ingeniería en Computación ITCR"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
+
+            <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Descripción:"
+                    android:textColor="#0b0b0b"
+                    android:textSize="20dp"/>
+
+            <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView15"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="La aplicación consiste en una sopa de letras de antónimos y sinónimos que desafía al usuario no solo en el aspecto de conocimiento con respecto a los sinónimos y antónimos sino también en su habilidad para resolver sopas de letras.
+
+Esta va enfocada tanto a niños en su etapa escolar superior al tercer grado siendo este parte del tema de estudio, así como a adultos que disfruten de la resolución de las sopas en diferentes dificultades.
+
+Tiene un sistema de puntuación y un límite de tiempo que hacen de la experiencia todo un reto en cuanto a quien puede conseguir la mayor cantidad de puntos en el menor tiempo posible.
+
+El objetivo principal de la aplicación es mostrar el conocimiento del tema a través de un juego entretenido como es la resolución de sopas de letras."
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
 </RelativeLayout>
