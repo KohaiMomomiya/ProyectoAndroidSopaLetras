@@ -11,7 +11,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.42"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/titulo">
+            android:background="@drawable/sinanto_logo">
 
     </FrameLayout>
 
