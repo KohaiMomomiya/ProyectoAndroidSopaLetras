@@ -3,10 +3,20 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal">
     <item
-            android:id="@+id/menuopt_agradecimientos"
-            android:title="@string/actividad_agradecimientos"
-            android:icon="@android:drawable/ic_dialog_info"
-            android:orderInCategory="100"
-            android:onClick="verAgradecimientos"
-            app:showAsAction="never"/>
+        android:id="@+id/menuopt_agradecimientos"
+        android:title="@string/actividad_agradecimientos"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:orderInCategory="100"
+        android:onClick="verAgradecimientos"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menuopt_instrucciones"
+        android:title="Instrucciones"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:orderInCategory="100"
+        android:onClick="verInstrucciones"
+        app:showAsAction="never"/>
+
+
 </menu>

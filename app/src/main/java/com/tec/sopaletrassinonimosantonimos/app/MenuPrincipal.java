@@ -70,6 +70,11 @@ public class MenuPrincipal extends AppCompatActivity {
     startActivity(intent);
   }
 
+  public void verInstrucciones(MenuItem menuItem) {
+    Intent intent = new Intent(this, Instrucciones.class);
+    startActivity(intent);
+  }
+
 
   /**
    * Cierra la sesión actual
