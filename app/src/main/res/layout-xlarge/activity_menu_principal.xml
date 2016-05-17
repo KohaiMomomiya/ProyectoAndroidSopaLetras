@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              tools:context=".MenuPrincipal">
+
+    <FrameLayout
+            android:layout_width="348dp"
+            android:layout_height="165dp"
+            android:layout_weight="0.19"
+            android:background="@drawable/a5">
+
+    </FrameLayout>
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.30"/>
+
+    <Button
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            android:text="@string/boton_jugarAhora"
+            android:id="@+id/botonJugar"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.08"
+            android:onClick="jugarAhora"
+            style="@style/estiloBotonAzulClaro"
+        android:textSize="40dp" />
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"/>
+
+    <Button
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            android:text="@string/boton_resultados"
+            android:id="@+id/button2"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.08"
+            style="@style/estiloBotonAzulClaro"
+            android:onClick="verPuntuaciones"
+        android:textSize="40dp" />
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"/>
+
+    <Button
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            android:text="@string/boton_cerrarSesion"
+            android:id="@+id/button3"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.08"
+            android:onClick="cerrarSesionConBoton"
+            style="@style/estiloBotonRojo"
+        android:textSize="40dp" />
+</LinearLayout>

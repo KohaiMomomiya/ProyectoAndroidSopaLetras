@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context=".ActividadInicial"
+              android:background="#ffffff"
+    android:weightSum="1">
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="525dp"
+        android:layout_marginBottom="16dp"
+            android:background="@drawable/sinanto_logo"
+        android:layout_weight="0.14">
+
+    </FrameLayout>
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/campoLoginEMail"
+            android:hint="@string/etiqueta_correoElectronico"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:inputType="textEmailAddress"
+            style="@style/EstiloEditText"
+        android:layout_weight="0.06"
+        android:textSize="30dp" />
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:id="@+id/campoLoginPwd"
+            android:hint="@string/etiqueta_password"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif"
+            style="@style/EstiloEditText"
+            tools:ignore="UnusedAttribute"
+        android:layout_weight="0.07"
+        android:textSize="30dp" />
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+    <Button
+            android:layout_width="271dp"
+            android:layout_height="50dp"
+            android:text="@string/boton_ingresar"
+            android:id="@id/botonIngresar"
+            android:onClick="iniciarSesion"
+            style="@style/estiloBotonRojo"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.09"
+        android:textSize="40dp" />
+
+    <Button
+            android:layout_width="273dp"
+            android:layout_height="50dp"
+            android:text="@string/boton_registrarse"
+            android:id="@id/botonRegistrar"
+            android:onClick="registrarNuevoUsuario"
+            style="@style/estiloBotonRojo"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.09"
+        android:textSize="40dp" />
+
+</LinearLayout>
