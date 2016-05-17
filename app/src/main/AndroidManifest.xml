@@ -112,7 +112,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal" />
         </activity>
-        <activity android:name=".Instrucciones"></activity>
+        <activity
+            android:name=".Instrucciones"
+            android:label="Instrucciones"
+            android:parentActivityName=".MenuPrincipal"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            tools:ignore="UnusedAttribute">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal" />
+        </activity>
     </application>
 
 </manifest>
