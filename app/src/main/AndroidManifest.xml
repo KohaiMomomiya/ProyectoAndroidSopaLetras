@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.tec.sopaletrassinonimosantonimos.app">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
+    <supports-screens
+            android:resizeable="false"
+            android:smallScreens="false"
+            android:normalScreens="true"
+            android:largeScreens="true"
+            />
 
     <application
             android:allowBackup="true"
@@ -22,7 +30,8 @@
                 android:name=".RegistrarCuenta"
                 android:label="@string/actividad_crearCuenta"
                 android:parentActivityName=".ActividadInicial"
-                android:theme="@style/AppTheme">
+                android:theme="@style/AppTheme"
+                tools:ignore="UnusedAttribute">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.tec.sopaletrassinonimosantonimos.app.ActividadInicial"/>
@@ -31,7 +40,8 @@
                 android:name=".MenuPrincipal"
                 android:label="@string/actividad_menuPrincipal"
                 android:parentActivityName=".ActividadInicial"
-                android:theme="@style/AppTheme">
+                android:theme="@style/AppTheme"
+                tools:ignore="UnusedAttribute">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.tec.sopaletrassinonimosantonimos.app.ActividadInicial"/>
@@ -40,7 +50,8 @@
                 android:name=".SeleccionDificultad"
                 android:label="@string/actividad_dificultadJuego"
                 android:parentActivityName=".MenuPrincipal"
-                android:theme="@style/AppTheme">
+                android:theme="@style/AppTheme"
+                tools:ignore="UnusedAttribute">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
@@ -49,7 +60,8 @@
                 android:name=".SeleccionTema"
                 android:label="@string/actividad_temaJuego"
                 android:parentActivityName=".SeleccionDificultad"
-                android:theme="@style/AppTheme">
+                android:theme="@style/AppTheme"
+                tools:ignore="UnusedAttribute">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.tec.sopaletrassinonimosantonimos.app.SeleccionDificultad"/>
@@ -58,14 +70,16 @@
                 android:name=".ResultadoJuego"
                 android:label="@string/actividad_resultadoJuego"
                 android:parentActivityName=".MenuPrincipal"
-                android:theme="@style/AppTheme">
+                android:theme="@style/AppTheme"
+                tools:ignore="UnusedAttribute">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
         </activity>
         <activity
                 android:name=".ActividadJuego"
-                android:parentActivityName=".MenuPrincipal">
+                android:parentActivityName=".MenuPrincipal"
+                tools:ignore="UnusedAttribute">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
@@ -74,16 +88,18 @@
                 android:name=".Resultados"
                 android:label="@string/actividad_resultados"
                 android:parentActivityName=".MenuPrincipal"
-                android:theme="@style/AppTheme">
+                android:theme="@style/AppTheme"
+                tools:ignore="UnusedAttribute">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>
         </activity>
         <activity
                 android:name=".Agradecimiento"
-                android:label="@string/actividad_agradecimiento"
+                android:label="@string/actividad_agradecimientos"
                 android:parentActivityName=".MenuPrincipal"
-                android:theme="@style/AppTheme">
+                android:theme="@style/AppTheme"
+                tools:ignore="UnusedAttribute">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal"/>

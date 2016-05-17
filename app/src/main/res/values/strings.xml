@@ -2,18 +2,18 @@
     <string name="app_name" translatable="false">SINANTO</string>
 
     <string name="hello_world" translatable="false">Hello world!</string>
-
-    <!-- Etiquetas botones ActionBar -->
     <string name="action_settings">Ajustes</string>
 
     <!-- Etiquetas para campos de texto -->
     <string name="etiqueta_apellidos">Apellidos</string>
     <string name="etiqueta_correoElectronico">Correo Electrónico</string>
     <string name="etiqueta_nombre">Nombre</string>
-    <string name="etiqueta_palabraObjetivo"> </string>
+    <string name="etiqueta_palabraObjetivo">palabraObjetivo</string>
     <string name="etiqueta_password">Contraseña</string>
     <string name="etiqueta_puntuacionJuego">Puntuación:</string>
     <string name="etiqueta_verificarPassword">Confirmar Contraseña</string>
+    <string name="etiqueta_final_juego">¡Bien hecho!\nTu puntación fue:</string>
+    <string name="etiqueta_tiempo_restante">Tiempo:</string>
 
     <!-- Títulos de Actividades -->
     <string name="actividad_dificultadJuego">Dificultad</string>
@@ -22,7 +22,7 @@
     <string name="actividad_resultadoJuego">Resultado del Juego</string>
     <string name="actividad_temaJuego">Tema del juego</string>
     <string name="actividad_resultados">Resultados</string>
-    <string name="actividad_agradecimiento">Agradecimiento</string>
+    <string name="actividad_agradecimientos">Agradecimientos</string>
 
 
     <!-- Etiquetas de botones -->
@@ -30,6 +30,7 @@
     <string name="boton_ingresar">Ingresar</string>
     <string name="boton_jugarAhora">Jugar Ahora</string>
     <string name="boton_registrarse">Registrarse</string>
+    <string name="boton_cancelar_juego">Volver</string>
     <string name="boton_crearCuenta">Enviar</string>
     <string name="boton_resultados">Resultados</string>
     <string name="boton_volverAmenuPrincipal">Volver a Menu Principal</string>
@@ -41,45 +42,42 @@
     <string name="boton_dificultad_dificil">Difícil</string>
 
     <!-- Mensaje de notificación (Toast) -->
-    <string name="alerta_NombreVacio">Por favor ingrese su nombre</string>
-    <string name="alerta_ApellidosVacio">Por favor ingrese sus apellidos</string>
-    <string name="alerta_EmailVacio">Por favor ingrese su correo electrónico</string>
-    <string name="alerta_PwdVacio">Por favor ingrese su contraseña</string>
-    <string name="alerta_Pwd2Vacio">Por favor vuelva a ingresar su contraseña</string>
-    <string name="alerta_PwdsDiferentes">Las contraseñas ingresadas no coinciden</string>
-    <string name="alerta_cuentaCreada">Se ha creado la cuenta</string>
-    <string name="alerta_cuentaNoCreada">La cuenta no pudo ser creada</string>
-    <string name="alerta_EmailFormatoInvalido">
-        El correo electrónico ingresado no tiene un formato válido
-    </string>
-    <string name="alerta_finTiempo">Se ha terminado el tiempo</string>
+    <string name="alerta_FinTiempo">Se ha terminado el tiempo</string>
+    <string name="alerta_CuentaCreada">Se ha creado la cuenta</string>
 
-    <string name="texto_seleccioneDificultad">Seleccione la dificultad del juego</string>
-    <string name="texto_seleccioneTema">Seleccione el tema del juego</string>
+    <string name="texto_SeleccioneDificultad">Seleccione la dificultad del juego</string>
+    <string name="texto_SeleccioneTema">Seleccione el tema del juego</string>
 
-    <string name="error_iniciarJuego">No se puede iniciar el juego</string>
-    <string name="error_volverAJugar">No se puede volver a jugar. Regresando al menú principal…</string>
-    <string name="error_registroPuntuacion">No se pudo registrar la puntuación</string>
-    <string name="error_puntuacionResultado">No se pudo obtener la puntuación del juego</string>
-    <string name="error_dificultadNoDetectada">La dificultad no pudo ser reconocida</string>
-    <string name="error_usuarioPwd">El usuario o contraseña son incorrectos</string>
-    <string name="error_letra_no_seleccionada">Por favor seleccione una letra</string>
-    <string name="error_seleccioneLetraDeNuevo">Por favor selecciona la letra de nuevo</string>
-    <string name="error_palabra_ya_encontrada">La palabra ya fue encontrada</string>
-    <string name="error_fondo_boton_no_existe">No se puede modificar el fondo del botón</string>
-    <string name="error_letra_ya_seleccionada">Esta letra ya había sido seleccionada</string>
-
-    <string name="etiqueta_final_juego">¡Bien hecho!\nTu puntación fue:</string>
+    <string name="error_IniciarJuegoInvalido">No se puede iniciar el juego</string>
+    <string name="error_VolverAJugarInvalido">No se puede volver a jugar. Regresando al menú principal…</string>
+    <string name="error_PuntuacionNoRegistrada">No se pudo registrar la puntuación</string>
+    <string name="error_PuntuacionResultado">No se pudo obtener la puntuación del juego</string>
+    <string name="error_DificultadNoDetectada">La dificultad no pudo ser reconocida</string>
+    <string name="error_UsuarioPwdInvalidos">El usuario o contraseña son incorrectos</string>
+    <string name="error_LetraNoSeleccionada">Por favor seleccione una letra</string>
+    <string name="error_SelecioneLetraDeNuevo">Por favor selecciona la letra de nuevo</string>
+    <string name="error_PalabraYaEncontrada">La palabra ya fue encontrada</string>
+    <string name="error_FondoBotonInexistente">No se puede modificar el fondo del botón</string>
+    <string name="error_LetraYaSeleccionada">Esta letra ya había sido seleccionada</string>
+    <string name="error_NombreInvalido">Nombre inválido</string>
+    <string name="error_ApellidosInvalidos">Los apellidos ingresados no tienen formato válido</string>
+    <string name="error_eMailNoValido">El e-mail ingresado es inválido</string>
+    <string name="error_PwdInvalido">La contraseña ingresa es inválida</string>
+    <string name="error_NombreVacio">Por favor ingrese su nombre</string>
+    <string name="error_ApellidosVacio">Por favor ingrese sus apellidos</string>
+    <string name="error_eMailVacio">Por favor ingrese su correo electrónico</string>
+    <string name="error_PwdVacio">Por favor ingrese su contraseña</string>
+    <string name="error_Pwd2Vacio">Por favor vuelva a ingresar su contraseña</string>
+    <string name="error_PwdsDiferentes">Las contraseñas ingresadas no coinciden</string>
+    <string name="error_CuentaNoCreada">La cuenta no pudo ser creada</string>
 
     <string name="puntuacion_default" translatable="false">0</string>
     <string name="temporizador_default" translatable="false">00:00</string>
-
-    <string name="etiqueta_tiempo_restante">Tiempo:</string>
-    <string name="boton_cancelar_juego">Volver</string>
     <string name="celda_sopa_letras_default" translatable="false">\?</string>
-
-
-    <string name="action_about">Agradecimientos</string>
+    <string name="error_ConexionNoPosible">No se pudo conectar a Internet</string>
+    <string name="alerta_PuntuacionRegistrada">La puntuación obtenida fue registrada</string>
+    <string name="error_PuntuacionesNoDisponibles">No se pudieron obtener las puntuaciones</string>
+    <string name="toast_CierreSesion">Se ha cerrado la sesión</string>
 
 
 </resources>

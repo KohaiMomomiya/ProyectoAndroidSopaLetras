@@ -56,7 +56,7 @@ public class SeleccionTema extends AppCompatActivity {
   }
 
   private void notificarErrorDificultad() {
-    Toast.makeText(this, R.string.error_dificultadNoDetectada, Toast.LENGTH_LONG).show();
+    Toast.makeText(this, R.string.error_DificultadNoDetectada, Toast.LENGTH_LONG).show();
     Intent intent = new Intent(this, MenuPrincipal.class);
     intent.putExtra("Id", Id);
 

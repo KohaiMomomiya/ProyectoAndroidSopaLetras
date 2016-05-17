@@ -1,16 +1,21 @@
 package com.tec.sopaletrassinonimosantonimos.app;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Gravity;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.concurrent.ExecutionException;
+import java.util.ArrayList;
 
 public class Resultados extends AppCompatActivity {
 
@@ -18,45 +23,93 @@ public class Resultados extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_resultados);
-    getPuntajes();
+
+    ArrayList<String[]> puntuaciones = obtenerPuntuaciones();
+    if (puntuaciones != null) {
+      mostrarResultadosEnPantalla(puntuaciones);
+    } else {
+      onBackPressed();
+    }
   }
 
-  public void getPuntajes() {
+  @Nullable
+  private ArrayList<String[]> obtenerPuntuaciones() {
     try {
-      getDatos datos = new getDatos();
-      datos.setJson_url("http://proyectosopaletras.esy.es/selectPartidas.php");
-      String valores = datos.execute().get();
+      String urlPuntajes = "http://proyectosopaletras.esy.es/selectPartidas.php";
+      String valores = new SolicitanteWeb(this, urlPuntajes).execute().get();
+
       JSONObject objetoP = new JSONObject(valores);
       JSONArray listaPuntajes = objetoP.getJSONArray("Puntajes");
 
       TableLayout tabla = (TableLayout) findViewById(R.id.tablaPuntajes);
+      ArrayList<String[]> arrayListPuntajes = new ArrayList<String[]>();
 
-      for (int i = 0; i < listaPuntajes.length(); i++) {
-        TableRow fila = new TableRow(this);
-        TextView tv1 = new TextView(this);
-        tv1.setText(listaPuntajes.getJSONObject(i).getString("Nombre"));
-        tv1.setTextSize(20);
-        tv1.setLeft(20);
-        fila.addView(tv1);
-        TextView tvespacio = new TextView(this);
-        tvespacio.setText("         ");
-        fila.addView(tvespacio);
-        TextView tv2 = new TextView(this);
-        tv2.setText(listaPuntajes.getJSONObject(i).getString("Puntaje"));
-        tv2.setTextSize(20);
-        tv1.setLeft(20);
-        fila.addView(tv2);
-        tabla.addView(fila);
+
+      for (int indice = 0; indice < listaPuntajes.length(); indice++) {
+        try {
+          arrayListPuntajes.add(new String[]{
+              listaPuntajes.getJSONObject(indice).getString("Nombre"),
+              listaPuntajes.getJSONObject(indice).getString("Puntaje")
+          });
+        } catch (JSONException e) {
+          Log.e("Puntuaciones-", "Error en parsing de JSON, indice: " + Integer.toString(indice));
+        }
       }
 
-    } catch (InterruptedException e) {
+      return arrayListPuntajes;
+
+    } catch (Exception e) {
       e.printStackTrace();
-    } catch (ExecutionException e) {
-      e.printStackTrace();
-    } catch (JSONException e) {
-      e.printStackTrace();
+      Toast.makeText(this, R.string.error_PuntuacionesNoDisponibles, Toast.LENGTH_LONG).show();
+      return null;
     }
   }
 
+  private void mostrarResultadosEnPantalla(ArrayList<String[]> resultados) {
+    try {
+      TableLayout tableLayout = (TableLayout) findViewById(R.id.tablaPuntajes);
 
+
+      // Atributos para cada TableRow
+      TableRow.LayoutParams rowParams = new TableRow.LayoutParams
+          (TableRow.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT);
+
+      // Atributos para cada View en cada TableRow
+      TableRow.LayoutParams colParams = new TableRow.LayoutParams
+          (TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
+      colParams.weight = 1;
+
+
+      for (int fila = 0; fila < resultados.size(); fila++) {
+        String[] datosFila = resultados.get(fila);
+
+        TableRow tableRow = new TableRow(this);
+        tableRow.setLayoutParams(rowParams);
+
+
+        for (int columna = 0; columna < datosFila.length; columna++) {
+          TextView textView = new TextView(this);
+          textView.setText(datosFila[columna]);
+          textView.setLayoutParams(colParams);
+          textView.setGravity((columna > 0) ? Gravity.END : Gravity.START);
+
+          // Asigna color a textView según versión de Android
+          if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            textView.setTextAppearance(this, R.style.TextoPuntuacion);
+          } else {
+            textView.setTextAppearance(R.style.TextoPuntuacion);
+          }
+
+          tableRow.addView(textView, columna);
+        }
+
+        if (tableLayout != null) {
+          tableLayout.addView(tableRow, fila);
+        }
+      }
+    } catch (Exception e) {
+      Toast.makeText(this, R.string.error_PuntuacionesNoDisponibles, Toast.LENGTH_LONG).show();
+      onBackPressed();
+    }
+  }
 }

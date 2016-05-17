@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ActividadJuego extends Activity {
   private SopaLetras sopa;
@@ -63,7 +65,7 @@ public class ActividadJuego extends Activity {
     verificarDatos(dificultad, tipoJuego);
 
     try {
-      sopa = new SopaLetras(8, 10, dificultad, tipoJuego);
+      sopa = new SopaLetras(this, 8, 10, dificultad, tipoJuego);
       llenarMatrizGrafica();
       llenarMatrizActivity();
       llenarListaObjetivos(sopa.getPalabrasObjetivo());
@@ -78,6 +80,10 @@ public class ActividadJuego extends Activity {
 
   @Override
   public void onBackPressed() {
+    if (temporizador != null) {
+      temporizador.cancel();
+    }
+
     Intent intent = new Intent(this, MenuPrincipal.class);
     startActivity(intent);
     finish();
@@ -104,16 +110,15 @@ public class ActividadJuego extends Activity {
     int[] coordenadasBoton = encontrarCoordenadasBotonLetra(botonSeleccionado);
 
     if (coordenadasBoton == null) {
-      Toast.makeText(this, R.string.error_letra_no_seleccionada, Toast.LENGTH_LONG).show();
+      Toast.makeText(this, R.string.error_LetraNoSeleccionada, Toast.LENGTH_LONG).show();
     } else {
       if (revisaLetraYaSeleccionada(coordenadasBoton)) {
-        Toast.makeText(this, R.string.error_letra_ya_seleccionada, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.error_LetraYaSeleccionada, Toast.LENGTH_SHORT).show();
       } else {
         buscarPalabraEnSopa(coordenadasBoton);
       }
     }
   }
-
 
   /**
    * Inserta las palabras objetivo de la lógica de sopa de letras en TableLayout de Activity.
@@ -122,20 +127,39 @@ public class ActividadJuego extends Activity {
    */
   private void llenarListaObjetivos(ArrayList<String> palabras) {
     TableLayout tabla = (TableLayout) findViewById(R.id.tablaPalabrasObjetivo);
-    int cantidadPalabras = 8;
 
-    if (palabras.size() < cantidadPalabras) {
-      cantidadPalabras = palabras.size();
-    }
+    TableRow.LayoutParams paramsFila = new TableRow.LayoutParams
+        (TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
 
-    for (int contadorPalabra = 0; contadorPalabra < cantidadPalabras; contadorPalabra++) {
-      int numFila = (contadorPalabra / 2);
-      int numColumna = (contadorPalabra % 2);
+    TableRow.LayoutParams paramsTexto = new TableRow.LayoutParams
+        (TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+    paramsTexto.weight = 1;
 
-      TableRow fila = (TableRow) tabla.getChildAt(numFila);
-      TextView columna = (TextView) fila.getChildAt(numColumna);
+    TableRow row = new TableRow(this);
+    row.setLayoutParams(paramsFila);
 
-      columna.setText(palabras.get(contadorPalabra));
+    for (int cuenta = 0; cuenta < palabras.size(); cuenta++) {
+      TextView textView = new TextView(this);
+      textView.setText(palabras.get(cuenta));
+      textView.setGravity(Gravity.CENTER_HORIZONTAL);
+
+      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+        textView.setTextAppearance(this, R.style.PalabraObjetivo);
+      } else {
+        textView.setTextAppearance(R.style.PalabraObjetivo);
+      }
+
+      textView.setLayoutParams(paramsTexto);
+
+      if ((cuenta % 2) > 0) {
+        row.addView(textView, 1);
+        tabla.addView(row);
+
+        row = new TableRow(this);
+        row.setLayoutParams(paramsFila);
+      } else {
+        row.addView(textView, 0);
+      }
     }
   }
 
@@ -337,7 +361,7 @@ public class ActividadJuego extends Activity {
    * termina la Activity.
    */
   private void errorInicio() {
-    Toast.makeText(this, R.string.error_iniciarJuego, Toast.LENGTH_LONG).show();
+    Toast.makeText(this, R.string.error_IniciarJuegoInvalido, Toast.LENGTH_LONG).show();
     onBackPressed();
   }
 
@@ -360,20 +384,23 @@ public class ActividadJuego extends Activity {
       // Búsqueda en sopa de letras
       else {
         marcarLetrasDisponibles(letrasSeleccionadas);
-        int[] primeraLetra = letrasSeleccionadas.get(0);
 
-        // Traza una línea de puntos entre el primer y último punto seleccionados.
-        ArrayList<int[]> lineaLetras = sopa.trazarLineaCoordenadas(primeraLetra, ultimaLetra);
+        ArrayList<int[]> posibleLinea = null;
+        Iterator<int[]> iteradorListaActual = letrasSeleccionadas.iterator();
+
+        while (iteradorListaActual.hasNext() && (posibleLinea == null)) {
+          posibleLinea = sopa.trazarLineaCoordenadas(iteradorListaActual.next(), ultimaLetra);
+        }
 
         // No es posible trazar una línea de letras con la selección actual de letras.
         // Se inicia una nueva secuencia de letras.
-        if (lineaLetras == null) {
+        if (posibleLinea == null) {
           Log.d("juegoSopa", "No se puede formar una palabra");
           letrasSeleccionadas.clear();
           Button botonLetraSeleccionada = encontrarBotonLetra(ultimaLetra[0], ultimaLetra[1]);
 
           if (botonLetraSeleccionada == null) {
-            Toast.makeText(this, R.string.error_seleccioneLetraDeNuevo, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.error_SelecioneLetraDeNuevo, Toast.LENGTH_SHORT).show();
           } else {
             marcarLetraSeleccionada(botonLetraSeleccionada);
             letrasSeleccionadas.add(ultimaLetra);
@@ -384,8 +411,7 @@ public class ActividadJuego extends Activity {
         // Si la palabra no existe en la sopa, se dejan las letras como seleccionadas.
         else {
           Log.d("juegoSopa", "Se puede formar una palabra");
-          letrasSeleccionadas = lineaLetras;
-          marcarLetrasSeleccionadas(letrasSeleccionadas);
+          letrasSeleccionadas = posibleLinea;
           String[] combinaciones = sopa.obtenerPalabrasEnTrazo(letrasSeleccionadas);
           buscarCombinacionesLetrasEnSopa(combinaciones);
         }
@@ -406,13 +432,15 @@ public class ActividadJuego extends Activity {
   private void buscarCombinacionesLetrasEnSopa(String[] combinaciones) {
     try {
       if (combinaciones != null) {
+        boolean posibleCombinacion = false;
+
         for (String combinacion : combinaciones) {
           int indicePalabra = sopa.buscarPalabra(combinacion);
 
           if (indicePalabra >= 0) {
             Log.d("juegoSopa", "Se pudo encontrar una palabra");
             if (sopa.palabraYaFueEncontrada(indicePalabra)) {
-              Toast.makeText(this, R.string.error_palabra_ya_encontrada, Toast.LENGTH_SHORT).show();
+              Toast.makeText(this, R.string.error_PalabraYaEncontrada, Toast.LENGTH_SHORT).show();
               marcarLetrasDisponibles(letrasSeleccionadas);
             } else {
               TextView palabraObjetivoLayout = encontrarPalabraObjetivo(indicePalabra);
@@ -428,8 +456,22 @@ public class ActividadJuego extends Activity {
             }
             letrasSeleccionadas.clear();
             return;
+          } else {
+            if (sopa.hayPosiblePalabra(combinacion)) {
+              Log.d("juegoSopa", "Se encontró parte de una posible palabra.");
+              if (!posibleCombinacion) {
+                posibleCombinacion = true;
+              }
+            }
           }
         }
+
+        if (!posibleCombinacion) {
+          int[] ultimaLetra = letrasSeleccionadas.get(letrasSeleccionadas.size() - 1);
+          letrasSeleccionadas.clear();
+          letrasSeleccionadas.add(ultimaLetra);
+        }
+        marcarLetrasSeleccionadas(letrasSeleccionadas);
       }
     } catch (Exception e) {
       Log.e("error_activity", e.getMessage());
@@ -481,7 +523,7 @@ public class ActividadJuego extends Activity {
             // Bono a puntuación por tiempo sobrante
             sopa.agregarPuntosExtra(segundosRestantes);
           }
-          Toast.makeText(getApplicationContext(), R.string.alerta_finTiempo, Toast.LENGTH_LONG).show();
+          Toast.makeText(getApplicationContext(), R.string.alerta_FinTiempo, Toast.LENGTH_LONG).show();
           finalizarJuego();
         }
       };
@@ -588,7 +630,7 @@ public class ActividadJuego extends Activity {
         boton.setBackground(getDrawable(identificadorFondo));
       }
     } catch (Resources.NotFoundException e) {
-      Toast.makeText(this, R.string.error_fondo_boton_no_existe, Toast.LENGTH_LONG).show();
+      Toast.makeText(this, R.string.error_FondoBotonInexistente, Toast.LENGTH_LONG).show();
     }
   }
 }

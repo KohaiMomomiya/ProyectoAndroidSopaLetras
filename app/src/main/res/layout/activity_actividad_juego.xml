@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clickable="false"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.tec.sopaletrassinonimosantonimos.app.ActividadJuego">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:keepScreenOn="true"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="com.tec.sopaletrassinonimosantonimos.app.ActividadJuego">
 
     <TextView
-        android:id="@id/etiqueta_puntuacionJuego"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/botonSalirJuego"
-        android:layout_centerHorizontal="true"
-        android:text="@string/etiqueta_puntuacionJuego"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@id/etiqueta_puntuacionJuego"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/etiqueta_puntuacionJuego"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignTop="@+id/botonSalirJuego"/>
 
     <TextView
             android:id="@id/puntuacionJuego"
@@ -25,11 +26,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignTop="@id/etiqueta_puntuacionJuego"
+            android:layout_alignBottom="@id/etiqueta_puntuacionJuego"
             android:gravity="end"
             android:textColor="@android:color/widget_edittext_dark"
             android:text="@string/puntuacion_default"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_toRightOf="@id/etiqueta_puntuacionJuego"
+            android:layout_toEndOf="@id/etiqueta_puntuacionJuego"
+            android:layout_alignTop="@id/etiqueta_puntuacionJuego"/>
 
     <TextView
             android:id="@+id/etiqueta_tiempoRestanteSopaLetras"
@@ -37,11 +41,12 @@
             android:layout_height="wrap_content"
             android:text="@string/etiqueta_tiempo_restante"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_alignBottom="@+id/botonSalirJuego"
             android:layout_alignLeft="@id/etiqueta_puntuacionJuego"
             android:layout_alignStart="@id/etiqueta_puntuacionJuego"
             android:layout_alignRight="@id/etiqueta_puntuacionJuego"
-            android:layout_alignEnd="@id/etiqueta_puntuacionJuego"/>
+            android:layout_alignEnd="@id/etiqueta_puntuacionJuego"
+            android:layout_alignTop="@+id/temporizadorJuego"
+            android:layout_alignBottom="@+id/temporizadorJuego"/>
 
     <TextView
             android:id="@+id/temporizadorJuego"
@@ -49,10 +54,14 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/widget_edittext_dark"
             android:text="@string/temporizador_default"
+            android:gravity="end"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_alignBottom="@+id/etiqueta_tiempoRestanteSopaLetras"
+            android:layout_below="@id/etiqueta_puntuacionJuego"
+            android:layout_toRightOf="@id/etiqueta_tiempoRestanteSopaLetras"
+            android:layout_toEndOf="@id/etiqueta_tiempoRestanteSopaLetras"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignBottom="@+id/botonSalirJuego"/>
 
     <Button
             android:id="@+id/botonSalirJuego"
@@ -92,88 +101,97 @@
 
             <Button
                     android:id="@+id/button"
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:tag="disponible"
                     android:text="@string/celda_sopa_letras_default"
                     android:onClick="seleccionarLetra"/>
+
             <Button
                     android:id="@+id/button2"
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:tag="disponible"
                     android:text="@string/celda_sopa_letras_default"
                     android:onClick="seleccionarLetra"/>
+
             <Button
                     android:id="@+id/button3"
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:tag="disponible"
                     android:text="@string/celda_sopa_letras_default"
                     android:onClick="seleccionarLetra"/>
+
             <Button
                     android:id="@+id/button4"
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="3"
                     android:tag="disponible"
                     android:text="@string/celda_sopa_letras_default"
                     android:onClick="seleccionarLetra"/>
+
             <Button
                     android:id="@+id/button5"
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="4"
                     android:tag="disponible"
                     android:text="@string/celda_sopa_letras_default"
                     android:onClick="seleccionarLetra"/>
+
             <Button
                     android:id="@+id/button6"
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="5"
                     android:tag="disponible"
                     android:text="@string/celda_sopa_letras_default"
                     android:onClick="seleccionarLetra"/>
+
             <Button
                     android:id="@+id/button7"
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="6"
                     android:tag="disponible"
                     android:text="@string/celda_sopa_letras_default"
                     android:onClick="seleccionarLetra"/>
+
             <Button
                     android:id="@+id/button8"
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="7"
                     android:tag="disponible"
                     android:text="@string/celda_sopa_letras_default"
                     android:onClick="seleccionarLetra"/>
+
             <Button
                     android:id="@+id/button9"
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="8"
                     android:tag="disponible"
                     android:text="@string/celda_sopa_letras_default"
                     android:onClick="seleccionarLetra"/>
+
             <Button
                     android:id="@+id/button10"
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="9"
@@ -190,7 +208,7 @@
                 android:gravity="center|fill">
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -200,7 +218,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -210,7 +228,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -220,7 +238,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -230,7 +248,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -240,7 +258,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -250,7 +268,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -260,7 +278,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -270,7 +288,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -280,7 +298,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -297,7 +315,7 @@
                 android:gravity="center|fill">
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -307,7 +325,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -317,7 +335,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button23"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -327,7 +345,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -337,7 +355,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button25"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -347,7 +365,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button26"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -357,7 +375,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button27"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -367,7 +385,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button28"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -377,7 +395,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button29"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -387,7 +405,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -404,7 +422,7 @@
                 android:gravity="center|fill">
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button31"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -414,7 +432,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -424,7 +442,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button33"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -434,7 +452,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button34"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -444,7 +462,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button35"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -454,7 +472,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button36"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -464,7 +482,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button37"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -474,7 +492,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button38"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -484,7 +502,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button39"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -494,7 +512,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button40"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -511,7 +529,7 @@
                 android:gravity="center|fill">
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button41"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -521,7 +539,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button42"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -531,7 +549,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button43"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -541,7 +559,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button44"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -551,7 +569,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button45"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -561,7 +579,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button46"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -571,7 +589,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button47"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -581,7 +599,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button48"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -591,7 +609,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button49"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -601,7 +619,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button50"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -618,7 +636,7 @@
                 android:gravity="center|fill">
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button51"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -628,7 +646,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button52"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -638,7 +656,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button53"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -648,7 +666,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button54"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -658,7 +676,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button55"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -668,7 +686,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button56"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -678,7 +696,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button57"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -688,7 +706,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button58"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -698,7 +716,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button59"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -708,7 +726,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button60"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -725,7 +743,7 @@
                 android:gravity="center|fill">
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button61"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -735,7 +753,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button62"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -745,7 +763,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button63"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -755,7 +773,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button64"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -765,7 +783,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button65"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -775,7 +793,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button66"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -785,7 +803,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button67"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -795,7 +813,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button68"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -805,7 +823,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button69"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -815,7 +833,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button70"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -832,7 +850,7 @@
                 android:gravity="center|fill">
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button71"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -842,7 +860,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button72"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -852,7 +870,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button73"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -862,7 +880,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button74"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -872,7 +890,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button75"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -882,7 +900,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button76"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -892,7 +910,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button77"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -902,7 +920,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button78"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -912,7 +930,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button79"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -922,7 +940,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button80"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -939,7 +957,7 @@
                 android:gravity="center|fill">
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button81"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -949,7 +967,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button82"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -959,7 +977,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button83"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -969,7 +987,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button84"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -979,7 +997,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button85"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -989,7 +1007,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button86"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -999,7 +1017,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button87"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1009,7 +1027,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button88"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1019,7 +1037,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button89"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1029,7 +1047,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button90"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1046,7 +1064,7 @@
                 android:gravity="center|fill">
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button91"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1056,7 +1074,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button92"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1066,7 +1084,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button93"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1076,7 +1094,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button94"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1086,7 +1104,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button95"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1096,7 +1114,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button96"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1106,7 +1124,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button97"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1116,7 +1134,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button98"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1126,7 +1144,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button99"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1136,7 +1154,7 @@
                     android:onClick="seleccionarLetra"/>
 
             <Button
-                    style="@style/EstiloCeldasSopaLetras"
+                    style="@style/CeldaSopaLetras"
                     android:id="@+id/button100"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1149,8 +1167,8 @@
     </TableLayout>
 
     <Space
-            android:layout_width="20dp"
-            android:layout_height="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
             android:layout_below="@+id/matrizSopa"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -1160,98 +1178,18 @@
 
     <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/space2"
+
             android:id="@+id/tablaPalabrasObjetivo"
             android:stretchColumns="2"
-            android:layout_below="@+id/space2"
+
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-        <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:id="@+id/palabra1"
-                    android:text="@string/etiqueta_palabraObjetivo"
-                    style="@style/EstiloPalabraObjetivoSopa"/>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:id="@+id/palabra2"
-                    android:text="@string/etiqueta_palabraObjetivo"
-                    style="@style/EstiloPalabraObjetivoSopa"/>
-
-        </TableRow>
-
-        <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <TextView
-                    style="@style/EstiloPalabraObjetivoSopa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:id="@+id/textView12"
-                    android:text="@string/etiqueta_palabraObjetivo"/>
-
-            <TextView
-                    style="@style/EstiloPalabraObjetivoSopa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:id="@+id/textView13"
-                    android:text="@string/etiqueta_palabraObjetivo"/>
-        </TableRow>
-
-        <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <TextView
-                    style="@style/EstiloPalabraObjetivoSopa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:id="@+id/textView14"
-                    android:text="@string/etiqueta_palabraObjetivo"/>
-
-            <TextView
-                    style="@style/EstiloPalabraObjetivoSopa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:id="@+id/textView15"
-                    android:text="@string/etiqueta_palabraObjetivo"/>
-        </TableRow>
-
-        <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <TextView
-                    style="@style/EstiloPalabraObjetivoSopa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:id="@+id/textView16"
-                    android:text="@string/etiqueta_palabraObjetivo"/>
-
-            <TextView
-                    style="@style/EstiloPalabraObjetivoSopa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:id="@+id/textView17"
-                    android:text="@string/etiqueta_palabraObjetivo"/>
-        </TableRow>
-
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            >
     </TableLayout>
 
 </RelativeLayout>

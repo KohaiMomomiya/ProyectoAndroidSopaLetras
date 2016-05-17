@@ -1,5 +1,6 @@
 package com.tec.sopaletrassinonimosantonimos.app;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -23,8 +24,9 @@ class SopaLetras {
 
   @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
   private ArrayList<String> palabrasObjetivo;           // Palabras a buscar
-  private ArrayList<String> palabrasCorrespondientes;   // Sinónimos/Antónimos de las palabras buscadas.
-  private ArrayList<Boolean> indicadoresPalabras;
+  private ArrayList<String> palabrasCorrespondientes;   // Sinónimos/Antónimos
+  private ArrayList<Boolean> indicadoresPalabras;       // Indicadores de palabras encontradas
+  private Context context;
 
   @SuppressWarnings("CanBeFinal")
   private char[][] matrizLetras;
@@ -33,15 +35,17 @@ class SopaLetras {
 
 
   /**
-   * Constructor de objeto.
-   *
-   * @param cantPalabras     Cantidad de palabras en la matríz.
-   * @param longitudDiagonal Define la cantidad de filas y columnas en la matríz.
-   * @param dificultad       Grado de dificultad de la matríz.
-   * @param tipoJuego        Tipo de juego de la matríz: Sinónimos/Antónimos.
+   * Constructor de clase
+   * @param context Context instanciante
+   * @param cantPalabras Cantidad de palabras a buscar
+   * @param longitudDiagonal Longitud de diagonal de la matríz (tamaño de lados)
+   * @param dificultad Dificultad del juego
+   * @param tipoJuego Tipo de palabras a buscar
+   * @throws RuntimeException
    */
-  SopaLetras(int cantPalabras, int longitudDiagonal, int dificultad, char tipoJuego)
-      throws RuntimeException {
+  SopaLetras(Context context, int cantPalabras, int longitudDiagonal,
+             int dificultad, char tipoJuego) throws RuntimeException {
+    this.context = context;
     this.longitudDiagonal = longitudDiagonal;
     this.cantPalabras = cantPalabras;
     this.dificultad = dificultad;
@@ -699,13 +703,9 @@ class SopaLetras {
     String numPalabras = Integer.toString(cantPalabras);
 
     try {
-      getDatos datos = new getDatos();
-      datos.setJson_url("http://proyectosopaletras.esy.es/selectPalabras.php?" +
-          "juego=" + juego +
-          "&dificultad=" + nivel +
-          "&limite=" + numPalabras);
-
-      String valores = datos.execute().get();
+      String urlPalabras = "http://proyectosopaletras.esy.es/selectPalabras.php?"
+          + "juego=" + juego + "&dificultad=" + nivel + "&limite=" + numPalabras;
+      String valores = new SolicitanteWeb(context, urlPalabras).execute().get();
 
       JSONObject objetoPrincipal = new JSONObject(valores);
       JSONArray lista = objetoPrincipal.getJSONArray("Palabras");
@@ -738,5 +738,20 @@ class SopaLetras {
       e.printStackTrace();
     }
     return null;
+  }
+
+  /**
+   * Revisa si la palabra ingresada puede ser una parte de una palabra correspondiente.
+   *
+   * @param palabra Palabra ingresada.
+   * @return Resultado de búsqueda.
+   */
+  boolean hayPosiblePalabra(String palabra) {
+    for (String correspondiente : palabrasCorrespondientes) {
+      if (correspondiente.toUpperCase().contains(palabra)) {
+        return true;
+      }
+    }
+    return false;
   }
 }

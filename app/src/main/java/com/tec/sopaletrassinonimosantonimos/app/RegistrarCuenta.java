@@ -45,14 +45,14 @@ public class RegistrarCuenta extends AppCompatActivity {
 
     if (verificarDatosIngresados(strNombre, strApellidos, strEmail, strPwd, strVerificarPwd)) {
       try {
-        getDatos datos = new getDatos();
-        datos.setJson_url("http://proyectosopaletras.esy.es/registrarUsuario.php?" +
+        String urlRegistrarUsuario = "http://proyectosopaletras.esy.es/registrarUsuario.php?" +
             "nombre='" + strNombre + "%20" + strApellidos + "'" +
             "&correo='" + strEmail + "'" +
-            "&contrasena='" + strPwd + "'");
-        String resultado = datos.execute().get();
-        if (resultado.equals("New record created successfully")) {
-          Toast.makeText(this, R.string.alerta_cuentaCreada, Toast.LENGTH_LONG).show();
+            "&contrasena='" + strPwd + "'";
+        String resultados = new SolicitanteWeb(this, urlRegistrarUsuario).execute().get();
+
+        if (resultados.equals("New record created successfully")) {
+          Toast.makeText(this, R.string.alerta_CuentaCreada, Toast.LENGTH_LONG).show();
           finish();
         } else {
           Toast.makeText(this, "La cuenta no pudo ser creada.", Toast.LENGTH_LONG).show();
@@ -67,33 +67,47 @@ public class RegistrarCuenta extends AppCompatActivity {
 
   private boolean verificarDatosIngresados(String nombre, String apellidos, String eMail,
                                            String pwd, String pwd2) {
-    if (nombre.isEmpty()) {
-      Toast toast = Toast.makeText(this, R.string.alerta_NombreVacio, Toast.LENGTH_LONG);
-      toast.show();
+    ValidacionDatosUsuario validadorEntradas = new ValidadorDatosUsuarioApp();
+
+    if (!validadorEntradas.validarNombre(nombre)) {
+      if (nombre.isEmpty()) {
+        Toast.makeText(this, R.string.error_NombreVacio, Toast.LENGTH_LONG).show();
+      } else {
+        Toast.makeText(this, R.string.error_NombreInvalido, Toast.LENGTH_LONG).show();
+      }
       return false;
     }
-    if (apellidos.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_ApellidosVacio, Toast.LENGTH_LONG).show();
+    if (!validadorEntradas.validarNombre(apellidos)) {
+      if (apellidos.isEmpty()) {
+        Toast.makeText(this, R.string.error_ApellidosVacio, Toast.LENGTH_LONG).show();
+      } else {
+        Toast.makeText(this, R.string.error_ApellidosInvalidos, Toast.LENGTH_LONG).show();
+      }
       return false;
     }
-    if (eMail.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_EmailVacio, Toast.LENGTH_LONG).show();
+    if (!validadorEntradas.validarEmail(eMail)) {
+      if (eMail.isEmpty()) {
+        Toast.makeText(this, R.string.error_eMailVacio, Toast.LENGTH_LONG).show();
+      } else {
+        Toast.makeText(this, R.string.error_eMailNoValido, Toast.LENGTH_LONG).show();
+      }
       return false;
     }
-    if (!eMail.contains("@")) {
-      Toast.makeText(this, R.string.alerta_EmailFormatoInvalido, Toast.LENGTH_LONG).show();
-      return false;
-    }
-    if (pwd.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_PwdVacio, Toast.LENGTH_LONG).show();
+
+    if (!validadorEntradas.validarPwd(pwd)) {
+      if (pwd.isEmpty()) {
+        Toast.makeText(this, R.string.error_PwdVacio, Toast.LENGTH_LONG).show();
+      } else {
+        Toast.makeText(this, R.string.error_PwdInvalido, Toast.LENGTH_LONG).show();
+      }
       return false;
     }
     if (pwd2.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_Pwd2Vacio, Toast.LENGTH_LONG).show();
+      Toast.makeText(this, R.string.error_Pwd2Vacio, Toast.LENGTH_LONG).show();
       return false;
     }
     if (!pwd.contentEquals(pwd2)) {
-      Toast.makeText(this, R.string.alerta_PwdsDiferentes, Toast.LENGTH_LONG).show();
+      Toast.makeText(this, R.string.error_PwdsDiferentes, Toast.LENGTH_LONG).show();
       return false;
     } else {
       return true;

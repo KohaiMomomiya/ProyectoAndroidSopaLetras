@@ -1,4 +1,4 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
     <!-- Botones Rojos -->
     <style name="estiloBotonRojo" parent="Widget.AppCompat.Button">
         <item name="android:layout_gravity">center</item>
@@ -19,6 +19,34 @@
         <item name="android:textSize">20sp</item>
         <item name="android:background">@drawable/botonazulclaro_esquinasredondas</item>
         <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="EstiloEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">#ADADAD</item>
+        <item name="android:textColor">@android:color/widget_edittext_dark</item>
+        <item name="android:textColorHint">#ADADAD</item>
+    </style>
+
+    <style name="CeldaSopaLetras" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:minHeight">32dp</item>
+        <item name="android:minWidth">32dp</item>
+
+        <item name="android:background">@drawable/letra_sopa</item>
+    </style>
+
+    <style name="TextoPuntuacion">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/azulClaroUI</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="PalabraObjetivo">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/grisPalabras</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_horizontal</item>
     </style>
 
     <style name="ActionBarAzulClaro" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -43,27 +71,7 @@
         <item name="colorAccent">@color/azulClaroUI</item>
     </style>
 
-    <style name="EstiloEditText" parent="Widget.AppCompat.EditText">
-        <item name="colorControlNormal">#ADADAD</item>
-        <item name="android:textColor">@android:color/widget_edittext_dark</item>
-        <item name="android:textColorHint">#ADADAD</item>
-    </style>
+    <style name="AppThemeNoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="EstiloCeldasSopaLetras" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:minHeight">32dp</item>
-        <item name="android:minWidth">32dp</item>
-
-        <item name="android:background">@drawable/letra_sopa</item>
-    </style>
-
-    <style name="EstiloPalabraObjetivoSopa">
-        <item name="android:color">@color/grisPalabras</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:gravity">center_horizontal</item>
-    </style>
-
-    <style name="AppThemeNoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppThemeNoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppThemeNoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 </resources>

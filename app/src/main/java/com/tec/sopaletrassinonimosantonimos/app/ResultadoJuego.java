@@ -3,14 +3,15 @@ package com.tec.sopaletrassinonimosantonimos.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ResultadoJuego extends AppCompatActivity {
-  String Id;
-  String puntaje;
-  private TextView textoResultadoPuntuacion;
+  private String Id;
+  private String puntaje;
+
   private int dificultad;  // 1 : Fácil, 2 : Media, 3 : Difícil
   private char tipoJuego;  // A : Antónimos, S : Sinónimos
 
@@ -20,7 +21,6 @@ public class ResultadoJuego extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_resultado_juego);
 
-    TextView textoResultadoPuntuacion = (TextView) findViewById(R.id.textoResultadoPuntuacion);
     tipoJuego = '-';
     dificultad = '-';
 
@@ -32,7 +32,7 @@ public class ResultadoJuego extends AppCompatActivity {
       Bundle extras = getIntent().getExtras();
       if ((extras != null) && (extras.containsKey("puntuacion"))) {
         puntaje = Integer.toString(extras.getInt("puntuacion"));
-        textoResultadoPuntuacion.setText(puntaje);
+        verPuntuacionEnPantalla();
         registrarPuntuacion();
       }
       if ((extras != null) && (extras.containsKey("dificultad"))) {
@@ -44,20 +44,33 @@ public class ResultadoJuego extends AppCompatActivity {
     }
   }
 
-  private void registrarPuntuacion() {
-    try{
-      getDatos datos = new getDatos();
-      datos.setJson_url("http://proyectosopaletras.esy.es/registrarPuntuacion.php?" +
-              "id="+Id+
-              "&puntuacion="+puntaje);
-      String valores = datos.execute().get();
-      if(valores.equals("New record created successfully")){
-        Toast.makeText(this,"Puntuacion registrada con exito", Toast.LENGTH_LONG).show();
-      }else{
-        Toast.makeText(this,"No se pudo registrar la puntuacion", Toast.LENGTH_LONG).show();
+  private void verPuntuacionEnPantalla() {
+    try {
+      TextView textView = (TextView) findViewById(R.id.textoResultadoPuntuacion);
+      if (textView != null) {
+        textView.setText(this.puntaje);
+      } else {
+        throw new Exception();
       }
     } catch (Exception e) {
-      Toast.makeText(this, "No se pudo registrar la puntuacion", Toast.LENGTH_LONG).show();
+      Log.e("resultadoJuego-", "Puntuación no puede mostrarse en Activity");
+    }
+  }
+
+  private void registrarPuntuacion() {
+    try {
+      String urlRegistro = "http://proyectosopaletras.esy.es/registrarPuntuacion.php?"
+          + "id=" + Id + "&puntuacion=" + puntaje;
+
+      String valores = new SolicitanteWeb(this, urlRegistro).execute().get();
+
+      if (valores.equals("New record created successfully")) {
+        Toast.makeText(this, R.string.alerta_PuntuacionRegistrada, Toast.LENGTH_LONG).show();
+      } else {
+        throw new Exception();
+      }
+    } catch (Exception e) {
+      Toast.makeText(this, R.string.error_PuntuacionNoRegistrada, Toast.LENGTH_LONG).show();
     }
   }
 
@@ -85,7 +98,7 @@ public class ResultadoJuego extends AppCompatActivity {
   }
 
   private void errorVolverAJugar() {
-    Toast.makeText(this, R.string.error_volverAJugar, Toast.LENGTH_LONG).show();
+    Toast.makeText(this, R.string.error_VolverAJugarInvalido, Toast.LENGTH_LONG).show();
     onBackPressed();
   }
 }

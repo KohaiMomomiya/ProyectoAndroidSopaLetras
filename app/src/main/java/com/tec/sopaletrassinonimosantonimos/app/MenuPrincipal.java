@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class MenuPrincipal extends AppCompatActivity {
 
@@ -42,12 +43,6 @@ public class MenuPrincipal extends AppCompatActivity {
     // automatically handle clicks on the Home/Up button, so long
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
-    
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
-    }
-    
     return super.onOptionsItemSelected(item);
   }
 
@@ -62,7 +57,7 @@ public class MenuPrincipal extends AppCompatActivity {
     startActivity(intent);
   }
 
-  public void puntajes(View view) {
+  public void verPuntuaciones(View view) {
     Intent intent = new Intent(this, Resultados.class);
     startActivity(intent);
   }
@@ -76,9 +71,12 @@ public class MenuPrincipal extends AppCompatActivity {
   }
 
 
-  // Cierra la sesión actual
-  public void cerrarSesion() {
+  /**
+   * Cierra la sesión actual
+   */
+  private void cerrarSesion() {
     Intent intent = new Intent(this, ActividadInicial.class);
+    Toast.makeText(this, R.string.toast_CierreSesion, Toast.LENGTH_LONG).show();
     finish();
     startActivity(intent);
   }

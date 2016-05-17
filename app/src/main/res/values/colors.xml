@@ -3,9 +3,9 @@
     <color name="rojoUI">#D03231</color>
     <color name="azulClaroUI">#0CADFF</color>
     <color name="azulOscuroUI">#096493</color>
-    <color name="primary_dark_material_dark">#000000</color>
+    <color name="negro">#000000</color>
     <color name="celdaSeleccionada">#99b457</color>
     <color name="celdaUtilizada">#80b6cc</color>
     <color name="blanco">@android:color/white</color>
-    <color name="grisPalabras">#99999999</color>
+    <color name="grisPalabras">#AA888888</color>
 </resources>

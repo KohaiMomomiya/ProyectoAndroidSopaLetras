@@ -3,8 +3,8 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.tec.sopaletrassinonimosantonimos.app.MenuPrincipal">
     <item
-            android:id="@+id/action_settings"
-            android:title="@string/action_about"
+            android:id="@+id/menuopt_agradecimientos"
+            android:title="@string/actividad_agradecimientos"
             android:icon="@android:drawable/ic_dialog_info"
             android:orderInCategory="100"
             android:onClick="verAgradecimientos"

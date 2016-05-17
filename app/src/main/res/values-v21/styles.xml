@@ -8,7 +8,7 @@
         <item name="android:textColorPrimaryInverse">@android:color/white</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/ActionBarAzulClaro</item>
         <item name="android:textColorPrimary">@android:color/black</item>
         <item name="colorPrimary">@color/azulClaroUI</item>
@@ -17,7 +17,7 @@
 
         <item name="android:navigationBarColor">@color/azulOscuroUI</item>
     </style>
-
+    9098
     <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowTitleSize">0px</item>

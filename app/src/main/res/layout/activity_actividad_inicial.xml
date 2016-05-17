@@ -4,11 +4,11 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               tools:context=".ActividadInicial"
-    android:background="#ffffff">
+              android:background="#ffffff">
 
     <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="255dp"
+            android:layout_height="0dp"
             android:layout_weight="0.42"
             android:layout_marginBottom="16dp"
             android:background="@drawable/titulo">
@@ -38,14 +38,14 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif"
             style="@style/EstiloEditText"
-            />
+            tools:ignore="UnusedAttribute"/>
 
     <Button
             android:layout_width="220dp"
             android:layout_height="50dp"
             android:text="@string/boton_ingresar"
             android:id="@id/botonIngresar"
-            android:onClick="ingresarEnAplicacion"
+            android:onClick="iniciarSesion"
             style="@style/estiloBotonRojo"
             />
 

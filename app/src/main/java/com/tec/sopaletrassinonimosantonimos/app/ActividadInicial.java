@@ -34,35 +34,42 @@ public class ActividadInicial extends AppCompatActivity {
   }
 
   /* Intentar el ingreso a la aplicación */
-  public void ingresarEnAplicacion(View view) {
+  public void iniciarSesion(View view) {
 
     // Se obtiene el contenido de los campos de texto.
     String strEmail = campoTexto_eMail.getText().toString().trim();
     String strPwd = campoTexto_pwd.getText().toString().trim();
+    ValidacionDatosUsuario validadorEntradas = new ValidadorDatosUsuarioApp();
 
 
-    if (strEmail.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_EmailVacio, Toast.LENGTH_LONG).show();
-      return;
-    }
-    if (strPwd.isEmpty()) {
-      Toast.makeText(this, R.string.alerta_PwdVacio, Toast.LENGTH_LONG).show();
-      return;
+    if (!validadorEntradas.validarEmail(strEmail)) {
+      if (strEmail.isEmpty()) {
+        Toast.makeText(this, R.string.error_eMailVacio, Toast.LENGTH_LONG).show();
+      } else {
+        Toast.makeText(this, R.string.error_eMailNoValido, Toast.LENGTH_LONG).show();
+      }
+    } else if (!validadorEntradas.validarPwd(strPwd)) {
+      if (strPwd.isEmpty()) {
+        Toast.makeText(this, R.string.error_PwdVacio, Toast.LENGTH_LONG).show();
+      } else {
+        Toast.makeText(this, R.string.error_PwdInvalido, Toast.LENGTH_LONG).show();
+      }
     } else {
       try {
-        getDatos datos = new getDatos();
-        datos.setJson_url("http://proyectosopaletras.esy.es/comprobarUsuario.php?correo=" +
-            strEmail + "&contrasena=" + strPwd);
-        String valores = datos.execute().get();
-        if (!valores.equals("")) {
-          JSONObject objeto = new JSONObject(valores);
+        String urlLogin = "http://proyectosopaletras.esy.es/comprobarUsuario.php?correo="
+            + strEmail + "&contrasena=" + strPwd;
+        String resultados = new SolicitanteWeb(this, urlLogin).execute().get();
+
+        if (!resultados.equals("")) {
+          JSONObject objeto = new JSONObject(resultados);
           JSONArray lista = objeto.getJSONArray("Usuario");
           String val = lista.get(0).toString();
+
           Intent intent = new Intent(this, MenuPrincipal.class);
           intent.putExtra("Id", val);
           startActivity(intent);
         } else {
-          Toast.makeText(this, R.string.error_usuarioPwd, Toast.LENGTH_LONG).show();
+          Toast.makeText(this, R.string.error_UsuarioPwdInvalidos, Toast.LENGTH_LONG).show();
           return;
         }
       } catch (Exception e) {
